@@ -4,11 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.promotion.Discount;
 import christmas.promotion.Promotion;
+import christmas.promotion.byorder.FreeGift;
 import christmas.view.input.Date;
 import org.junit.jupiter.api.Test;
 
 class DdayTest {
-    Promotion promotion = new Promotion(new Dday());
+    Promotion promotion = new Promotion(new Dday(), new FreeGift());
 
     @Test
     public void checkWithinDday() {
