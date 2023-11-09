@@ -14,4 +14,9 @@ public class Promotion implements DateDiscount{
     public boolean check(Date date) {
         return dateDiscount.check(date);
     }
+
+    @Override
+    public Discount calculateDiscount(Date date) {
+        return dateDiscount.calculateDiscount(date);
+    }
 }
