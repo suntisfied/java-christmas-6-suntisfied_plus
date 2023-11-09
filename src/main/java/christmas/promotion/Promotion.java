@@ -34,6 +34,6 @@ public class Promotion implements DateDiscount, OrderDiscount {
 
     @Override
     public Discount calculateDiscount(Price price) {
-        return null;
+        return orderDiscount.calculateDiscount(price);
     }
 }
