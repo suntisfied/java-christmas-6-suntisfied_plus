@@ -2,6 +2,7 @@ package christmas.promotion.bydate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.promotion.Discount;
 import christmas.promotion.Promotion;
 import christmas.view.input.Date;
 import org.junit.jupiter.api.Test;
@@ -17,5 +18,10 @@ class DdayTest {
     @Test
     public void checkBeyondDday() {
         assertThat(promotion.check(new Date(26))).isFalse();
+    }
+
+    @Test
+    public void calculateDdayDiscount() {
+        assertThat(promotion.calculateDiscount(new Date(25))).isEqualTo(new Discount(3400));
     }
 }
