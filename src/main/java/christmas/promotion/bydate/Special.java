@@ -13,7 +13,7 @@ public class Special implements DateDiscount {
 
     @Override
     public Discount calculateDiscount(Date date) {
-        return null;
+        return new Discount(1000);
     }
 
     Predicate<Date> isSpecialDay = date -> {
