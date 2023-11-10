@@ -46,6 +46,6 @@ public class Promotion implements DateDiscount, OrderGift, OrderBadge {
 
     @Override
     public Badges determineBadge(Discount discount) {
-        return null;
+        return orderBadge.determineBadge(discount);
     }
 }
