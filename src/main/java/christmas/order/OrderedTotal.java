@@ -2,7 +2,7 @@ package christmas.order;
 
 import christmas.order.converter.Converter;
 import christmas.order.menu.Menu;
-import christmas.order.menu.MenuAmount;
+import christmas.order.menu.OrderAmount;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class OrderedTotal {
     }
 
     public OrderAmount calculateTotalOrderAmount() {
-        HashMap<Menu, MenuAmount> rawOrderedMenuTotal = orderedMenuTotal.orderedMenuTotal();
+        HashMap<Menu, OrderAmount> rawOrderedMenuTotal = orderedMenuTotal.orderedMenuTotal();
         List<Menu> rawOrderedMenus = produceOrderedMenu().orderedMenus();
 
         int totalSum = 0;

@@ -1,22 +1,22 @@
 package christmas.order.converter;
 
 import christmas.order.menu.Menu;
-import christmas.order.menu.MenuAmount;
+import christmas.order.menu.OrderAmount;
 import java.util.HashMap;
 import java.util.List;
 import java.util.function.Predicate;
 
 public class Extractor {
-    HashMap<Menu, MenuAmount> createMenus(List<String> menuNameAndAmounts) {
-        HashMap<Menu, MenuAmount> menus = new HashMap<>();
+    HashMap<Menu, OrderAmount> createMenus(List<String> menuNameAndAmounts) {
+        HashMap<Menu, OrderAmount> menus = new HashMap<>();
 
         List<String> orderedMenuNames = extractNames(menuNameAndAmounts);
         List<Integer> orderedMenuAmounts = extractAmounts(menuNameAndAmounts);
 
         for (int i = 0; i < orderedMenuNames.size(); i++) {
             Menu convertedMenuName = new Converter().convertInputToMenu(orderedMenuNames.get(i));
-            MenuAmount convertedMenuAmount = new MenuAmount(orderedMenuAmounts.get(i));
-            menus.put(convertedMenuName, convertedMenuAmount);
+            OrderAmount convertedOrderAmount = new OrderAmount(orderedMenuAmounts.get(i));
+            menus.put(convertedMenuName, convertedOrderAmount);
         }
 
         return menus;
