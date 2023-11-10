@@ -7,12 +7,12 @@ import christmas.order.OrderedMenuTotal;
 import java.util.HashMap;
 import java.util.List;
 
-public class MenuConverter {
+public class Converter {
     private final Extractor extractor;
     private final Separator separator;
     private final MenuTableCreator menuTableCreator;
 
-    public MenuConverter() {
+    public Converter() {
         extractor = new Extractor();
         separator = new Separator();
         menuTableCreator = new MenuTableCreator();

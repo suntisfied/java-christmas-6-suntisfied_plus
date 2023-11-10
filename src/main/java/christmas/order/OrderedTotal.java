@@ -1,6 +1,6 @@
 package christmas.order;
 
-import christmas.order.converter.MenuConverter;
+import christmas.order.converter.Converter;
 import christmas.order.menu.Menu;
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +9,7 @@ public class OrderedTotal {
     private final OrderedMenuTotal orderedMenuTotal;
 
     public OrderedTotal(String input) {
-        this.orderedMenuTotal = new MenuConverter().createOrderedMenuTotal(input);
+        this.orderedMenuTotal = new Converter().createOrderedMenuTotal(input);
     }
 
     public OrderedMenus produceOrderedMenu() {
