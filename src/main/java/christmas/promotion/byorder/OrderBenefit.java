@@ -9,7 +9,7 @@ public class OrderBenefit {
     public Discount calculateTotalOrderBenefit(Price price) {
         Promotion promotion = new Promotion(new Dday(), new FreeGift(), new Badge());
 
-        int totalOrderBenefit = promotion.determineGift(price).getPrice();
+        int totalOrderBenefit = promotion.determineGift(price).getPrice().price();
 
         return new Discount(totalOrderBenefit);
     }

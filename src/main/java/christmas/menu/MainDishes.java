@@ -1,6 +1,6 @@
 package christmas.menu;
 
-public enum MainDishes {
+public enum MainDishes implements Menu {
     T_BONE_STEAK(55000),
     BARBECUE_RIBS(54000),
     SEAFOOD_PASTA(35000),
@@ -12,7 +12,8 @@ public enum MainDishes {
         this.price = price;
     }
 
-    public int getPrice() {
-        return price;
+    @Override
+    public Price getPrice() {
+        return new Price(price);
     }
 }

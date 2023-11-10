@@ -1,6 +1,6 @@
 package christmas.menu;
 
-public enum Desserts {
+public enum Desserts implements Menu {
     CHOCOLATE_CAKE(15000),
     ICE_CREAM(5000);
 
@@ -10,7 +10,8 @@ public enum Desserts {
         this.price = price;
     }
 
-    public int getPrice() {
-        return price;
+    @Override
+    public Price getPrice() {
+        return new Price(price);
     }
 }
