@@ -1,4 +1,4 @@
-package christmas.order.menu;
+package christmas.order;
 
 public record OrderAmount(int amount) {
 }
