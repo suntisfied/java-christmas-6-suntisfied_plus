@@ -1,6 +1,6 @@
 package christmas.promotion;
 
-import christmas.order.Price;
+import christmas.order.menu.Price;
 import christmas.promotion.bydate.DateBenefit;
 import christmas.promotion.byorder.OrderBenefit;
 import christmas.view.input.Date;

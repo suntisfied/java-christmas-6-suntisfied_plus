@@ -1,7 +1,5 @@
 package christmas.order.menu;
 
-import christmas.order.Price;
-
 public enum Appetizers implements Menu {
     MUSHROOM_CREAM_SOUP(6000),
     TAPAS(5500),

@@ -1,6 +1,6 @@
 package christmas.promotion.byorder;
 
-import christmas.order.Price;
+import christmas.order.menu.Price;
 import christmas.order.menu.Drinks;
 import java.util.function.Predicate;
 

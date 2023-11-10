@@ -1,7 +1,5 @@
 package christmas.order.menu;
 
-import christmas.order.Price;
-
 public enum MainDishes implements Menu {
     T_BONE_STEAK(55000),
     BARBECUE_RIBS(54000),
