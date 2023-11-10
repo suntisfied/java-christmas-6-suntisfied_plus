@@ -1,6 +1,6 @@
 package christmas.promotion.byorder;
 
-import christmas.menu.Price;
+import christmas.order.Price;
 import christmas.promotion.Discount;
 import christmas.promotion.Promotion;
 import christmas.promotion.bydate.Dday;

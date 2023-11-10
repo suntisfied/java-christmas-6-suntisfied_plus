@@ -1,9 +1,9 @@
-package christmas.menu.converter;
+package christmas.order.converter;
 
-import christmas.menu.menuitem.Menu;
-import christmas.menu.MenuAmount;
-import christmas.menu.MenuTable;
-import christmas.menu.OrderedMenuTotal;
+import christmas.order.menuitem.Menu;
+import christmas.order.MenuAmount;
+import christmas.order.MenuTable;
+import christmas.order.OrderedMenuTotal;
 import java.util.HashMap;
 import java.util.List;
 

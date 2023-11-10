@@ -1,7 +1,7 @@
 package christmas.promotion.byorder;
 
-import christmas.menu.Price;
-import christmas.menu.menuitem.Drinks;
+import christmas.order.Price;
+import christmas.order.menuitem.Drinks;
 import java.util.function.Predicate;
 
 public class FreeGift implements OrderGift {

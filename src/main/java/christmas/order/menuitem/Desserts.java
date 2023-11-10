@@ -1,6 +1,6 @@
-package christmas.menu.menuitem;
+package christmas.order.menuitem;
 
-import christmas.menu.Price;
+import christmas.order.Price;
 
 public enum Desserts implements Menu {
     CHOCOLATE_CAKE(15000),

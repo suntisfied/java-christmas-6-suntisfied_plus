@@ -1,12 +1,12 @@
-package christmas.menu;
+package christmas.order;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.menu.converter.MenuConverter;
-import christmas.menu.menuitem.Desserts;
-import christmas.menu.menuitem.Drinks;
-import christmas.menu.menuitem.MainDishes;
-import christmas.menu.menuitem.Menu;
+import christmas.order.converter.MenuConverter;
+import christmas.order.menuitem.Desserts;
+import christmas.order.menuitem.Drinks;
+import christmas.order.menuitem.MainDishes;
+import christmas.order.menuitem.Menu;
 import java.util.HashMap;
 import org.junit.jupiter.api.Test;
 

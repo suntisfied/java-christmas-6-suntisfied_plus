@@ -2,7 +2,7 @@ package christmas.promotion.byorder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.menu.Price;
+import christmas.order.Price;
 import christmas.promotion.Discount;
 import org.junit.jupiter.api.Test;
 

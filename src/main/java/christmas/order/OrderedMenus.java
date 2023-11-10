@@ -1,6 +1,6 @@
-package christmas.menu;
+package christmas.order;
 
-import christmas.menu.menuitem.Menu;
+import christmas.order.menuitem.Menu;
 import java.util.List;
 
 public record OrderedMenus(List<Menu> orderedMenus) {

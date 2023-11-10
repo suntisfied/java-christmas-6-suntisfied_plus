@@ -1,7 +1,7 @@
-package christmas.menu.converter;
+package christmas.order.converter;
 
-import christmas.menu.menuitem.Menu;
-import christmas.menu.MenuAmount;
+import christmas.order.menuitem.Menu;
+import christmas.order.MenuAmount;
 import java.util.HashMap;
 import java.util.List;
 import java.util.function.Predicate;

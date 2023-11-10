@@ -1,11 +1,11 @@
-package christmas.menu.converter;
+package christmas.order.converter;
 
-import christmas.menu.menuitem.Appetizers;
-import christmas.menu.menuitem.Desserts;
-import christmas.menu.menuitem.Drinks;
-import christmas.menu.menuitem.MainDishes;
-import christmas.menu.menuitem.Menu;
-import christmas.menu.MenuTable;
+import christmas.order.menuitem.Appetizers;
+import christmas.order.menuitem.Desserts;
+import christmas.order.menuitem.Drinks;
+import christmas.order.menuitem.MainDishes;
+import christmas.order.menuitem.Menu;
+import christmas.order.MenuTable;
 import java.util.HashMap;
 
 public class MenuTableCreator {
