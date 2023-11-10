@@ -1,8 +1,26 @@
 package christmas.menu;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class MenuConverter {
+    public Ordered createOrderedMenus(String inputs) {
+        List<Menu> orderedMenus = new ArrayList<>();
+
+        List<String> convertedInputs = convertInputs(inputs);
+        for (String convertedInput : convertedInputs) {
+            orderedMenus.add(convertInputToMenu(convertedInput));
+        }
+
+        return new Ordered(orderedMenus);
+    }
+
+    private List<String> convertInputs(String inputs) {
+        return Arrays.asList(inputs.split(","));
+    }
+
     public Menu convertInputToMenu(String input) {
         MenuTable menuTable = createMenuTable();
 
