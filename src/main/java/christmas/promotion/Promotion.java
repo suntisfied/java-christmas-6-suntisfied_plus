@@ -1,10 +1,8 @@
 package christmas.promotion;
 
 import christmas.menu.Price;
+import christmas.menu.MenuItems;
 import christmas.promotion.bydate.DateDiscount;
-import christmas.promotion.byorder.Badge;
-import christmas.promotion.byorder.Badges;
-import christmas.promotion.byorder.FreeGift;
 import christmas.promotion.byorder.OrderDiscount;
 import christmas.view.input.Date;
 
@@ -33,7 +31,7 @@ public class Promotion implements DateDiscount, OrderDiscount {
     }
 
     @Override
-    public Discount calculateDiscount(Price price) {
+    public MenuItems calculateDiscount(Price price) {
         return orderDiscount.calculateDiscount(price);
     }
 }

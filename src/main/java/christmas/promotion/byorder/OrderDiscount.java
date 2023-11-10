@@ -1,10 +1,10 @@
 package christmas.promotion.byorder;
 
 import christmas.menu.Price;
-import christmas.promotion.Discount;
+import christmas.menu.MenuItems;
 
 public interface OrderDiscount {
     boolean check(Price price);
 
-    Discount calculateDiscount(Price price);
+    MenuItems calculateDiscount(Price price);
 }
