@@ -19,4 +19,9 @@ class BadgeTest {
     public void checkNotEnoughDiscount() {
         assertThat(promotion.checkDiscount(new Discount(4999))).isFalse();
     }
+
+    @Test
+    public void checkCorrectBadge() {
+        assertThat(promotion.determineBadge(new Discount(10000))).isEqualTo(Badges.TREE);
+    }
 }
