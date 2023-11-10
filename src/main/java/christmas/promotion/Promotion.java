@@ -16,8 +16,8 @@ public class Promotion implements DateDiscount, OrderGift {
     }
 
     @Override
-    public boolean check(Date date) {
-        return dateDiscount.check(date);
+    public boolean checkDate(Date date) {
+        return dateDiscount.checkDate(date);
     }
 
     @Override

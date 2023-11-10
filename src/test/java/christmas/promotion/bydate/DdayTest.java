@@ -13,12 +13,12 @@ class DdayTest {
 
     @Test
     public void checkWithinDday() {
-        assertThat(promotion.check(new Date(7))).isTrue();
+        assertThat(promotion.checkDate(new Date(7))).isTrue();
     }
 
     @Test
     public void checkBeyondDday() {
-        assertThat(promotion.check(new Date(26))).isFalse();
+        assertThat(promotion.checkDate(new Date(26))).isFalse();
     }
 
     @Test

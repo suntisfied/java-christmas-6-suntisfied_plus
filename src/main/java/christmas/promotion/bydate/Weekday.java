@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 
 public class Weekday implements DateDiscount {
     @Override
-    public boolean check(Date date) {
+    public boolean checkDate(Date date) {
         return isWeekday.test(date);
     }
 

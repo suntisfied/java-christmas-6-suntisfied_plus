@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 
 public class Dday implements DateDiscount {
     @Override
-    public boolean check(Date date) {
+    public boolean checkDate(Date date) {
         return isWithinDday.test(date);
     }
 
