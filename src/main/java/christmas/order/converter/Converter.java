@@ -1,7 +1,7 @@
 package christmas.order.converter;
 
 import christmas.order.menu.Menu;
-import christmas.order.MenuAmount;
+import christmas.order.menu.MenuAmount;
 import christmas.order.OrderedMenuTotal;
 import java.util.HashMap;
 import java.util.List;

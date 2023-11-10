@@ -7,6 +7,7 @@ import christmas.order.menu.Desserts;
 import christmas.order.menu.Drinks;
 import christmas.order.menu.MainDishes;
 import christmas.order.menu.Menu;
+import christmas.order.menu.MenuAmount;
 import java.util.HashMap;
 import org.junit.jupiter.api.Test;
 
