@@ -1,7 +1,6 @@
 package christmas.promotion;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import christmas.menu.Price;
 import christmas.view.input.Date;

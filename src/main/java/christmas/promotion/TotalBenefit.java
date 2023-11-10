@@ -2,9 +2,6 @@ package christmas.promotion;
 
 import christmas.menu.Price;
 import christmas.promotion.bydate.DateBenefit;
-import christmas.promotion.bydate.Dday;
-import christmas.promotion.byorder.Badge;
-import christmas.promotion.byorder.FreeGift;
 import christmas.promotion.byorder.OrderBenefit;
 import christmas.view.input.Date;
 
