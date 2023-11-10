@@ -7,12 +7,12 @@ import java.util.function.Predicate;
 public class FreeGift implements OrderGift {
 
     @Override
-    public boolean check(Price price) {
+    public boolean checkPrice(Price price) {
         return isEnough.test(price);
     }
 
     @Override
-    public MenuItems calculateDiscount(Price price) {
+    public MenuItems determineGift(Price price) {
         return MenuItems.CHAMPAGNE;
     }
 

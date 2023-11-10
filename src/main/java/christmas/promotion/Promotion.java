@@ -26,12 +26,12 @@ public class Promotion implements DateDiscount, OrderGift {
     }
 
     @Override
-    public boolean check(Price price) {
-        return orderGift.check(price);
+    public boolean checkPrice(Price price) {
+        return orderGift.checkPrice(price);
     }
 
     @Override
-    public MenuItems calculateDiscount(Price price) {
-        return orderGift.calculateDiscount(price);
+    public MenuItems determineGift(Price price) {
+        return orderGift.determineGift(price);
     }
 }
