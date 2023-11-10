@@ -1,11 +1,13 @@
 package christmas.menu;
 
-public enum MenuItems {
-    CHAMPAGNE(25000);
+public enum Appetizers {
+    MUSHROOM_CREAM_SOUP(6000),
+    TAPAS(5500),
+    CAESAR_SALAD(8000);
 
     private final int price;
 
-    MenuItems(int price) {
+    Appetizers(int price) {
         this.price = price;
     }
 

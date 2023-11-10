@@ -1,7 +1,7 @@
 package christmas.promotion.byorder;
 
 import christmas.menu.Price;
-import christmas.menu.MenuItems;
+import christmas.menu.Drinks;
 import java.util.function.Predicate;
 
 public class FreeGift implements OrderGift {
@@ -12,8 +12,8 @@ public class FreeGift implements OrderGift {
     }
 
     @Override
-    public MenuItems determineGift(Price price) {
-        return MenuItems.CHAMPAGNE;
+    public Drinks determineGift(Price price) {
+        return Drinks.CHAMPAGNE;
     }
 
     Predicate<Price> isEnough = price -> price.price() >= 120000;
