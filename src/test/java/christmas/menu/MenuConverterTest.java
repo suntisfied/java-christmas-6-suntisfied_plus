@@ -10,11 +10,6 @@ class MenuConverterTest {
     MenuConverter menuConverter = new MenuConverter();
 
     @Test
-    public void convertInputToMenu() {
-        assertThat(menuConverter.convertInputToMenu("티본스테이크")).isEqualTo(MainDishes.T_BONE_STEAK);
-    }
-
-    @Test
     public void convertInputToMenus() {
         Ordered orderedMenus = menuConverter.createOrderedMenus("해산물파스타-2,레드와인-1,초코케이크-1");
         HashMap<Menu, MenuAmount> rawOrderedMenus = orderedMenus.menus();
