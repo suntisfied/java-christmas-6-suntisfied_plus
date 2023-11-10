@@ -5,7 +5,6 @@ import christmas.order.menu.Desserts;
 import christmas.order.menu.Drinks;
 import christmas.order.menu.MainDishes;
 import christmas.order.menu.Menu;
-import christmas.order.MenuTable;
 import java.util.HashMap;
 
 public class MenuTableCreator {
