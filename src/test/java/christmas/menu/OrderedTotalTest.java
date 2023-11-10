@@ -22,4 +22,9 @@ class OrderedTotalTest {
                         Desserts.ICE_CREAM,
                         Drinks.RED_WINE)).orderedMenus());
     }
+
+    @Test
+    public void calculateTotalOrderCost() {
+        assertThat(orderedTotal.calculateTotalOrderAmount()).isEqualTo(new OrderAmount(241000));
+    }
 }
