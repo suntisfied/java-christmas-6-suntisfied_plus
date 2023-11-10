@@ -3,6 +3,10 @@ package christmas.menu;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.menu.converter.MenuConverter;
+import christmas.menu.menuitem.Desserts;
+import christmas.menu.menuitem.Drinks;
+import christmas.menu.menuitem.MainDishes;
+import christmas.menu.menuitem.Menu;
 import java.util.HashMap;
 import org.junit.jupiter.api.Test;
 

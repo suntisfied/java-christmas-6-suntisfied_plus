@@ -1,7 +1,7 @@
 package christmas.promotion;
 
 import christmas.menu.Price;
-import christmas.menu.Drinks;
+import christmas.menu.menuitem.Drinks;
 import christmas.promotion.bydate.DateDiscount;
 import christmas.promotion.byorder.Badges;
 import christmas.promotion.byorder.OrderBadge;

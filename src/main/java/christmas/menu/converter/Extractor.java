@@ -1,6 +1,6 @@
 package christmas.menu.converter;
 
-import christmas.menu.Menu;
+import christmas.menu.menuitem.Menu;
 import christmas.menu.MenuAmount;
 import java.util.HashMap;
 import java.util.List;

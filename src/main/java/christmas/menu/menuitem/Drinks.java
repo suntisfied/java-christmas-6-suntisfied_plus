@@ -1,4 +1,6 @@
-package christmas.menu;
+package christmas.menu.menuitem;
+
+import christmas.menu.Price;
 
 public enum Drinks implements Menu {
     ZERO_COLA(3000),

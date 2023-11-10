@@ -1,4 +1,6 @@
-package christmas.menu;
+package christmas.menu.menuitem;
+
+import christmas.menu.Price;
 
 public enum Appetizers implements Menu {
     MUSHROOM_CREAM_SOUP(6000),
