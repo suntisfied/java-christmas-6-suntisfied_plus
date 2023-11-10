@@ -1,4 +1,4 @@
-package christmas.order.menuitem;
+package christmas.order.menu;
 
 import christmas.order.Price;
 

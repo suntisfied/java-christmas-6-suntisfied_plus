@@ -1,6 +1,6 @@
 package christmas.order.converter;
 
-import christmas.order.menuitem.Menu;
+import christmas.order.menu.Menu;
 import christmas.order.MenuAmount;
 import christmas.order.MenuTable;
 import christmas.order.OrderedMenuTotal;

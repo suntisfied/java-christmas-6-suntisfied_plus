@@ -1,10 +1,10 @@
 package christmas.order.converter;
 
-import christmas.order.menuitem.Appetizers;
-import christmas.order.menuitem.Desserts;
-import christmas.order.menuitem.Drinks;
-import christmas.order.menuitem.MainDishes;
-import christmas.order.menuitem.Menu;
+import christmas.order.menu.Appetizers;
+import christmas.order.menu.Desserts;
+import christmas.order.menu.Drinks;
+import christmas.order.menu.MainDishes;
+import christmas.order.menu.Menu;
 import christmas.order.MenuTable;
 import java.util.HashMap;
 

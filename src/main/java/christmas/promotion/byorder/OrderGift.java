@@ -1,7 +1,7 @@
 package christmas.promotion.byorder;
 
 import christmas.order.Price;
-import christmas.order.menuitem.Drinks;
+import christmas.order.menu.Drinks;
 
 public interface OrderGift {
     boolean checkPrice(Price price);

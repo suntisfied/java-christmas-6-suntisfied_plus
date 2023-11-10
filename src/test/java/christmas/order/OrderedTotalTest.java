@@ -2,10 +2,10 @@ package christmas.order;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.order.menuitem.Appetizers;
-import christmas.order.menuitem.Desserts;
-import christmas.order.menuitem.Drinks;
-import christmas.order.menuitem.MainDishes;
+import christmas.order.menu.Appetizers;
+import christmas.order.menu.Desserts;
+import christmas.order.menu.Drinks;
+import christmas.order.menu.MainDishes;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
