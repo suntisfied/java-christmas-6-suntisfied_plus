@@ -15,8 +15,8 @@ class MenuConverterTest {
 
     @Test
     public void convertInputToMenus() {
-        Ordered orderedMenus = menuConverter.createOrderedMenus("해산물파스타-2,레드와인-1,초코케이크-1");
-        HashMap<Menu, MenuAmount> rawOrderedMenus = orderedMenus.menus();
+        OrderedMenuTotal orderedMenuTotalMenus = menuConverter.createOrderedMenuTotal("해산물파스타-2,레드와인-1,초코케이크-1");
+        HashMap<Menu, MenuAmount> rawOrderedMenus = orderedMenuTotalMenus.orderedMenuTotal();
 
         assertThat(rawOrderedMenus.get(MainDishes.SEAFOOD_PASTA)).isEqualTo(new MenuAmount(2));
         assertThat(rawOrderedMenus.get(Drinks.RED_WINE)).isEqualTo(new MenuAmount(1));

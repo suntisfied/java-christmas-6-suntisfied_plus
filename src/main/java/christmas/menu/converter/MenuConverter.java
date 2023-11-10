@@ -3,7 +3,7 @@ package christmas.menu.converter;
 import christmas.menu.menuitem.Menu;
 import christmas.menu.MenuAmount;
 import christmas.menu.MenuTable;
-import christmas.menu.Ordered;
+import christmas.menu.OrderedMenuTotal;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,11 +18,11 @@ public class MenuConverter {
         menuTableCreator = new MenuTableCreator();
     }
 
-    public Ordered createOrderedMenus(String inputs) {
+    public OrderedMenuTotal createOrderedMenuTotal(String inputs) {
         List<String> menuNameAndAmounts = separator.createMenuNameAndAmounts(inputs);
-        HashMap<Menu, MenuAmount> menus = extractor.createMenus(menuNameAndAmounts);
+        HashMap<Menu, MenuAmount> orderedMenuTotal = extractor.createMenus(menuNameAndAmounts);
 
-        return new Ordered(menus);
+        return new OrderedMenuTotal(orderedMenuTotal);
     }
 
     Menu convertInputToMenu(String input) {
