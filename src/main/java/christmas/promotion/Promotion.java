@@ -3,16 +3,16 @@ package christmas.promotion;
 import christmas.menu.Price;
 import christmas.menu.MenuItems;
 import christmas.promotion.bydate.DateDiscount;
-import christmas.promotion.byorder.OrderDiscount;
+import christmas.promotion.byorder.OrderGift;
 import christmas.view.input.Date;
 
-public class Promotion implements DateDiscount, OrderDiscount {
+public class Promotion implements DateDiscount, OrderGift {
     private final DateDiscount dateDiscount;
-    private final OrderDiscount orderDiscount;
+    private final OrderGift orderGift;
 
-    public Promotion(DateDiscount dateDiscount, OrderDiscount orderDiscount) {
+    public Promotion(DateDiscount dateDiscount, OrderGift orderGift) {
         this.dateDiscount = dateDiscount;
-        this.orderDiscount = orderDiscount;
+        this.orderGift = orderGift;
     }
 
     @Override
@@ -27,11 +27,11 @@ public class Promotion implements DateDiscount, OrderDiscount {
 
     @Override
     public boolean check(Price price) {
-        return orderDiscount.check(price);
+        return orderGift.check(price);
     }
 
     @Override
     public MenuItems calculateDiscount(Price price) {
-        return orderDiscount.calculateDiscount(price);
+        return orderGift.calculateDiscount(price);
     }
 }
