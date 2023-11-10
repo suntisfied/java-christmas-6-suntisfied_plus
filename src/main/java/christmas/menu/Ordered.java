@@ -1,6 +1,6 @@
 package christmas.menu;
 
-import java.util.List;
+import java.util.HashMap;
 
-public record Ordered(List<Menu> menuList) {
+public record Ordered(HashMap<Menu, MenuAmount> menus) {
 }
