@@ -11,11 +11,21 @@ import java.util.HashMap;
 import org.junit.jupiter.api.Test;
 
 class ConverterTest {
+    String input = "해산물파스타-2,레드와인-1,초코케이크-1";
     Converter converter = new Converter();
 
     @Test
+    public void convertInputToMenuList() {
+        HashMap<String, Integer>extractedNameAndAmounts = converter.createExtractedNameAndAmounts(input);
+
+        assertThat(extractedNameAndAmounts.get("해산물파스타")).isEqualTo(2);
+        assertThat(extractedNameAndAmounts.get("레드와인")).isEqualTo(1);
+        assertThat(extractedNameAndAmounts.get("초코케이크")).isEqualTo(1);
+    }
+
+    @Test
     public void convertInputToMenus() {
-        OrderedMenuTotal orderedMenuTotalMenus = converter.createOrderedMenuTotal("해산물파스타-2,레드와인-1,초코케이크-1");
+        OrderedMenuTotal orderedMenuTotalMenus = converter.createOrderedMenuTotal(input);
         HashMap<Menu, OrderAmount> rawOrderedMenus = orderedMenuTotalMenus.orderedMenuTotal();
 
         assertThat(rawOrderedMenus.get(MainDishes.SEAFOOD_PASTA)).isEqualTo(new OrderAmount(2));
