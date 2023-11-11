@@ -3,9 +3,6 @@ package christmas.order;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.order.converter.Converter;
-import christmas.order.menu.Desserts;
-import christmas.order.menu.Drinks;
-import christmas.order.menu.MainDishes;
 import christmas.order.menu.Menu;
 import christmas.view.input.Order;
 import java.util.HashMap;
@@ -29,8 +26,8 @@ class ConverterTest {
         OrderWithVolume orderWithVolumeMenus = converter.createOrderedMenuTotal(order);
         HashMap<Menu, OrderVolume> rawOrderedMenus = orderWithVolumeMenus.orderedMenuTotal();
 
-        assertThat(rawOrderedMenus.get(MainDishes.SEAFOOD_PASTA)).isEqualTo(new OrderVolume(2));
-        assertThat(rawOrderedMenus.get(Drinks.RED_WINE)).isEqualTo(new OrderVolume(1));
-        assertThat(rawOrderedMenus.get(Desserts.CHOCOLATE_CAKE)).isEqualTo(new OrderVolume(1));
+        assertThat(rawOrderedMenus.get(Menu.SEAFOOD_PASTA)).isEqualTo(new OrderVolume(2));
+        assertThat(rawOrderedMenus.get(Menu.RED_WINE)).isEqualTo(new OrderVolume(1));
+        assertThat(rawOrderedMenus.get(Menu.CHOCOLATE_CAKE)).isEqualTo(new OrderVolume(1));
     }
 }

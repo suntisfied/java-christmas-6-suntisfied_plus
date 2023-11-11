@@ -1,6 +1,7 @@
 package christmas.order;
 
 import christmas.order.converter.Converter;
+import christmas.order.menu.Category;
 import christmas.order.menu.Menu;
 import christmas.order.menu.Price;
 import christmas.view.input.Order;
@@ -30,7 +31,7 @@ public class TotalOrder {
     private final Predicate<Order> isOnlyDrinkOrder = order -> {
         VolumeCalculator volumeCalculator = new VolumeCalculator();
         OrderVolume totalVolume = volumeCalculator.calculateTotalOrderVolume(order);
-        OrderVolume drinkVolume = volumeCalculator.calculateOrderVolumeByCategory(order, "drink");
+        OrderVolume drinkVolume = volumeCalculator.calculateOrderVolumeByCategory(order, Category.DRINK);
         return totalVolume.equals(drinkVolume);
     };
 

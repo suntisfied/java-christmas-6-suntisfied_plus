@@ -1,6 +1,6 @@
 package christmas.promotion.byorder;
 
-import christmas.order.menu.Drinks;
+import christmas.order.menu.Menu;
 import christmas.order.menu.Price;
 import christmas.promotion.Discount;
 
@@ -24,7 +24,7 @@ public class OrderBenefit implements OrderGift, OrderBadge {
     }
 
     @Override
-    public Drinks determineGift(Price price) {
+    public Menu determineGift(Price price) {
         return orderGift.determineGift(price);
     }
 

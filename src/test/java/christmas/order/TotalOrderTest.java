@@ -3,10 +3,7 @@ package christmas.order;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import christmas.order.menu.Appetizers;
-import christmas.order.menu.Desserts;
-import christmas.order.menu.Drinks;
-import christmas.order.menu.MainDishes;
+import christmas.order.menu.Menu;
 import christmas.order.menu.Price;
 import christmas.view.input.Order;
 import java.util.Arrays;
@@ -20,10 +17,10 @@ class TotalOrderTest {
     public void produceOrderedItemList() {
         assertThat(totalOrder.produceOrderedMenu().orderedMenus())
                 .containsExactlyInAnyOrderElementsOf(new OrderedMenus(Arrays.asList(
-                        MainDishes.T_BONE_STEAK,
-                        Appetizers.MUSHROOM_CREAM_SOUP,
-                        Desserts.ICE_CREAM,
-                        Drinks.RED_WINE)).orderedMenus());
+                        Menu.T_BONE_STEAK,
+                        Menu.MUSHROOM_CREAM_SOUP,
+                        Menu.ICE_CREAM,
+                        Menu.RED_WINE)).orderedMenus());
     }
 
     @Test

@@ -1,16 +1,14 @@
 package christmas.order;
 
 import christmas.order.converter.Converter;
+import christmas.order.menu.Category;
 import christmas.order.menu.Menu;
 import christmas.view.input.Order;
 import java.util.HashMap;
 import java.util.List;
 
 public class VolumeCalculator extends Converter {
-    /**
-     * Available Categories: appetizer, maindish, dessert, drink
-     */
-    public OrderVolume calculateOrderVolumeByCategory(Order order, String category) {
+    public OrderVolume calculateOrderVolumeByCategory(Order order, Category category) {
         List<Menu> orderedMenuNameList = createOrderedMenuNameList(order);
         HashMap<Menu, OrderVolume> rawOrderedMenuTotal = createOrderedMenuTotal(order).orderedMenuTotal();
 
