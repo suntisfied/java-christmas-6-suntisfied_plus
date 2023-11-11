@@ -13,9 +13,14 @@ public class Dday implements DateDiscount {
 
     @Override
     public Discount calculateDiscount(Date date) {
-        int initialDiscount = Defaults.INITIAL_D_DAY_DISCOUNT.getNumber();
-        int dDayDiscounts = date.date() - 1;
-        int totalDiscount = initialDiscount + (dDayDiscounts * 100);
+        int totalDiscount = 0;
+
+        if (checkDate(date)) {
+            int initialDiscount = Defaults.INITIAL_D_DAY_DISCOUNT.getNumber();
+            int dDayDiscounts = date.date() - 1;
+            totalDiscount = initialDiscount + (dDayDiscounts * 100);
+        }
+
         return new Discount(totalDiscount);
     }
 

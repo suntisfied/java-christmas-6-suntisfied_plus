@@ -13,7 +13,11 @@ public class Weekday implements DateDiscount {
 
     @Override
     public Discount calculateDiscount(Date date) {
-        return new Discount(2023);
+        int totalDiscount = 0;
+        if (checkDate(date)) {
+            totalDiscount = 2023;
+        }
+        return new Discount(totalDiscount);
     }
 
     Predicate<Date> isWeekday = date -> {
