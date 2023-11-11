@@ -6,13 +6,26 @@ import christmas.order.menu.Price;
 import christmas.view.input.Order;
 import java.util.HashMap;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class OrderedTotal {
     private final OrderedMenuTotal orderedMenuTotal;
 
     public OrderedTotal(Order order) {
         this.orderedMenuTotal = new Converter().createOrderedMenuTotal(order);
+        validate(order);
     }
+
+    private void validate(Order order) {
+        if (!isWithinOrderLimit.test(order)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private final Predicate<Order> isWithinOrderLimit = order -> {
+        VolumeCalculator volumeCalculator = new VolumeCalculator();
+        return volumeCalculator.calculateTotalOrderVolume(order).volume() <= 20;
+    };
 
     public OrderedMenus produceOrderedMenu() {
         return new OrderedMenus(orderedMenuTotal.orderedMenuTotal().keySet().stream().toList());
