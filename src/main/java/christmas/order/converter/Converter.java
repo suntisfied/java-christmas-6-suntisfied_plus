@@ -1,8 +1,8 @@
 package christmas.order.converter;
 
-import christmas.order.menu.Menu;
 import christmas.order.OrderVolume;
 import christmas.order.OrderedMenuTotal;
+import christmas.order.menu.Menu;
 import christmas.view.input.Order;
 import java.util.HashMap;
 import java.util.List;
@@ -27,23 +27,6 @@ public class Converter {
 
     public List<Menu> createOrderedMenuNameList(Order order) {
         return createOrderedMenuTotal(order).orderedMenuTotal().keySet().stream().toList();
-    }
-
-    /**
-    * Available Categories: appetizer, maindish, dessert, drink
-    */
-    public OrderVolume calculateOrderVolumeByCategory(Order order, String category) {
-        List<Menu> orderedMenuNameList = createOrderedMenuNameList(order);
-        HashMap<Menu, OrderVolume> rawOrderedMenuTotal = createOrderedMenuTotal(order).orderedMenuTotal();
-
-        int orderedDessertVolume = 0;
-        for (Menu menu : orderedMenuNameList) {
-            if (menu.getCategory().equals(category)) {
-                orderedDessertVolume += rawOrderedMenuTotal.get(menu).volume();
-            }
-        }
-
-        return new OrderVolume(orderedDessertVolume);
     }
 
     public HashMap<String, Integer> createExtractedNameAndAmounts(Order order) {

@@ -1,8 +1,8 @@
 package christmas.promotion.bydate;
 
+import christmas.order.VolumeCalculator;
 import christmas.order.OrderVolume;
 import christmas.order.OrderedTotal;
-import christmas.order.converter.Converter;
 import christmas.order.menu.Price;
 import christmas.promotion.Discount;
 import christmas.view.input.Date;
@@ -14,9 +14,9 @@ public class Weekend implements DateDiscount {
     OrderVolume mainDishOrderVolume;
 
     public Weekend(Order order) {
-        Converter converter = new Converter();
+        VolumeCalculator volumeCalculator = new VolumeCalculator();
         mainDishOrderVolume =
-                converter.calculateOrderVolumeByCategory(order, "maindish");
+                volumeCalculator.calculateOrderVolumeByCategory(order, "maindish");
     }
 
     @Override
