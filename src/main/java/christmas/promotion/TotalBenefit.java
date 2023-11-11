@@ -2,17 +2,46 @@ package christmas.promotion;
 
 import christmas.order.menu.Price;
 import christmas.promotion.bydate.DateBenefit;
+import christmas.promotion.bydate.DateDiscount;
+import christmas.promotion.bydate.Dday;
+import christmas.promotion.bydate.Special;
+import christmas.promotion.bydate.Weekday;
+import christmas.promotion.bydate.Weekend;
+import christmas.promotion.byorder.Badge;
+import christmas.promotion.byorder.FreeGift;
 import christmas.promotion.byorder.OrderBenefit;
 import christmas.view.input.Date;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 public class TotalBenefit {
-    public Discount calculateTotalBenefit(Date date, Price price) {
-        DateBenefit dateBenefit = new DateBenefit();
-        OrderBenefit orderBenefit = new OrderBenefit();
+    public HashMap<Promotions, Discount> createBenefits(Date date, Price price) {
+        List<Promotions> promotions =
+                Arrays.asList(Promotions.D_DAY, Promotions.WEEKDAY, Promotions.WEEKEND, Promotions.SPECIAL);
 
-        int totalBenefit =
-                dateBenefit.calculateTotalDateBenefit(date).amount() +
-                        orderBenefit.calculateTotalOrderBenefit(price).amount();
+        List<DateDiscount> dateDiscounts =
+                Arrays.asList(new Dday(), new Weekday(), new Weekend(), new Special());
+
+        HashMap<Promotions, Discount> benefits = new HashMap<>();
+        for (int i = 0; i < promotions.size(); i++) {
+            DateBenefit dateBenefit = new DateBenefit(dateDiscounts.get(i));
+            benefits.put(promotions.get(i), dateBenefit.calculateDiscount(date));
+        }
+
+        OrderBenefit orderBenefit = new OrderBenefit(new FreeGift(), new Badge());
+        int freeGiftPrice = orderBenefit.determineGift(price).getPrice().price();
+
+        benefits.put(Promotions.FREE_GIFT, new Discount(freeGiftPrice));
+        benefits.put(Promotions.BADGE, new Discount(0));
+
+        return benefits;
+    }
+
+    public Discount calculateTotalBenefit(Date date, Price price) {
+        HashMap<Promotions, Discount> benefits = createBenefits(date, price);
+
+        int totalBenefit = benefits.values().stream().mapToInt(Discount::amount).sum();
 
         return new Discount(totalBenefit);
     }
