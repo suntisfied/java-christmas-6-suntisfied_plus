@@ -2,6 +2,7 @@ package christmas.promotion.bydate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.promotion.Discount;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
 import org.junit.jupiter.api.Test;
@@ -25,5 +26,12 @@ class WeekdayTest {
     @Test
     public void checkNonWeekday() {
         assertThat(dateBenefit.check(new Date(8), order)).isFalse();
+    }
+
+    @Test
+    public void calculateDiscountBasedOnDessertOrder() {
+        Order order = new Order("티본스테이크-2,양송이수프-1,아이스크림-3,레드와인-2");
+
+        assertThat(dateBenefit.calculateDiscount(new Date(7), order)).isEqualTo(new Discount(6069));
     }
 }
