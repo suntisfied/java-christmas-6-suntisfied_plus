@@ -7,14 +7,14 @@ import java.util.function.Predicate;
 
 public class Weekday implements DateDiscount {
     @Override
-    public boolean checkDate(Date date) {
+    public boolean check(Date date) {
         return isWeekday.test(date);
     }
 
     @Override
     public Discount calculateDiscount(Date date) {
         int totalDiscount = 0;
-        if (checkDate(date)) {
+        if (check(date)) {
             totalDiscount = 2023;
         }
         return new Discount(totalDiscount);

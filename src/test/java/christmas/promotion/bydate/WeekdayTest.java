@@ -10,11 +10,11 @@ class WeekdayTest {
 
     @Test
     public void checkWeekday() {
-        assertThat(dateBenefit.checkDate(new Date(7))).isTrue();
+        assertThat(dateBenefit.check(new Date(7))).isTrue();
     }
 
     @Test
     public void checkNonWeekday() {
-        assertThat(dateBenefit.checkDate(new Date(8))).isFalse();
+        assertThat(dateBenefit.check(new Date(8))).isFalse();
     }
 }

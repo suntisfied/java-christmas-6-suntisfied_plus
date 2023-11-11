@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 
 public class Badge implements OrderBadge {
     @Override
-    public boolean checkDiscount(Discount discount) {
+    public boolean check(Discount discount) {
         return isEnough.test(discount);
     }
 

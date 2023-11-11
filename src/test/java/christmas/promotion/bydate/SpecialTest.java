@@ -10,11 +10,11 @@ class SpecialTest {
 
     @Test
     public void checkSpecialDay() {
-        assertThat(dateBenefit.checkDate(new Date(17))).isTrue();
+        assertThat(dateBenefit.check(new Date(17))).isTrue();
     }
 
     @Test
     public void checkNonSpecialDay() {
-        assertThat(dateBenefit.checkDate(new Date(18))).isFalse();
+        assertThat(dateBenefit.check(new Date(18))).isFalse();
     }
 }

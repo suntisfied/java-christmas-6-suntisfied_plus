@@ -10,11 +10,11 @@ class WeekendTest {
 
     @Test
     public void checkWeekend() {
-        assertThat(dateBenefit.checkDate(new Date(8))).isTrue();
+        assertThat(dateBenefit.check(new Date(8))).isTrue();
     }
 
     @Test
     public void checkNonWeekend() {
-        assertThat(dateBenefit.checkDate(new Date(7))).isFalse();
+        assertThat(dateBenefit.check(new Date(7))).isFalse();
     }
 }

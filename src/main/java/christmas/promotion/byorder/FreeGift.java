@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 public class FreeGift implements OrderGift {
 
     @Override
-    public boolean checkPrice(Price price) {
+    public boolean check(Price price) {
         return isEnough.test(price);
     }
 

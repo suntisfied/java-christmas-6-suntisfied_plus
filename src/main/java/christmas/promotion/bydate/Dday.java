@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 
 public class Dday implements DateDiscount {
     @Override
-    public boolean checkDate(Date date) {
+    public boolean check(Date date) {
         return isWithinDday.test(date);
     }
 
@@ -15,7 +15,7 @@ public class Dday implements DateDiscount {
     public Discount calculateDiscount(Date date) {
         int totalDiscount = 0;
 
-        if (checkDate(date)) {
+        if (check(date)) {
             int initialDiscount = Defaults.INITIAL_D_DAY_DISCOUNT.getNumber();
             int dDayDiscounts = date.date() - 1;
             totalDiscount = initialDiscount + (dDayDiscounts * 100);

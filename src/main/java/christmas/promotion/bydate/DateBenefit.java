@@ -15,8 +15,8 @@ public class DateBenefit implements DateDiscount {
     }
 
     @Override
-    public boolean checkDate(Date date) {
-        return dateDiscount.checkDate(date);
+    public boolean check(Date date) {
+        return dateDiscount.check(date);
     }
 
     @Override

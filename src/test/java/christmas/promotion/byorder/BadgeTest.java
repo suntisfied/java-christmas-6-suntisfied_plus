@@ -10,12 +10,12 @@ class BadgeTest {
 
     @Test
     public void checkEnoughDiscount() {
-        assertThat(orderBenefit.checkDiscount(new Discount(5000))).isTrue();
+        assertThat(orderBenefit.check(new Discount(5000))).isTrue();
     }
 
     @Test
     public void checkNotEnoughDiscount() {
-        assertThat(orderBenefit.checkDiscount(new Discount(4999))).isFalse();
+        assertThat(orderBenefit.check(new Discount(4999))).isFalse();
     }
 
     @Test

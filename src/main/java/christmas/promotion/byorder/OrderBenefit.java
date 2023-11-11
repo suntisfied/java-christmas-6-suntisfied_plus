@@ -19,8 +19,8 @@ public class OrderBenefit implements OrderGift, OrderBadge {
     }
 
     @Override
-    public boolean checkPrice(Price price) {
-        return orderGift.checkPrice(price);
+    public boolean check(Price price) {
+        return orderGift.check(price);
     }
 
     @Override
@@ -29,8 +29,8 @@ public class OrderBenefit implements OrderGift, OrderBadge {
     }
 
     @Override
-    public boolean checkDiscount(Discount discount) {
-        return orderBadge.checkDiscount(discount);
+    public boolean check(Discount discount) {
+        return orderBadge.check(discount);
     }
 
     @Override
