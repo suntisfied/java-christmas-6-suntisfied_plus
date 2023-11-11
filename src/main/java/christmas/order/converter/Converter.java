@@ -24,6 +24,21 @@ public class Converter {
         return new OrderedMenuTotal(orderedMenuTotal);
     }
 
+    public HashMap<String, Integer> createExtractedNameAndAmounts(String input) {
+        HashMap<String, Integer> extractedNameAndAmounts = new HashMap<>();
+
+        List<String> menuNameAndNumbers = separator.createMenuNameAndAmounts(input);
+
+        List<String> extractNames = extractor.extractNames(menuNameAndNumbers);
+        List<Integer> extractAmounts = extractor.extractAmounts(menuNameAndNumbers);
+
+        for (int i = 0; i < extractNames.size(); i++) {
+            extractedNameAndAmounts.put(extractNames.get(i), extractAmounts.get(i));
+        }
+
+        return extractedNameAndAmounts;
+    }
+
     Menu convertInputToMenu(String input) {
         MenuTable menuTable = menuTableCreator.createMenuTable();
 

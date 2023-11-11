@@ -22,13 +22,13 @@ public class Extractor {
         return menus;
     }
 
-    private List<String> extractNames(List<String> menuNameAndNumbers) {
+    List<String> extractNames(List<String> menuNameAndNumbers) {
         return menuNameAndNumbers.stream()
                 .filter(i -> !isNumeric.test(i))
                 .toList();
     }
 
-    private List<Integer> extractAmounts(List<String> menuNameAndNumbers) {
+    List<Integer> extractAmounts(List<String> menuNameAndNumbers) {
         return menuNameAndNumbers.stream()
                 .filter(isNumeric)
                 .map(Integer::parseInt)
