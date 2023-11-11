@@ -6,12 +6,13 @@ import christmas.order.menu.Appetizers;
 import christmas.order.menu.Desserts;
 import christmas.order.menu.Drinks;
 import christmas.order.menu.MainDishes;
+import christmas.view.input.Order;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 class OrderedTotalTest {
-    String input = "티본스테이크-2,양송이수프-1,아이스크림-1,레드와인-2";
-    OrderedTotal orderedTotal = new OrderedTotal(input);
+    Order order = new Order("티본스테이크-2,양송이수프-1,아이스크림-1,레드와인-2");
+    OrderedTotal orderedTotal = new OrderedTotal(order);
 
     @Test
     public void produceOrderedItemList() {

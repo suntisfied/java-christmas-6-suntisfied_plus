@@ -2,14 +2,15 @@ package christmas.order;
 
 import christmas.order.converter.Converter;
 import christmas.order.menu.Menu;
+import christmas.view.input.Order;
 import java.util.HashMap;
 import java.util.List;
 
 public class OrderedTotal {
     private final OrderedMenuTotal orderedMenuTotal;
 
-    public OrderedTotal(String input) {
-        this.orderedMenuTotal = new Converter().createOrderedMenuTotal(input);
+    public OrderedTotal(Order order) {
+        this.orderedMenuTotal = new Converter().createOrderedMenuTotal(order);
     }
 
     public OrderedMenus produceOrderedMenu() {
