@@ -32,7 +32,6 @@ public class VolumeCalculator extends Converter {
         for (Menu menu : orderedMenuNameList) {
             orderedDessertVolume += rawOrderedMenuTotal.get(menu).volume();
         }
-        System.out.println(orderedDessertVolume);
 
         return new OrderVolume(orderedDessertVolume);
     }
