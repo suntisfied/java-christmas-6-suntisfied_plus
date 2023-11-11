@@ -38,4 +38,12 @@ class TotalOrderTest {
         assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(() -> new TotalOrder(order));
     }
+
+    @Test
+    public void checkOnlyDrinkOrder() {
+        Order order = new Order("레드와인-2");
+
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> new TotalOrder(order));
+    }
 }
