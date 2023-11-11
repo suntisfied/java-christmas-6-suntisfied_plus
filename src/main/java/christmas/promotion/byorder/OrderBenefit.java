@@ -1,15 +1,45 @@
 package christmas.promotion.byorder;
 
+import christmas.order.menu.Drinks;
 import christmas.order.menu.Price;
 import christmas.promotion.Discount;
-import christmas.promotion.Promotion;
-import christmas.promotion.bydate.Dday;
 
-public class OrderBenefit {
+public class OrderBenefit implements OrderGift, OrderBadge {
+    private final OrderGift orderGift;
+    private final OrderBadge orderBadge;
+
+    public OrderBenefit() {
+        this.orderGift = new FreeGift();
+        this.orderBadge = new Badge();
+    }
+
+    public OrderBenefit(OrderGift orderGift, OrderBadge orderBadge) {
+        this.orderGift = orderGift;
+        this.orderBadge = orderBadge;
+    }
+
+    @Override
+    public boolean checkPrice(Price price) {
+        return orderGift.checkPrice(price);
+    }
+
+    @Override
+    public Drinks determineGift(Price price) {
+        return orderGift.determineGift(price);
+    }
+
+    @Override
+    public boolean checkDiscount(Discount discount) {
+        return orderBadge.checkDiscount(discount);
+    }
+
+    @Override
+    public Badges determineBadge(Discount discount) {
+        return orderBadge.determineBadge(discount);
+    }
+
     public Discount calculateTotalOrderBenefit(Price price) {
-        Promotion promotion = new Promotion(new Dday(), new FreeGift(), new Badge());
-
-        int totalOrderBenefit = promotion.determineGift(price).getPrice().price();
+        int totalOrderBenefit = determineGift(price).getPrice().price();
 
         return new Discount(totalOrderBenefit);
     }
