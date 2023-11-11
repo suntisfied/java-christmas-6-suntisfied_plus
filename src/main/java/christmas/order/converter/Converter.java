@@ -29,6 +29,23 @@ public class Converter {
         return createOrderedMenuTotal(order).orderedMenuTotal().keySet().stream().toList();
     }
 
+    /**
+    * Available Categories: appetizer, maindish, dessert, drink
+    */
+    public OrderVolume calculateOrderVolumeByCategory(Order order, String category) {
+        List<Menu> orderedMenuNameList = createOrderedMenuNameList(order);
+        HashMap<Menu, OrderVolume> rawOrderedMenuTotal = createOrderedMenuTotal(order).orderedMenuTotal();
+
+        int orderedDessertVolume = 0;
+        for (Menu menu : orderedMenuNameList) {
+            if (menu.getCategory().equals(category)) {
+                orderedDessertVolume += rawOrderedMenuTotal.get(menu).volume();
+            }
+        }
+
+        return new OrderVolume(orderedDessertVolume);
+    }
+
     public HashMap<String, Integer> createExtractedNameAndAmounts(Order order) {
         HashMap<String, Integer> extractedNameAndAmounts = new HashMap<>();
 
