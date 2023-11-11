@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class WeekendTest {
     Order order = new Order("티본스테이크-2,양송이수프-1,아이스크림-1,레드와인-2");
-    DateBenefit dateBenefit = new DateBenefit(new Weekend());
+    DateBenefit dateBenefit = new DateBenefit(new Weekend(order));
 
     @Test
     public void checkWeekend() {
@@ -19,6 +19,7 @@ class WeekendTest {
     @Test
     public void checkEnoughTotalOrderAmount() {
         order = new Order("타바스-1,제로콜라-1");
+        DateBenefit dateBenefit = new DateBenefit(new Weekend(order));
 
         assertThat(dateBenefit.check(new Date(8), order)).isFalse();
     }
@@ -31,6 +32,7 @@ class WeekendTest {
     @Test
     public void calculateDiscountBasedOnMainDishOrder() {
         Order order = new Order("티본스테이크-2,양송이수프-1,아이스크림-3,레드와인-2");
+        DateBenefit dateBenefit = new DateBenefit(new Weekend(order));
 
         assertThat(dateBenefit.calculateDiscount(new Date(8), order)).isEqualTo(new Discount(4046));
     }
