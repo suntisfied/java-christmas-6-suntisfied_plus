@@ -17,7 +17,7 @@ public class TotalOrder {
     }
 
     private void validate(Order order) {
-        if (!isWithinOrderLimit.test(order)) {
+        if (!isWithinOrderLimit.test(order) || isOnlyDrinkOrder.test(order)) {
             throw new IllegalArgumentException();
         }
     }
@@ -25,6 +25,13 @@ public class TotalOrder {
     private final Predicate<Order> isWithinOrderLimit = order -> {
         VolumeCalculator volumeCalculator = new VolumeCalculator();
         return volumeCalculator.calculateTotalOrderVolume(order).volume() <= 20;
+    };
+
+    private final Predicate<Order> isOnlyDrinkOrder = order -> {
+        VolumeCalculator volumeCalculator = new VolumeCalculator();
+        OrderVolume totalVolume = volumeCalculator.calculateTotalOrderVolume(order);
+        OrderVolume drinkVolume = volumeCalculator.calculateOrderVolumeByCategory(order, "drink");
+        return totalVolume.equals(drinkVolume);
     };
 
     public OrderedMenus produceOrderedMenu() {
