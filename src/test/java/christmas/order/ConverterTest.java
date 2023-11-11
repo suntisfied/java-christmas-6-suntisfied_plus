@@ -26,8 +26,8 @@ class ConverterTest {
 
     @Test
     public void convertInputToMenus() {
-        OrderedMenuTotal orderedMenuTotalMenus = converter.createOrderedMenuTotal(order);
-        HashMap<Menu, OrderVolume> rawOrderedMenus = orderedMenuTotalMenus.orderedMenuTotal();
+        OrderWithVolume orderWithVolumeMenus = converter.createOrderedMenuTotal(order);
+        HashMap<Menu, OrderVolume> rawOrderedMenus = orderWithVolumeMenus.orderedMenuTotal();
 
         assertThat(rawOrderedMenus.get(MainDishes.SEAFOOD_PASTA)).isEqualTo(new OrderVolume(2));
         assertThat(rawOrderedMenus.get(Drinks.RED_WINE)).isEqualTo(new OrderVolume(1));

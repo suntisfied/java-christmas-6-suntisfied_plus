@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class TotalOrder {
-    private final OrderedMenuTotal orderedMenuTotal;
+    private final OrderWithVolume orderWithVolume;
 
     public TotalOrder(Order order) {
-        this.orderedMenuTotal = new Converter().createOrderedMenuTotal(order);
+        this.orderWithVolume = new Converter().createOrderedMenuTotal(order);
         validate(order);
     }
 
@@ -35,11 +35,11 @@ public class TotalOrder {
     };
 
     public OrderedMenus produceOrderedMenu() {
-        return new OrderedMenus(orderedMenuTotal.orderedMenuTotal().keySet().stream().toList());
+        return new OrderedMenus(orderWithVolume.orderedMenuTotal().keySet().stream().toList());
     }
 
     public Price calculateTotalOrderCost() {
-        HashMap<Menu, OrderVolume> rawOrderedMenuTotal = orderedMenuTotal.orderedMenuTotal();
+        HashMap<Menu, OrderVolume> rawOrderedMenuTotal = orderWithVolume.orderedMenuTotal();
         List<Menu> rawOrderedMenus = produceOrderedMenu().orderedMenus();
 
         int totalSum = 0;
