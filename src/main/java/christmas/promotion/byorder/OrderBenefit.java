@@ -37,10 +37,4 @@ public class OrderBenefit implements OrderGift, OrderBadge {
     public Badges determineBadge(Discount discount) {
         return orderBadge.determineBadge(discount);
     }
-
-    public Discount calculateTotalOrderBenefit(Price price) {
-        int totalOrderBenefit = determineGift(price).getPrice().price();
-
-        return new Discount(totalOrderBenefit);
-    }
 }
