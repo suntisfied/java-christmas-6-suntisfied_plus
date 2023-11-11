@@ -8,10 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class OrderedTotal {
+public class TotalOrder {
     private final OrderedMenuTotal orderedMenuTotal;
 
-    public OrderedTotal(Order order) {
+    public TotalOrder(Order order) {
         this.orderedMenuTotal = new Converter().createOrderedMenuTotal(order);
         validate(order);
     }

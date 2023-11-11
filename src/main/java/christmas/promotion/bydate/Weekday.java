@@ -2,7 +2,7 @@ package christmas.promotion.bydate;
 
 import christmas.order.VolumeCalculator;
 import christmas.order.OrderVolume;
-import christmas.order.OrderedTotal;
+import christmas.order.TotalOrder;
 import christmas.order.menu.Price;
 import christmas.promotion.Discount;
 import christmas.view.input.Date;
@@ -23,8 +23,8 @@ public class Weekday implements DateDiscount {
     public boolean check(Date date, Order order) {
         boolean validity = false;
 
-        OrderedTotal orderedTotal = new OrderedTotal(order);
-        Price totalOrderCost = orderedTotal.calculateTotalOrderCost();
+        TotalOrder totalOrder = new TotalOrder(order);
+        Price totalOrderCost = totalOrder.calculateTotalOrderCost();
 
         if (isWeekday.test(date) && isDessertOrdered.test(order) && isEnoughTotalOrder.test(totalOrderCost)) {
             validity = true;

@@ -1,6 +1,6 @@
 package christmas.promotion.bydate;
 
-import christmas.order.OrderedTotal;
+import christmas.order.TotalOrder;
 import christmas.order.menu.Price;
 import christmas.promotion.Defaults;
 import christmas.promotion.Discount;
@@ -13,8 +13,8 @@ public class Dday implements DateDiscount {
     public boolean check(Date date, Order order) {
         boolean validity = false;
 
-        OrderedTotal orderedTotal = new OrderedTotal(order);
-        Price totalOrderCost = orderedTotal.calculateTotalOrderCost();
+        TotalOrder totalOrder = new TotalOrder(order);
+        Price totalOrderCost = totalOrder.calculateTotalOrderCost();
 
         if (isWithinDday.test(date) && isEnoughTotalOrder.test(totalOrderCost)) {
             validity = true;

@@ -12,13 +12,13 @@ import christmas.view.input.Order;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
-class OrderedTotalTest {
+class TotalOrderTest {
     Order order = new Order("티본스테이크-2,양송이수프-1,아이스크림-1,레드와인-2");
-    OrderedTotal orderedTotal = new OrderedTotal(order);
+    TotalOrder totalOrder = new TotalOrder(order);
 
     @Test
     public void produceOrderedItemList() {
-        assertThat(orderedTotal.produceOrderedMenu().orderedMenus())
+        assertThat(totalOrder.produceOrderedMenu().orderedMenus())
                 .containsExactlyInAnyOrderElementsOf(new OrderedMenus(Arrays.asList(
                         MainDishes.T_BONE_STEAK,
                         Appetizers.MUSHROOM_CREAM_SOUP,
@@ -28,7 +28,7 @@ class OrderedTotalTest {
 
     @Test
     public void calculateTotalOrderCost() {
-        assertThat(orderedTotal.calculateTotalOrderCost()).isEqualTo(new Price(241000));
+        assertThat(totalOrder.calculateTotalOrderCost()).isEqualTo(new Price(241000));
     }
 
     @Test
@@ -36,6 +36,6 @@ class OrderedTotalTest {
         Order order = new Order("티본스테이크-2,양송이수프-10,아이스크림-7,레드와인-2");
 
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> new OrderedTotal(order));
+                .isThrownBy(() -> new TotalOrder(order));
     }
 }
