@@ -23,7 +23,7 @@ public class TotalBenefit {
                 Arrays.asList(Promotions.D_DAY, Promotions.WEEKDAY, Promotions.WEEKEND, Promotions.SPECIAL);
 
         List<DateDiscount> dateDiscounts =
-                Arrays.asList(new Dday(), new Weekday(), new Weekend(), new Special());
+                Arrays.asList(new Dday(), new Weekday(order), new Weekend(order), new Special());
 
         HashMap<Promotions, Discount> benefits = new HashMap<>();
         for (int i = 0; i < promotions.size(); i++) {
