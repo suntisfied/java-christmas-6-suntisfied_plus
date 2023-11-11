@@ -2,6 +2,7 @@ package christmas.promotion.bydate;
 
 import christmas.promotion.Discount;
 import christmas.view.input.Date;
+import christmas.view.input.Order;
 
 public class DateBenefit implements DateDiscount {
     private final DateDiscount dateDiscount;
@@ -15,12 +16,12 @@ public class DateBenefit implements DateDiscount {
     }
 
     @Override
-    public boolean check(Date date) {
-        return dateDiscount.check(date);
+    public boolean check(Date date, Order order) {
+        return dateDiscount.check(date, order);
     }
 
     @Override
-    public Discount calculateDiscount(Date date) {
-        return dateDiscount.calculateDiscount(date);
+    public Discount calculateDiscount(Date date, Order order) {
+        return dateDiscount.calculateDiscount(date, order);
     }
 }
