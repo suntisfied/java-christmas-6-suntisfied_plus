@@ -6,6 +6,7 @@ import christmas.order.menu.Appetizers;
 import christmas.order.menu.Desserts;
 import christmas.order.menu.Drinks;
 import christmas.order.menu.MainDishes;
+import christmas.order.menu.Price;
 import christmas.view.input.Order;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
@@ -26,6 +27,6 @@ class OrderedTotalTest {
 
     @Test
     public void calculateTotalOrderCost() {
-        assertThat(orderedTotal.calculateTotalOrderAmount()).isEqualTo(new OrderAmount(241000));
+        assertThat(orderedTotal.calculateTotalOrderCost()).isEqualTo(new Price(241000));
     }
 }
