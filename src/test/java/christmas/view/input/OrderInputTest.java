@@ -13,14 +13,9 @@ import org.junit.jupiter.api.Test;
 
 class OrderInputTest {
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-    String mockInput =
-            "해산물파스타-20,레드와인-10,초코케이크-10\n"
-            + "레드와인-1\n"
-            + "해산물파스타-2,레드와인-1,초코케이크-1";
 
     @BeforeEach
     public void setUpStreams() {
-        System.setIn(new ByteArrayInputStream(mockInput.getBytes()));
         System.setOut(new PrintStream(outputStream));
 
     }
@@ -34,6 +29,13 @@ class OrderInputTest {
 
     @Test
     public void askInputUntilCorrect() {
+        String mockInput =
+                "해산물파스타-20,레드와인-10,초코케이크-10\n"
+                        + "레드와인-1\n"
+                        + "해산물파스타-2,레드와인-1,초코케이크-1";
+
+        System.setIn(new ByteArrayInputStream(mockInput.getBytes()));
+
         OrderInput orderInput = new OrderInput();
 
         try {
@@ -42,5 +44,21 @@ class OrderInputTest {
         }
 
         assertThat(outputStream.toString()).contains("[ERROR]", "해산물파스타-2,레드와인-1,초코케이크-1");
+    }
+
+    @Test
+    public void acceptOrderWithWhiteSpace() {
+        String mockInput = "해산물파스타 - 2,  레드와인 - 1,  초코케이크 - 1";
+
+        System.setIn(new ByteArrayInputStream(mockInput.getBytes()));
+
+        OrderInput orderInput = new OrderInput();
+
+        try {
+            orderInput.askOrder();
+        } catch (NoSuchElementException ignored) {
+        }
+
+        assertThat(outputStream.toString()).contains("해산물파스타-2,레드와인-1,초코케이크-1");
     }
 }
