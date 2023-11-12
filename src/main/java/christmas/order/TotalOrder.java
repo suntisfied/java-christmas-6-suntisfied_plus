@@ -19,7 +19,7 @@ public class TotalOrder {
     }
 
     public Price calculateTotalOrderCost() {
-        HashMap<Menu, OrderVolume> rawOrderedMenuTotal = orderWithVolume.orderedMenuTotal();
+        HashMap<Menu, Volume> rawOrderedMenuTotal = orderWithVolume.orderedMenuTotal();
         List<Menu> rawOrderedMenus = produceOrderedMenu().orderedMenus();
 
         int totalSum = 0;

@@ -24,10 +24,10 @@ class ConverterTest {
     @Test
     public void convertInputToMenus() {
         OrderWithVolume orderWithVolumeMenus = converter.createOrderedMenuTotal(order);
-        HashMap<Menu, OrderVolume> rawOrderedMenus = orderWithVolumeMenus.orderedMenuTotal();
+        HashMap<Menu, Volume> rawOrderedMenus = orderWithVolumeMenus.orderedMenuTotal();
 
-        assertThat(rawOrderedMenus.get(Menu.SEAFOOD_PASTA)).isEqualTo(new OrderVolume(2));
-        assertThat(rawOrderedMenus.get(Menu.RED_WINE)).isEqualTo(new OrderVolume(1));
-        assertThat(rawOrderedMenus.get(Menu.CHOCOLATE_CAKE)).isEqualTo(new OrderVolume(1));
+        assertThat(rawOrderedMenus.get(Menu.SEAFOOD_PASTA)).isEqualTo(new Volume(2));
+        assertThat(rawOrderedMenus.get(Menu.RED_WINE)).isEqualTo(new Volume(1));
+        assertThat(rawOrderedMenus.get(Menu.CHOCOLATE_CAKE)).isEqualTo(new Volume(1));
     }
 }

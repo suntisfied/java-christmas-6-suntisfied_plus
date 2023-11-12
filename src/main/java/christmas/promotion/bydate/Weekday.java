@@ -1,7 +1,7 @@
 package christmas.promotion.bydate;
 
 import christmas.order.VolumeCalculator;
-import christmas.order.OrderVolume;
+import christmas.order.Volume;
 import christmas.order.TotalOrder;
 import christmas.order.menu.Category;
 import christmas.order.menu.Price;
@@ -12,11 +12,11 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class Weekday implements DateDiscount {
-    OrderVolume dessertOrderVolume;
+    Volume dessertVolume;
 
     public Weekday(Order order) {
         VolumeCalculator volumeCalculator = new VolumeCalculator();
-        dessertOrderVolume =
+        dessertVolume =
                 volumeCalculator.calculateOrderVolumeByCategory(order, Category.DESSERT);
     }
 
@@ -38,7 +38,7 @@ public class Weekday implements DateDiscount {
     public Discount calculateDiscount(Date date, Order order) {
         int totalDiscount = 0;
         if (check(date, order)) {
-            totalDiscount = 2023 * dessertOrderVolume.volume();
+            totalDiscount = 2023 * dessertVolume.volume();
         }
         return new Discount(totalDiscount);
     }
@@ -48,5 +48,5 @@ public class Weekday implements DateDiscount {
         return weekdays.contains(date.date());
     };
 
-    Predicate<Order> isDessertOrdered = order -> dessertOrderVolume.volume() > 0;
+    Predicate<Order> isDessertOrdered = order -> dessertVolume.volume() > 0;
 }

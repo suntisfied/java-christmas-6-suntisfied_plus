@@ -8,9 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class VolumeCalculator extends Converter {
-    public OrderVolume calculateOrderVolumeByCategory(Order order, Category category) {
+    public Volume calculateOrderVolumeByCategory(Order order, Category category) {
         List<Menu> orderedMenuNameList = createOrderedMenuNameList(order);
-        HashMap<Menu, OrderVolume> rawOrderedMenuTotal = createOrderedMenuTotal(order).orderedMenuTotal();
+        HashMap<Menu, Volume> rawOrderedMenuTotal = createOrderedMenuTotal(order).orderedMenuTotal();
 
         int orderedDessertVolume = 0;
         for (Menu menu : orderedMenuNameList) {
@@ -19,18 +19,18 @@ public class VolumeCalculator extends Converter {
             }
         }
 
-        return new OrderVolume(orderedDessertVolume);
+        return new Volume(orderedDessertVolume);
     }
 
-    public OrderVolume calculateTotalOrderVolume(Order order) {
+    public Volume calculateTotalOrderVolume(Order order) {
         List<Menu> orderedMenuNameList = createOrderedMenuNameList(order);
-        HashMap<Menu, OrderVolume> rawOrderedMenuTotal = createOrderedMenuTotal(order).orderedMenuTotal();
+        HashMap<Menu, Volume> rawOrderedMenuTotal = createOrderedMenuTotal(order).orderedMenuTotal();
 
         int orderedDessertVolume = 0;
         for (Menu menu : orderedMenuNameList) {
             orderedDessertVolume += rawOrderedMenuTotal.get(menu).volume();
         }
 
-        return new OrderVolume(orderedDessertVolume);
+        return new Volume(orderedDessertVolume);
     }
 }

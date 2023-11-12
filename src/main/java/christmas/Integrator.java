@@ -1,6 +1,6 @@
 package christmas;
 
-import christmas.order.OrderVolume;
+import christmas.order.Volume;
 import christmas.order.TotalOrder;
 import christmas.order.converter.Converter;
 import christmas.order.menu.Menu;
@@ -26,7 +26,7 @@ public class Integrator {
 
     protected String formatOrderedMenu(Order order) {
         Converter converter = new Converter();
-        HashMap<Menu, OrderVolume> orderedMenu = converter.createOrderedMenuTotal(order).orderedMenuTotal();
+        HashMap<Menu, Volume> orderedMenu = converter.createOrderedMenuTotal(order).orderedMenuTotal();
         List<Menu> orderedMenuNames = converter.createOrderedMenuNameList(order);
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -56,7 +56,7 @@ public class Integrator {
         String freeGiftText = Promotions.NONE.getText();
 
         if (!orderBenefit.determineGift(order).freeGifts().isEmpty()) {
-            HashMap<Menu, OrderVolume> rawFreeGifts = orderBenefit.determineGift(order).freeGifts();
+            HashMap<Menu, Volume> rawFreeGifts = orderBenefit.determineGift(order).freeGifts();
             Set<Menu> freeGiftNames = rawFreeGifts.keySet();
             StringBuilder stringBuilder = new StringBuilder();
             for (Menu menu : freeGiftNames) {

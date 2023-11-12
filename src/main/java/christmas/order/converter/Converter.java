@@ -1,6 +1,6 @@
 package christmas.order.converter;
 
-import christmas.order.OrderVolume;
+import christmas.order.Volume;
 import christmas.order.OrderWithVolume;
 import christmas.order.menu.Menu;
 import christmas.view.input.Order;
@@ -20,7 +20,7 @@ public class Converter {
 
     public OrderWithVolume createOrderedMenuTotal(Order order) {
         List<String> menuNameAndAmounts = separator.createMenuNameAndAmounts(order);
-        HashMap<Menu, OrderVolume> orderedMenuTotal = extractor.createMenus(menuNameAndAmounts);
+        HashMap<Menu, Volume> orderedMenuTotal = extractor.createMenus(menuNameAndAmounts);
 
         return new OrderWithVolume(orderedMenuTotal);
     }

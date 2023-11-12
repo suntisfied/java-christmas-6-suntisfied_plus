@@ -2,7 +2,7 @@ package christmas.view.input;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import christmas.order.OrderVolume;
+import christmas.order.Volume;
 import christmas.order.VolumeCalculator;
 import christmas.order.converter.Converter;
 import christmas.order.converter.Separator;
@@ -86,8 +86,8 @@ public class OrderInput {
 
     private final Predicate<Order> isOnlyDrinkOrder = order -> {
         VolumeCalculator volumeCalculator = new VolumeCalculator();
-        OrderVolume totalVolume = volumeCalculator.calculateTotalOrderVolume(order);
-        OrderVolume drinkVolume = volumeCalculator.calculateOrderVolumeByCategory(order, Category.DRINK);
+        Volume totalVolume = volumeCalculator.calculateTotalOrderVolume(order);
+        Volume drinkVolume = volumeCalculator.calculateOrderVolumeByCategory(order, Category.DRINK);
         return totalVolume.equals(drinkVolume);
     };
 

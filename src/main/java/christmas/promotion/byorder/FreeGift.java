@@ -3,7 +3,7 @@ package christmas.promotion.byorder;
 import static christmas.promotion.Defaults.MINIMUM_ORDER_FOR_FREE_GIFT;
 import static christmas.promotion.Defaults.NUMBER_OF_FREE_GIFT;
 
-import christmas.order.OrderVolume;
+import christmas.order.Volume;
 import christmas.order.TotalOrder;
 import christmas.order.menu.Menu;
 import christmas.view.input.Order;
@@ -19,10 +19,10 @@ public class FreeGift implements OrderGift {
 
     @Override
     public FreeGifts determineGift(Order order) {
-        HashMap<Menu, OrderVolume> freeGifts = new HashMap<>();
+        HashMap<Menu, Volume> freeGifts = new HashMap<>();
         if (check(order)) {
             int freeGiftAmount = determineFreeGiftAmount(order);
-            freeGifts.put(Menu.CHAMPAGNE, new OrderVolume(freeGiftAmount));
+            freeGifts.put(Menu.CHAMPAGNE, new Volume(freeGiftAmount));
         }
         return new FreeGifts(freeGifts);
     }
