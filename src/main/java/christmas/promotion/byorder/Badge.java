@@ -1,5 +1,10 @@
 package christmas.promotion.byorder;
 
+import static christmas.promotion.byorder.Badges.NONE;
+import static christmas.promotion.byorder.Badges.SANTA;
+import static christmas.promotion.byorder.Badges.STAR;
+import static christmas.promotion.byorder.Badges.TREE;
+
 import christmas.promotion.Discount;
 import java.util.function.Predicate;
 
@@ -11,20 +16,20 @@ public class Badge implements OrderBadge {
 
     @Override
     public Badges determineBadge(Discount discount) {
-        Badges badge = Badges.NONE;
+        Badges badge = NONE;
         if (check(discount)) {
-            if (discount.amount() < 10000) {
-                badge = Badges.STAR;
+            if (discount.amount() < TREE.getRequiredOrder()) {
+                badge = STAR;
             }
-            if (discount.amount() >= 10000 && discount.amount() < 20000) {
-                badge = Badges.TREE;
+            if (discount.amount() >= TREE.getRequiredOrder() && discount.amount() < SANTA.getRequiredOrder()) {
+                badge = TREE;
             }
-            if (discount.amount() >= 20000) {
-                badge = Badges.SANTA;
+            if (discount.amount() >= SANTA.getRequiredOrder()) {
+                badge = SANTA;
             }
         }
         return badge;
     }
 
-    Predicate<Discount> isEnough = discount -> discount.amount() >= 5000;
+    Predicate<Discount> isEnough = discount -> discount.amount() >= STAR.getRequiredOrder();
 }
