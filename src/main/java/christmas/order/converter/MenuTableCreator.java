@@ -7,18 +7,18 @@ public class MenuTableCreator {
     MenuTable createMenuTable() {
         HashMap<String, Menu> menuTable = new HashMap<>();
 
-        menuTable.put("양송이수프", Menu.MUSHROOM_CREAM_SOUP);
-        menuTable.put("타바스", Menu.TAPAS);
-        menuTable.put("시저샐러드", Menu.CAESAR_SALAD);
-        menuTable.put("티본스테이크", Menu.T_BONE_STEAK);
-        menuTable.put("바비큐립", Menu.BARBECUE_RIBS);
-        menuTable.put("해산물파스타", Menu.SEAFOOD_PASTA);
-        menuTable.put("크리스마스파스타", Menu.CHRISTMAS_PASTA);
-        menuTable.put("초코케이크", Menu.CHOCOLATE_CAKE);
-        menuTable.put("아이스크림", Menu.ICE_CREAM);
-        menuTable.put("제로콜라", Menu.ZERO_COLA);
-        menuTable.put("레드와인", Menu.RED_WINE);
-        menuTable.put("샴페인", Menu.CHAMPAGNE);
+        menuTable.put(Menu.MUSHROOM_CREAM_SOUP.getName(), Menu.MUSHROOM_CREAM_SOUP);
+        menuTable.put(Menu.TAPAS.getName(), Menu.TAPAS);
+        menuTable.put(Menu.CAESAR_SALAD.getName(), Menu.CAESAR_SALAD);
+        menuTable.put(Menu.T_BONE_STEAK.getName(), Menu.T_BONE_STEAK);
+        menuTable.put(Menu.BARBECUE_RIBS.getName(), Menu.BARBECUE_RIBS);
+        menuTable.put(Menu.SEAFOOD_PASTA.getName(), Menu.SEAFOOD_PASTA);
+        menuTable.put(Menu.CHRISTMAS_PASTA.getName(), Menu.CHRISTMAS_PASTA);
+        menuTable.put(Menu.CHOCOLATE_CAKE.getName(), Menu.CHOCOLATE_CAKE);
+        menuTable.put(Menu.ICE_CREAM.getName(), Menu.ICE_CREAM);
+        menuTable.put(Menu.ZERO_COLA.getName(), Menu.ZERO_COLA);
+        menuTable.put(Menu.RED_WINE.getName(), Menu.RED_WINE);
+        menuTable.put(Menu.CHAMPAGNE.getName(), Menu.CHAMPAGNE);
 
         return new MenuTable(menuTable);
     }
