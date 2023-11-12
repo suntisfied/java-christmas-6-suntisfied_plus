@@ -18,7 +18,7 @@ class DdayTest {
 
     @Test
     public void checkEnoughTotalOrderAmount() {
-        order = new Order("타바스-1,제로콜라-1");
+        order = new Order("타파스-1,제로콜라-1");
 
         assertThat(dateBenefit.check(new Date(7), order)).isFalse();
     }
