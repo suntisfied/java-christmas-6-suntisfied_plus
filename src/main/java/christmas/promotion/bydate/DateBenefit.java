@@ -7,10 +7,6 @@ import christmas.view.input.Order;
 public class DateBenefit implements DateDiscount {
     private final DateDiscount dateDiscount;
 
-    public DateBenefit() {
-        this.dateDiscount = new Dday();
-    }
-
     public DateBenefit(DateDiscount dateDiscount) {
         this.dateDiscount = dateDiscount;
     }
