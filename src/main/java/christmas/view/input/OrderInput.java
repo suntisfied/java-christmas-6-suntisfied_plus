@@ -4,8 +4,10 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import christmas.order.OrderVolume;
 import christmas.order.VolumeCalculator;
+import christmas.order.converter.Converter;
 import christmas.order.converter.Separator;
 import christmas.order.menu.Category;
+import christmas.order.menu.Menu;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -34,16 +36,34 @@ public class OrderInput {
     }
 
     private void checkValidity(String input) {
+        boolean validInput = false;
+
         if (isInvalidFormat.test(new Order(input))) {
             throw new IllegalArgumentException(Messages.ERROR_INVALID_FORMAT.getMessage());
         }
-        if (isOnlyDrinkOrder.test(new Order(input))) {
-            throw new IllegalArgumentException(Messages.ERROR_ONLY_DRINK_ORDER.getMessage());
+        if (isNotInMenu.test(new Order(input))) {
+            throw new IllegalArgumentException(Messages.ERROR_NOT_IN_MENU.getMessage());
         }
-        if (isOverOrderLimit.test(new Order(input))) {
-            throw new IllegalArgumentException(Messages.ERROR_OVER_ORDER_AMOUNT_LIMIT.getMessage());
+
+        if (!isInvalidFormat.test(new Order(input)) && !isNotInMenu.test(new Order(input))) {
+            validInput = true;
+        }
+
+        if (validInput) {
+            if (isOnlyDrinkOrder.test(new Order(input))) {
+                throw new IllegalArgumentException(Messages.ERROR_ONLY_DRINK_ORDER.getMessage());
+            }
+            if (isOverOrderLimit.test(new Order(input))) {
+                throw new IllegalArgumentException(Messages.ERROR_OVER_ORDER_AMOUNT_LIMIT.getMessage());
+            }
         }
     }
+
+    private final Predicate<Order> isNotInMenu = order -> {
+        Converter converter = new Converter();
+        List<Menu> orderedMenuNames = converter.createOrderedMenuNameList(order);
+        return orderedMenuNames.contains(null);
+    };
 
     private final Predicate<Order> isInvalidFormat = order -> {
         Separator separator = new Separator();

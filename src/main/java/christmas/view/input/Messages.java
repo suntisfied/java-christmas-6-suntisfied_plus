@@ -16,7 +16,8 @@ public enum Messages {
     ERROR_NOT_VALID_DATE("[ERROR] 1에서 31까지의 수를 입력해주세요."),
     ERROR_OVER_ORDER_AMOUNT_LIMIT("[ERROR] 주문은 20개까지 할 수 있습니다."),
     ERROR_ONLY_DRINK_ORDER("[ERROR] 음료만 주문할 수 없습니다."),
-    ERROR_INVALID_FORMAT("[ERROR] 올바른 주문 형식이 아닙니다.\n메뉴와 갯수는 대시(-)와 쉼표(,)로 구분해주세요.");
+    ERROR_INVALID_FORMAT("[ERROR] 올바른 주문 형식이 아닙니다.\n메뉴와 갯수는 대시(-)와 쉼표(,)로 구분해주세요."),
+    ERROR_NOT_IN_MENU("[ERROR] 주문 가능한 메뉴가 아닙니다.");
 
     private final String message;
 
