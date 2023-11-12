@@ -137,4 +137,20 @@ public class Integrator {
 
         return stringBuilder.toString();
     }
+
+    protected String formatExpectedTotalCostAfterPromotion(Date date, Order order) {
+        TotalOrder totalOrder = new TotalOrder(order);
+        TotalBenefit totalBenefit = new TotalBenefit();
+
+        HashMap<Promotions, Discount> benefits = totalBenefit.createBenefits(date, order);
+
+        int totalOrderCost = totalOrder.calculateTotalOrderCost().price();
+        int totalBenefitAmount = totalBenefit.calculateTotalBenefit(date, order).amount();
+        int freeGiftBenefit = benefits.get(Promotions.FREE_GIFT).amount();
+
+        int expectedTotalCost = totalOrderCost - totalBenefitAmount + freeGiftBenefit;
+
+        return numberFormatter.format(expectedTotalCost)
+                + Messages.UNIT_CURRENCY.getMessage();
+    }
 }
