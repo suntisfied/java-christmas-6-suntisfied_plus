@@ -11,7 +11,7 @@ import static christmas.view.Messages.HEAD_PROMOTION_LIST;
 import christmas.view.integration.promotionformat.BadgePromotion;
 import christmas.view.integration.promotionformat.ExpectedTotalCost;
 import christmas.view.integration.orderformat.FreeGiftBenefit;
-import christmas.view.integration.orderformat.OrderFomatter;
+import christmas.view.integration.orderformat.OrderFormatter;
 import christmas.view.integration.orderformat.OrderFormat;
 import christmas.view.integration.orderformat.OrderedMenu;
 import christmas.view.integration.promotionformat.PromotionFormat;
@@ -58,8 +58,8 @@ public class Preview {
                         new FreeGiftBenefit());
 
         for (int i = 0; i < orderHeadTexts.size(); i++) {
-            OrderFomatter orderFomatter = new OrderFomatter(orders.get(i));
-            orderPreviews.put(orderHeadTexts.get(i).getMessage(), orderFomatter.format(order));
+            OrderFormatter orderFormatter = new OrderFormatter(orders.get(i));
+            orderPreviews.put(orderHeadTexts.get(i).getMessage(), orderFormatter.format(order));
         }
         return orderPreviews;
     }
