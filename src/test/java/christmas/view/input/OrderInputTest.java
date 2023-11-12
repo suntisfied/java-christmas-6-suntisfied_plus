@@ -11,6 +11,8 @@ import java.util.NoSuchElementException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class OrderInputTest {
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -86,10 +88,9 @@ class OrderInputTest {
         assertThat(outputStream.toString()).contains(Messages.ERROR_INVALID_ORDER.getMessage());
     }
 
-    @Test
-    public void checkInvalidMenu() {
-        String mockInput = "토마토파스타-1";
-
+    @ParameterizedTest
+    @CsvSource({"토마토파스타-1", "'티본스테이크-2,양송이수프-10,아이스크림-7,레드와인-2'", "레드와인-2"})
+    public void checkInvalidMenu(String mockInput) {
         System.setIn(new ByteArrayInputStream(mockInput.getBytes()));
 
         OrderInput orderInput = new OrderInput();
@@ -98,8 +99,6 @@ class OrderInputTest {
             orderInput.askOrder();
         } catch (NoSuchElementException ignored) {
         }
-
-        System.out.println("outputStream: " + outputStream);
 
         assertThat(outputStream.toString()).contains(Messages.ERROR_INVALID_ORDER.getMessage());
     }
