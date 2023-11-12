@@ -84,4 +84,22 @@ class OrderInputTest {
 
         assertThat(outputStream.toString()).contains(Messages.ERROR_INVALID_FORMAT.getMessage());
     }
+
+    @Test
+    public void checkInvalidMenu() {
+        String mockInput = "토마토파스타-1";
+
+        System.setIn(new ByteArrayInputStream(mockInput.getBytes()));
+
+        OrderInput orderInput = new OrderInput();
+
+        try {
+            orderInput.askOrder();
+        } catch (NoSuchElementException ignored) {
+        }
+
+        System.out.println("outputStream: " + outputStream);
+
+        assertThat(outputStream.toString()).contains(Messages.ERROR_NOT_IN_MENU.getMessage());
+    }
 }
