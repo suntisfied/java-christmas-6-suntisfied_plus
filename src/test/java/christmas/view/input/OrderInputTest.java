@@ -61,4 +61,23 @@ class OrderInputTest {
 
         assertThat(outputStream.toString()).contains("해산물파스타-2,레드와인-1,초코케이크-1");
     }
+
+    @Test
+    public void checkInvalidOrderInputFormats() {
+        String mockInput =
+                "해산물파스타-2레드와인-1,초코케이크-1\n"
+                        + "해산물파스타2,레드와인-1,초코케이크-1\n"
+                        + "해산물파스타-,레드와인-1,초코케이크-1";
+
+        System.setIn(new ByteArrayInputStream(mockInput.getBytes()));
+
+        OrderInput orderInput = new OrderInput();
+
+        try {
+            orderInput.askOrder();
+        } catch (NoSuchElementException ignored) {
+        }
+
+        assertThat(outputStream.toString()).contains(Messages.ERROR_INVALID_FORMAT.getMessage());
+    }
 }
