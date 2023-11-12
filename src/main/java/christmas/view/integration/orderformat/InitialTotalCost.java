@@ -7,7 +7,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 public class InitialTotalCost implements OrderFormat {
-    NumberFormat numberFormatter;
+    private final NumberFormat numberFormatter;
 
     public InitialTotalCost() {
         numberFormatter = NumberFormat.getInstance(Locale.US);

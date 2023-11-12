@@ -8,7 +8,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 public class TotalBenefitAmount implements PromotionFormat {
-    NumberFormat numberFormatter;
+    private final NumberFormat numberFormatter;
 
     public TotalBenefitAmount() {
         numberFormatter = NumberFormat.getInstance(Locale.US);

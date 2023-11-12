@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Locale;
 
 public class ExpectedTotalCost implements PromotionFormat {
-    NumberFormat numberFormatter;
+    private final NumberFormat numberFormatter;
 
     public ExpectedTotalCost() {
         numberFormatter = NumberFormat.getInstance(Locale.US);
