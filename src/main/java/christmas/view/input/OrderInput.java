@@ -14,6 +14,7 @@ import java.util.function.Predicate;
 
 public class OrderInput {
     public Order askOrder() {
+        System.out.println(Messages.INTRODUCTION.getMessage());
         System.out.println(Messages.ORDER_INPUT_INSTRUCTION.getMessage());
 
         String input;
