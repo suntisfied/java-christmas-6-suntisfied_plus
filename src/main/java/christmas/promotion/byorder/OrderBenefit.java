@@ -1,8 +1,8 @@
 package christmas.promotion.byorder;
 
 import christmas.order.menu.Menu;
-import christmas.order.menu.Price;
 import christmas.promotion.Discount;
+import christmas.view.input.Order;
 
 public class OrderBenefit implements OrderGift, OrderBadge {
     private final OrderGift orderGift;
@@ -19,13 +19,13 @@ public class OrderBenefit implements OrderGift, OrderBadge {
     }
 
     @Override
-    public boolean check(Price price) {
-        return orderGift.check(price);
+    public boolean check(Order order) {
+        return orderGift.check(order);
     }
 
     @Override
-    public Menu determineGift(Price price) {
-        return orderGift.determineGift(price);
+    public Menu determineGift(Order order) {
+        return orderGift.determineGift(order);
     }
 
     @Override

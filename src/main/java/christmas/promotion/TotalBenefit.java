@@ -1,7 +1,5 @@
 package christmas.promotion;
 
-import christmas.order.TotalOrder;
-import christmas.order.menu.Price;
 import christmas.promotion.bydate.DateBenefit;
 import christmas.promotion.bydate.DateDiscount;
 import christmas.promotion.bydate.Dday;
@@ -33,10 +31,10 @@ public class TotalBenefit {
 
         OrderBenefit orderBenefit = new OrderBenefit(new FreeGift(), new Badge());
 
-        TotalOrder totalOrder = new TotalOrder(order);
-        Price totalOrderCost = totalOrder.calculateTotalOrderCost();
-
-        int freeGiftPrice = orderBenefit.determineGift(totalOrderCost).getPrice().price();
+        int freeGiftPrice = 0;
+        if (orderBenefit.determineGift(order) != null) {
+            freeGiftPrice = orderBenefit.determineGift(order).getPrice().price();
+        }
 
         benefits.put(Promotions.FREE_GIFT, new Discount(freeGiftPrice));
         benefits.put(Promotions.BADGE, new Discount(0));

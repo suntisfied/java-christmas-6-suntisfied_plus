@@ -1,10 +1,10 @@
 package christmas.promotion.byorder;
 
 import christmas.order.menu.Menu;
-import christmas.order.menu.Price;
+import christmas.view.input.Order;
 
 public interface OrderGift {
-    boolean check(Price price);
+    boolean check(Order order);
 
-    Menu determineGift(Price price);
+    Menu determineGift(Order order);
 }
