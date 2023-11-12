@@ -40,11 +40,8 @@ public class OrderInput {
     private void checkValidity(String input) {
         boolean validInput = false;
 
-        if (isInvalidFormat.test(new Order(input))) {
-            throw new IllegalArgumentException(Messages.ERROR_INVALID_FORMAT.getMessage());
-        }
-        if (isNotInMenu.test(new Order(input))) {
-            throw new IllegalArgumentException(Messages.ERROR_NOT_IN_MENU.getMessage());
+        if (isInvalidFormat.test(new Order(input)) || isNotInMenu.test(new Order(input))) {
+            throw new IllegalArgumentException(Messages.ERROR_INVALID_ORDER.getMessage());
         }
 
         if (!isInvalidFormat.test(new Order(input)) && !isNotInMenu.test(new Order(input))) {
@@ -52,11 +49,8 @@ public class OrderInput {
         }
 
         if (validInput) {
-            if (isOnlyDrinkOrder.test(new Order(input))) {
-                throw new IllegalArgumentException(Messages.ERROR_ONLY_DRINK_ORDER.getMessage());
-            }
-            if (isOverOrderLimit.test(new Order(input))) {
-                throw new IllegalArgumentException(Messages.ERROR_OVER_ORDER_AMOUNT_LIMIT.getMessage());
+            if (isOnlyDrinkOrder.test(new Order(input)) || isOverOrderLimit.test(new Order(input))) {
+                throw new IllegalArgumentException(Messages.ERROR_INVALID_ORDER.getMessage());
             }
         }
     }

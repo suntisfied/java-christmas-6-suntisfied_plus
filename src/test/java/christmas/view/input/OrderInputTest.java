@@ -83,7 +83,7 @@ class OrderInputTest {
         } catch (NoSuchElementException ignored) {
         }
 
-        assertThat(outputStream.toString()).contains(Messages.ERROR_INVALID_FORMAT.getMessage());
+        assertThat(outputStream.toString()).contains(Messages.ERROR_INVALID_ORDER.getMessage());
     }
 
     @Test
@@ -101,6 +101,6 @@ class OrderInputTest {
 
         System.out.println("outputStream: " + outputStream);
 
-        assertThat(outputStream.toString()).contains(Messages.ERROR_NOT_IN_MENU.getMessage());
+        assertThat(outputStream.toString()).contains(Messages.ERROR_INVALID_ORDER.getMessage());
     }
 }

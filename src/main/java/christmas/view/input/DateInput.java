@@ -31,24 +31,21 @@ public class DateInput {
     }
 
     private void checkValidity(String input) {
-        if (!isPositiveInteger.test(input)) {
-            throw new IllegalArgumentException(Messages.ERROR_NOT_POSITIVE_INTEGER.getMessage());
-        }
-        if (!isValidDate.test(input)) {
-            throw new IllegalArgumentException(Messages.ERROR_NOT_VALID_DATE.getMessage());
+        if (isNonPositiveInteger.test(input) || isInvalidDate.test(input)) {
+            throw new IllegalArgumentException(Messages.ERROR_INVALID_DATE.getMessage());
         }
     }
 
-    private final Predicate<String> isValidDate = input -> {
+    private final Predicate<String> isInvalidDate = input -> {
       int date = Integer.parseInt(input);
-        return date >= 1 && date <= 31;
+        return date < 1 || date > 31;
     };
 
-    private final Predicate<String> isPositiveInteger = input -> {
+    private final Predicate<String> isNonPositiveInteger = input -> {
         try {
-            return Integer.parseInt(input) > 0;
+            return Integer.parseInt(input) < 0;
         } catch (NumberFormatException e) {
-            return false;
+            return true;
         }
     };
 }
