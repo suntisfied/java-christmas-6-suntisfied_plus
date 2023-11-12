@@ -1,6 +1,5 @@
 package christmas.promotion.byorder;
 
-import christmas.order.menu.Menu;
 import christmas.promotion.Discount;
 import christmas.view.input.Order;
 
@@ -24,7 +23,7 @@ public class OrderBenefit implements OrderGift, OrderBadge {
     }
 
     @Override
-    public Menu determineGift(Order order) {
+    public FreeGifts determineGift(Order order) {
         return orderGift.determineGift(order);
     }
 
