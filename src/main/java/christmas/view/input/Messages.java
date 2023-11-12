@@ -12,8 +12,10 @@ public enum Messages {
     HEAD_PROMOTION_AMOUNT("<총혜택 금액>"),
     HEAD_EXPECT_TOTAL_COST("<할인 후 예상 결제 금액>"),
     HEAD_BADGE("<12월 이벤트 배지>"),
-    ERROR_NOT_POSITIVE_INTEGER("[ERROR] Please enter a positive integer."),
-    ERROR_NOT_VALID_DATE("[ERROR] Please enter a number within range from 1 to 31.");
+    ERROR_NOT_POSITIVE_INTEGER("[ERROR] 양의 정수를 입력해주세요."),
+    ERROR_NOT_VALID_DATE("[ERROR] 1에서 31까지의 수를 입력해주세요."),
+    ERROR_OVER_ORDER_AMOUNT_LIMIT("[ERROR] 주문은 20개까지 할 수 있습니다."),
+    ERROR_ONLY_DRINK_ORDER("[ERROR] 음료만 주문할 수 없습니다.");
 
     private final String message;
 
