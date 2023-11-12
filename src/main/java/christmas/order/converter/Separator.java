@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Separator {
-    List<String> createMenuNameAndAmounts(Order order) {
+    public List<String> createMenuNameAndAmounts(Order order) {
         List<String> menuNameAndAmountsWithDash = splitInputsByComma(order.order());
         List<String> menuNameAndAmounts = new ArrayList<>();
 

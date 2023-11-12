@@ -4,7 +4,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import christmas.order.OrderVolume;
 import christmas.order.VolumeCalculator;
+import christmas.order.converter.Separator;
 import christmas.order.menu.Category;
+import java.util.List;
 import java.util.function.Predicate;
 
 public class OrderInput {
@@ -32,11 +34,37 @@ public class OrderInput {
     }
 
     private void checkValidity(String input) {
+        if (isInvalidFormat.test(new Order(input))) {
+            throw new IllegalArgumentException(Messages.ERROR_INVALID_FORMAT.getMessage());
+        }
         if (isOnlyDrinkOrder.test(new Order(input))) {
             throw new IllegalArgumentException(Messages.ERROR_ONLY_DRINK_ORDER.getMessage());
         }
         if (isOverOrderLimit.test(new Order(input))) {
             throw new IllegalArgumentException(Messages.ERROR_OVER_ORDER_AMOUNT_LIMIT.getMessage());
+        }
+    }
+
+    private final Predicate<Order> isInvalidFormat = order -> {
+        Separator separator = new Separator();
+        List<String> MenuAndAmounts = separator.createMenuNameAndAmounts(order);
+
+        List<String> convertibleMembers = MenuAndAmounts.stream()
+                .filter(OrderInput::isConvertibleToInt)
+                .toList();
+
+        int orderedMenuNumber = MenuAndAmounts.size() - convertibleMembers.size();
+        int orderedAmountNumber = convertibleMembers.size();
+
+        return orderedMenuNumber != orderedAmountNumber;
+    };
+
+    private static boolean isConvertibleToInt(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
         }
     }
 
