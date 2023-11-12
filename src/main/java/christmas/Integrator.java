@@ -123,4 +123,18 @@ public class Integrator {
 
         return stringBuilder.toString();
     }
+
+    protected String formatTotalBenefitAmount(Date date, Order order) {
+        TotalBenefit totalBenefit = new TotalBenefit();
+        int totalBenefitAmount = totalBenefit.calculateTotalBenefit(date, order).amount();
+
+        StringBuilder stringBuilder = new StringBuilder();
+        if (totalBenefitAmount > 0) {
+            stringBuilder.append(Messages.MINUS.getMessage());
+        }
+        stringBuilder.append(numberFormatter.format(totalBenefitAmount));
+        stringBuilder.append(Messages.UNIT_CURRENCY.getMessage());
+
+        return stringBuilder.toString();
+    }
 }
