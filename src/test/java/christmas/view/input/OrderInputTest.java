@@ -30,9 +30,11 @@ class OrderInputTest {
     @Test
     public void askInputUntilCorrect() {
         String mockInput =
-                "해산물파스타-20,레드와인-10,초코케이크-10\n"
-                        + "레드와인-1\n"
-                        + "해산물파스타-2,레드와인-1,초코케이크-1";
+                """
+                해산물파스타-20,레드와인-10,초코케이크-10
+                레드와인-1
+                해산물파스타-2,레드와인-1,초코케이크-1
+                """;
 
         System.setIn(new ByteArrayInputStream(mockInput.getBytes()));
 
@@ -65,9 +67,11 @@ class OrderInputTest {
     @Test
     public void checkInvalidOrderInputFormats() {
         String mockInput =
-                "해산물파스타-2레드와인-1,초코케이크-1\n"
-                        + "해산물파스타2,레드와인-1,초코케이크-1\n"
-                        + "해산물파스타-,레드와인-1,초코케이크-1";
+                """
+                해산물파스타-2레드와인-1,초코케이크-1
+                해산물파스타2,레드와인-1,초코케이크-1
+                해산물파스타-,레드와인-1,초코케이크-1
+                """;
 
         System.setIn(new ByteArrayInputStream(mockInput.getBytes()));
 
