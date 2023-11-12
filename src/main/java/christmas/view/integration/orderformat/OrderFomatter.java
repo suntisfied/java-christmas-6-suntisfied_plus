@@ -9,7 +9,6 @@ public class OrderFomatter implements OrderFormat {
         this.orderFormat = orderFormat;
     }
 
-
     @Override
     public String format(Order order) {
         return orderFormat.format(order);

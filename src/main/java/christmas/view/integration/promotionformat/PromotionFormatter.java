@@ -10,7 +10,6 @@ public class PromotionFormatter implements PromotionFormat {
         this.promotionFormat = promotionFormat;
     }
 
-
     @Override
     public String format(Date date, Order order) {
         return promotionFormat.format(date, order);

@@ -13,6 +13,7 @@ public class TotalBenefitAmount implements PromotionFormat {
     public TotalBenefitAmount() {
         numberFormatter = NumberFormat.getInstance(Locale.US);
     }
+
     @Override
     public String format(Date date, Order order) {
         TotalBenefit totalBenefit = new TotalBenefit();
