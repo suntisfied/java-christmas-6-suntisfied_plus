@@ -153,4 +153,13 @@ public class Integrator {
         return numberFormatter.format(expectedTotalCost)
                 + Messages.UNIT_CURRENCY.getMessage();
     }
+
+    protected String formatBadge(Date date, Order order) {
+        OrderBenefit orderBenefit = new OrderBenefit();
+        TotalBenefit totalBenefit = new TotalBenefit();
+
+        Discount totalBenefitAmount = totalBenefit.calculateTotalBenefit(date, order);
+
+        return orderBenefit.determineBadge(totalBenefitAmount).getName();
+    }
 }
