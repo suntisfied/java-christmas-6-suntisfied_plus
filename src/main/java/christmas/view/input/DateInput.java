@@ -2,6 +2,7 @@ package christmas.view.input;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import christmas.view.Messages;
 import java.util.function.Predicate;
 
 public class DateInput {
