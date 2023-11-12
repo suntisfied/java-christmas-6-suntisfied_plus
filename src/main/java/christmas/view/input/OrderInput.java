@@ -14,6 +14,7 @@ public class OrderInput {
         String input;
         do {
             input = readLine();
+            input = removeWhiteSpaces(input);
         } while (validate(input));
 
         return new Order(input);
@@ -50,4 +51,8 @@ public class OrderInput {
         VolumeCalculator volumeCalculator = new VolumeCalculator();
         return volumeCalculator.calculateTotalOrderVolume(order).volume() > 20;
     };
+
+    private String removeWhiteSpaces(String input) {
+        return input.replaceAll("\\s+", "");
+    }
 }
