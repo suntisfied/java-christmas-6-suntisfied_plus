@@ -1,5 +1,6 @@
 package christmas.view.input;
 
+import static christmas.view.Messages.ERROR_INVALID_ORDER;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -48,7 +49,9 @@ class OrderInputTest {
         } catch (NoSuchElementException ignored) {
         }
 
-        assertThat(outputStream.toString()).contains("[ERROR]", "해산물파스타-2,레드와인-1,초코케이크-1");
+        assertThat(outputStream.toString()).contains(
+                ERROR_INVALID_ORDER.getMessage(),
+                "해산물파스타-2,레드와인-1,초코케이크-1");
     }
 
     @Test
@@ -67,29 +70,12 @@ class OrderInputTest {
         assertThat(outputStream.toString()).contains("해산물파스타-2,레드와인-1,초코케이크-1");
     }
 
-    @Test
-    public void checkInvalidOrderInputFormats() {
-        String mockInput =
-                """
-                해산물파스타-2레드와인-1,초코케이크-1
-                해산물파스타2,레드와인-1,초코케이크-1
-                해산물파스타-,레드와인-1,초코케이크-1
-                """;
-
-        System.setIn(new ByteArrayInputStream(mockInput.getBytes()));
-
-        OrderInput orderInput = new OrderInput();
-
-        try {
-            orderInput.askOrder();
-        } catch (NoSuchElementException ignored) {
-        }
-
-        assertThat(outputStream.toString()).contains(Messages.ERROR_INVALID_ORDER.getMessage());
-    }
-
     @ParameterizedTest
     @CsvSource({
+            "'해산물파스타-2레드와인-1,초코케이크-1'",
+            "'해산물파스타2,레드와인-1,초코케이크-1'",
+            "'해산물파스타-,레드와인-1,초코케이크-1'",
+            "해산물팟타-1",
             "토마토파스타-1",
             "'티본스테이크-2,양송이수프-10,아이스크림-7,레드와인-2'",
             "레드와인-2",
@@ -106,6 +92,6 @@ class OrderInputTest {
         } catch (NoSuchElementException ignored) {
         }
 
-        assertThat(outputStream.toString()).contains(Messages.ERROR_INVALID_ORDER.getMessage());
+        assertThat(outputStream.toString()).contains(ERROR_INVALID_ORDER.getMessage());
     }
 }
