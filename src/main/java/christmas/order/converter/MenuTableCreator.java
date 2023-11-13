@@ -2,11 +2,11 @@ package christmas.order.converter;
 
 import christmas.order.menu.Menu;
 import java.util.HashMap;
+import java.util.Map;
 
 public class MenuTableCreator {
     MenuTable createMenuTable() {
-        HashMap<String, Menu> menuTable = new HashMap<>();
-
+        Map<String, Menu> menuTable = new HashMap<>();
         menuTable.put(Menu.MUSHROOM_CREAM_SOUP.getName(), Menu.MUSHROOM_CREAM_SOUP);
         menuTable.put(Menu.TAPAS.getName(), Menu.TAPAS);
         menuTable.put(Menu.CAESAR_SALAD.getName(), Menu.CAESAR_SALAD);
@@ -19,7 +19,6 @@ public class MenuTableCreator {
         menuTable.put(Menu.ZERO_COLA.getName(), Menu.ZERO_COLA);
         menuTable.put(Menu.RED_WINE.getName(), Menu.RED_WINE);
         menuTable.put(Menu.CHAMPAGNE.getName(), Menu.CHAMPAGNE);
-
         return new MenuTable(menuTable);
     }
 }

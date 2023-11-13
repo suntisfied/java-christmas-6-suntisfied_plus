@@ -1,7 +1,7 @@
 package christmas.order.converter;
 
 import christmas.order.menu.Menu;
-import java.util.HashMap;
+import java.util.Map;
 
-public record MenuTable(HashMap<String, Menu> menuTable) {
+public record MenuTable(Map<String, Menu> menuTable) {
 }
