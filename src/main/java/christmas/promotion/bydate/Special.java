@@ -2,8 +2,6 @@ package christmas.promotion.bydate;
 
 import static christmas.promotion.Defaults.SPECIAL_DISCOUNT;
 
-import christmas.order.TotalOrder;
-import christmas.order.menu.Price;
 import christmas.promotion.Discount;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
@@ -14,11 +12,7 @@ public class Special implements DateDiscount {
     @Override
     public boolean check(Date date, Order order) {
         boolean validity = false;
-
-        TotalOrder totalOrder = new TotalOrder(order);
-        Price totalOrderCost = totalOrder.calculateTotalOrderCost();
-
-        if (isSpecialDay.test(date) && isEnoughTotalOrder.test(totalOrderCost)) {
+        if (isSpecialDay.test(date) && isEnoughTotalOrder.test(order)) {
             validity = true;
         }
         return validity;

@@ -3,11 +3,9 @@ package christmas.promotion.bydate;
 import static christmas.promotion.Defaults.WEEKEND_DISCOUNT_UNIT;
 import static christmas.promotion.bydate.Days.WEEKENDS;
 
-import christmas.order.VolumeCalculator;
 import christmas.order.Volume;
-import christmas.order.TotalOrder;
+import christmas.order.VolumeCalculator;
 import christmas.order.menu.Category;
-import christmas.order.menu.Price;
 import christmas.promotion.Discount;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
@@ -26,11 +24,9 @@ public class Weekend implements DateDiscount {
     @Override
     public boolean check(Date date, Order order) {
         boolean validity = false;
-
-        TotalOrder totalOrder = new TotalOrder(order);
-        Price totalOrderCost = totalOrder.calculateTotalOrderCost();
-
-        if (isWeekend.test(date) && isMainOrdered.test(order) && isEnoughTotalOrder.test(totalOrderCost)) {
+        if (isWeekend.test(date)
+                && isMainOrdered.test(order)
+                && isEnoughTotalOrder.test(order)) {
             validity = true;
         }
         return validity;
@@ -51,5 +47,4 @@ public class Weekend implements DateDiscount {
     };
 
     private final Predicate<Order> isMainOrdered = order -> mainDishVolume.volume() > 0;
-
 }

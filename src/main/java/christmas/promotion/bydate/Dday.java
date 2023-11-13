@@ -4,8 +4,6 @@ import static christmas.promotion.Defaults.D_DAY;
 import static christmas.promotion.Defaults.D_DAY_DISCOUNT_UNIT;
 import static christmas.promotion.Defaults.INITIAL_D_DAY_DISCOUNT;
 
-import christmas.order.TotalOrder;
-import christmas.order.menu.Price;
 import christmas.promotion.Discount;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
@@ -15,11 +13,7 @@ public class Dday implements DateDiscount {
     @Override
     public boolean check(Date date, Order order) {
         boolean validity = false;
-
-        TotalOrder totalOrder = new TotalOrder(order);
-        Price totalOrderCost = totalOrder.calculateTotalOrderCost();
-
-        if (isWithinDday.test(date) && isEnoughTotalOrder.test(totalOrderCost)) {
+        if (isWithinDday.test(date) && isEnoughTotalOrder.test(order)) {
             validity = true;
         }
         return validity;

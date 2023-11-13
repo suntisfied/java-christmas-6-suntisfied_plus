@@ -3,8 +3,8 @@ package christmas.promotion.byorder;
 import static christmas.promotion.Defaults.MINIMUM_ORDER_FOR_FREE_GIFT;
 import static christmas.promotion.Defaults.NUMBER_OF_FREE_GIFT;
 
-import christmas.order.Volume;
 import christmas.order.TotalOrder;
+import christmas.order.Volume;
 import christmas.order.menu.Menu;
 import christmas.view.input.Order;
 import java.util.HashMap;
@@ -14,7 +14,11 @@ public class FreeGift implements OrderGift {
 
     @Override
     public boolean check(Order order) {
-        return isEnough.test(order);
+        boolean validity = false;
+        if (isEnough.test(order) && isEnoughTotalOrder.test(order)) {
+            validity = true;
+        }
+        return validity;
     }
 
     @Override
