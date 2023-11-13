@@ -35,4 +35,13 @@ public enum Menu {
     public String getName() {
         return name;
     }
+
+    public static Menu convertNameToMenu(String name) {
+        for (Menu menu : Menu.values()) {
+            if (menu.getName().equals(name)) {
+                return menu;
+            }
+        }
+        return null;
+    }
 }

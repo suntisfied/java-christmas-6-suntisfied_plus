@@ -14,7 +14,7 @@ public class Extractor {
         List<Integer> orderedMenuAmounts = extractAmounts(menuNameAndAmounts);
 
         for (int i = 0; i < orderedMenuNames.size(); i++) {
-            Menu convertedMenuName = new Converter().convertOrderToMenu(orderedMenuNames.get(i));
+            Menu convertedMenuName = Menu.convertNameToMenu(orderedMenuNames.get(i));
             Volume convertedVolume = new Volume(orderedMenuAmounts.get(i));
             menus.put(convertedMenuName, convertedVolume);
         }

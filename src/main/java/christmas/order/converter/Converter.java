@@ -10,12 +10,10 @@ import java.util.List;
 public class Converter {
     private final Extractor extractor;
     private final Separator separator;
-    private final MenuTableCreator menuTableCreator;
 
     public Converter() {
         extractor = new Extractor();
         separator = new Separator();
-        menuTableCreator = new MenuTableCreator();
     }
 
     public OrderWithVolume createOrderedMenuTotal(Order order) {
@@ -42,11 +40,5 @@ public class Converter {
         }
 
         return extractedNameAndAmounts;
-    }
-
-    Menu convertOrderToMenu(String rawOrder) {
-        MenuTable menuTable = menuTableCreator.createMenuTable();
-
-        return menuTable.menuTable().get(rawOrder);
     }
 }
