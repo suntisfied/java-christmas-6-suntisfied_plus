@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.promotion.Discount;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class BadgeTest {
     OrderBenefit orderBenefit = new OrderBenefit(new FreeGift(), new Badge());
@@ -18,8 +20,9 @@ class BadgeTest {
         assertThat(orderBenefit.check(new Discount(4999))).isFalse();
     }
 
-    @Test
-    public void checkCorrectBadge() {
-        assertThat(orderBenefit.determineBadge(new Discount(10000))).isEqualTo(Badges.TREE);
+    @ParameterizedTest
+    @CsvSource({"0, 없음", "5000, 스타",  "10000, 트리", "20000, 산타"})
+    public void checkCorrectBadge(int discountAmount, String badgeName) {
+        assertThat(orderBenefit.determineBadge(new Discount(discountAmount)).getName()).isEqualTo(badgeName);
     }
 }
