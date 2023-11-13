@@ -52,9 +52,12 @@ public class OrderInput {
         }
 
         if (validInput) {
-            if (isOnlyDrinkOrder.test(new Order(input))
+            if (
+                    isOnlyDrinkOrder.test(new Order(input))
                     || isOverOrderLimit.test(new Order(input))
-                    || isDuplicate.test(new Order(input))) {
+                    || isDuplicate.test(new Order(input))
+                    || isMenuAmountZero.test(new Order(input))
+            ) {
                 throw new IllegalArgumentException(Messages.ERROR_INVALID_ORDER.getMessage());
             }
         }
@@ -110,6 +113,14 @@ public class OrderInput {
         Set<String> uniqueNames = new HashSet<>(menuNames);
         return menuNames.size() != uniqueNames.size();
     };
+
+    private final Predicate<Order> isMenuAmountZero = order -> {
+        Separator separator = new Separator();
+        List<String> menuNameAndAmounts = separator.createMenuNameAndAmounts(order);
+        return menuNameAndAmounts.contains("0");
+    };
+
+
 
     private String removeWhiteSpaces(String input) {
         return input.replaceAll("\\s+", "");
