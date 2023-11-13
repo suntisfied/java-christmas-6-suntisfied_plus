@@ -16,39 +16,47 @@ import christmas.view.input.Order;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TotalBenefit {
-    public HashMap<Promotions, Discount> createBenefits(Date date, Order order) {
+    public Map<Promotions, Discount> createBenefits(Date date, Order order) {
+        Map<Promotions, Discount> benefits = createPromotionBenefits(date, order);
+        benefits.putAll(createOrderBenefits(order));
+
+        return benefits;
+    }
+
+    private Map<Promotions, Discount> createPromotionBenefits(Date date, Order order) {
         List<Promotions> promotions =
                 Arrays.asList(Promotions.D_DAY, Promotions.WEEKDAY, Promotions.WEEKEND, Promotions.SPECIAL);
 
         List<DateDiscount> dateDiscounts =
                 Arrays.asList(new Dday(), new Weekday(order), new Weekend(order), new Special());
-
-        HashMap<Promotions, Discount> benefits = new HashMap<>();
+        Map<Promotions, Discount> promotionBenefits = new HashMap<>();
         for (int i = 0; i < promotions.size(); i++) {
             DateBenefit dateBenefit = new DateBenefit(dateDiscounts.get(i));
-            benefits.put(promotions.get(i), dateBenefit.calculateDiscount(date, order));
+            promotionBenefits.put(promotions.get(i), dateBenefit.calculateDiscount(date, order));
         }
+        return promotionBenefits;
+    }
 
+    private Map<Promotions, Discount> createOrderBenefits(Order order) {
         OrderBenefit orderBenefit = new OrderBenefit(new FreeGift(), new Badge());
-
         int freeGiftPrice = 0;
         if (!orderBenefit.determineGift(order).freeGifts().isEmpty()) {
-            HashMap<Menu, Volume> rawFreeGift = orderBenefit.determineGift(order).freeGifts();
+            Map<Menu, Volume> rawFreeGift = orderBenefit.determineGift(order).freeGifts();
             for (Menu menu : rawFreeGift.keySet()) {
                 freeGiftPrice += menu.getPrice().price();
             }
         }
-
-        benefits.put(Promotions.FREE_GIFT, new Discount(freeGiftPrice));
-        benefits.put(Promotions.BADGE, new Discount(0));
-
-        return benefits;
+        Map<Promotions, Discount> orderBenefits = new HashMap<>();
+        orderBenefits.put(Promotions.FREE_GIFT, new Discount(freeGiftPrice));
+        orderBenefits.put(Promotions.BADGE, new Discount(0));
+        return orderBenefits;
     }
 
     public Discount calculateTotalBenefit(Date date, Order order) {
-        HashMap<Promotions, Discount> benefits = createBenefits(date, order);
+        Map<Promotions, Discount> benefits = createBenefits(date, order);
 
         int totalBenefit = benefits.values().stream().mapToInt(Discount::amount).sum();
 
