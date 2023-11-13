@@ -14,11 +14,7 @@ public class FreeGift implements OrderGift {
 
     @Override
     public boolean check(Order order) {
-        boolean validity = false;
-        if (isEnough.test(order) && isEnoughTotalOrder.test(order)) {
-            validity = true;
-        }
-        return validity;
+        return isValid(order);
     }
 
     @Override
@@ -39,6 +35,10 @@ public class FreeGift implements OrderGift {
             freeGiftAmount = NUMBER_OF_FREE_GIFT.getNumber();
         }
         return freeGiftAmount;
+    }
+
+    private boolean isValid(Order order) {
+        return isEnough.test(order) && isEnoughTotalOrder.test(order);
     }
 
     private final Predicate<Order> isEnough = order -> {

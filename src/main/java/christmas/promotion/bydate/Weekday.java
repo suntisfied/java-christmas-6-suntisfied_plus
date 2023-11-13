@@ -23,14 +23,7 @@ public class Weekday implements DateDiscount {
 
     @Override
     public boolean check(Date date, Order order) {
-        boolean validity = false;
-        if (isWeekday.test(date)
-                && isDessertOrdered.test(order)
-                && isEnoughTotalOrder.test(order)) {
-            validity = true;
-        }
-
-        return validity;
+        return isValid(date, order);
     }
 
     @Override
@@ -40,6 +33,10 @@ public class Weekday implements DateDiscount {
             totalDiscount = WEEKDAY_DISCOUNT_UNIT.getNumber() * dessertVolume.volume();
         }
         return new Discount(totalDiscount);
+    }
+
+    private boolean isValid(Date date, Order order) {
+        return isWeekday.test(date) && isDessertOrdered.test(order) && isEnoughTotalOrder.test(order);
     }
 
     private final Predicate<Date> isWeekday = date -> {

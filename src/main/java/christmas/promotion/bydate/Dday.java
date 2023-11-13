@@ -12,11 +12,7 @@ import java.util.function.Predicate;
 public class Dday implements DateDiscount {
     @Override
     public boolean check(Date date, Order order) {
-        boolean validity = false;
-        if (isWithinDday.test(date) && isEnoughTotalOrder.test(order)) {
-            validity = true;
-        }
-        return validity;
+        return isValid(date, order);
     }
 
     @Override
@@ -32,5 +28,11 @@ public class Dday implements DateDiscount {
         return new Discount(totalDiscount);
     }
 
+    private boolean isValid(Date date, Order order) {
+        return isWithinDday.test(date) && isEnoughTotalOrder.test(order);
+    }
+
     private final Predicate<Date> isWithinDday = date -> date.date() <= D_DAY.getNumber();
+
+
 }

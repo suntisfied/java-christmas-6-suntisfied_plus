@@ -11,11 +11,7 @@ import java.util.function.Predicate;
 public class Special implements DateDiscount {
     @Override
     public boolean check(Date date, Order order) {
-        boolean validity = false;
-        if (isSpecialDay.test(date) && isEnoughTotalOrder.test(order)) {
-            validity = true;
-        }
-        return validity;
+        return isValid(date, order);
     }
 
     @Override
@@ -25,6 +21,10 @@ public class Special implements DateDiscount {
             totalDiscount = SPECIAL_DISCOUNT.getNumber();
         }
         return new Discount(totalDiscount);
+    }
+
+    private boolean isValid(Date date, Order order) {
+        return isSpecialDay.test(date) && isEnoughTotalOrder.test(order);
     }
 
     private final Predicate<Date> isSpecialDay = date -> {
