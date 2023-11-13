@@ -4,7 +4,6 @@ import static christmas.view.Messages.ERROR_INVALID_ORDER;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.view.Messages;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -74,6 +73,8 @@ class OrderInputTest {
     @CsvSource({
             "'해산물파스타-2레드와인-1,초코케이크-1'",
             "'해산물파스타2,레드와인-1,초코케이크-1'",
+            "'해산물파스타-0,레드와인-1,초코케이크-1'",
+            "'해산물파스타--1,레드와인-1,초코케이크-1'",
             "'해산물파스타-,레드와인-1,초코케이크-1'",
             "해산물팟타-1",
             "토마토파스타-1",
