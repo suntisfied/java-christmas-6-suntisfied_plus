@@ -6,7 +6,7 @@ import christmas.promotion.Promotions;
 import christmas.promotion.byorder.OrderBenefit;
 import christmas.view.Messages;
 import christmas.view.input.Order;
-import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class FreeGiftBenefit implements OrderFormat {
@@ -15,10 +15,10 @@ public class FreeGiftBenefit implements OrderFormat {
         OrderBenefit orderBenefit = new OrderBenefit();
 
         String freeGiftText = Promotions.NONE.getText();
-
         if (!orderBenefit.determineGift(order).freeGifts().isEmpty()) {
-            HashMap<Menu, Volume> rawFreeGifts = orderBenefit.determineGift(order).freeGifts();
+            Map<Menu, Volume> rawFreeGifts = orderBenefit.determineGift(order).freeGifts();
             Set<Menu> freeGiftNames = rawFreeGifts.keySet();
+
             StringBuilder stringBuilder = new StringBuilder();
             for (Menu menu : freeGiftNames) {
                 stringBuilder.append(menu.getName())
@@ -28,7 +28,6 @@ public class FreeGiftBenefit implements OrderFormat {
             }
             freeGiftText = stringBuilder.toString();
         }
-
         return freeGiftText;
     }
 }

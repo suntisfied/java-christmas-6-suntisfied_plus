@@ -14,9 +14,9 @@ import christmas.view.input.Date;
 import christmas.view.input.Order;
 import java.text.NumberFormat;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class PromotionList implements PromotionFormat {
     private final NumberFormat numberFormatter;
@@ -27,13 +27,11 @@ public class PromotionList implements PromotionFormat {
 
     @Override
     public String format(Date date, Order order) {
-        StringBuilder promotionTexts = new StringBuilder();
-
         TotalBenefit totalBenefit = new TotalBenefit();
-        HashMap<Promotions, Discount> benefits = totalBenefit.createBenefits(date, order);
-
+        Map<Promotions, Discount> benefits = totalBenefit.createBenefits(date, order);
         List<Promotions> promotions = Arrays.asList(D_DAY, WEEKDAY, WEEKEND, SPECIAL, FREE_GIFT);
 
+        StringBuilder promotionTexts = new StringBuilder();
         for (Promotions promotion : promotions) {
             if (benefits.get(promotion).amount() > 0) {
                 promotionTexts.append(promotion.getText());

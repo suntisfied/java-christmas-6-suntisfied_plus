@@ -5,14 +5,14 @@ import christmas.order.converter.Converter;
 import christmas.order.menu.Menu;
 import christmas.view.Messages;
 import christmas.view.input.Order;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class OrderedMenu implements OrderFormat {
     @Override
     public String format(Order order) {
         Converter converter = new Converter();
-        HashMap<Menu, Volume> orderedMenu = converter.createOrderedMenuTotal(order).orderedMenuTotal();
+        Map<Menu, Volume> orderedMenu = converter.createOrderedMenuTotal(order).orderedMenuTotal();
         List<Menu> orderedMenuNames = converter.createOrderedMenuNameList(order);
 
         StringBuilder stringBuilder = new StringBuilder();

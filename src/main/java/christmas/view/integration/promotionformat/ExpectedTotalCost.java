@@ -8,8 +8,8 @@ import christmas.view.Messages;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
 import java.text.NumberFormat;
-import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class ExpectedTotalCost implements PromotionFormat {
     private final NumberFormat numberFormatter;
@@ -23,7 +23,7 @@ public class ExpectedTotalCost implements PromotionFormat {
         TotalOrder totalOrder = new TotalOrder(order);
         TotalBenefit totalBenefit = new TotalBenefit();
 
-        HashMap<Promotions, Discount> benefits = totalBenefit.createBenefits(date, order);
+        Map<Promotions, Discount> benefits = totalBenefit.createBenefits(date, order);
 
         int totalOrderCost = totalOrder.calculateTotalOrderCost().price();
         int totalBenefitAmount = totalBenefit.calculateTotalBenefit(date, order).amount();
