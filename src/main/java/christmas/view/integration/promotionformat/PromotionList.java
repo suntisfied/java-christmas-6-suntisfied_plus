@@ -27,10 +27,24 @@ public class PromotionList implements PromotionFormat {
 
     @Override
     public String format(Date date, Order order) {
+        String promotionTexts = buildPromotions(date, order);
+
+        if (promotionTexts.isEmpty()) {
+            promotionTexts = Promotions.NONE.getText();
+        }
+
+        return promotionTexts;
+    }
+
+    private String buildPromotions(Date date, Order order) {
         TotalBenefit totalBenefit = new TotalBenefit();
         Map<Promotions, Discount> benefits = totalBenefit.createBenefits(date, order);
         List<Promotions> promotions = Arrays.asList(D_DAY, WEEKDAY, WEEKEND, SPECIAL, FREE_GIFT);
 
+        return formatPromotions(benefits, promotions);
+    }
+
+    private String formatPromotions(Map<Promotions, Discount> benefits, List<Promotions> promotions) {
         StringBuilder promotionTexts = new StringBuilder();
         for (Promotions promotion : promotions) {
             if (benefits.get(promotion).amount() > 0) {
@@ -41,12 +55,6 @@ public class PromotionList implements PromotionFormat {
                 promotionTexts.append("\r\n");
             }
         }
-
-        if (promotionTexts.isEmpty()) {
-            promotionTexts = new StringBuilder();
-            promotionTexts.append(Promotions.NONE.getText());
-        }
-
         return promotionTexts.toString();
     }
 }
