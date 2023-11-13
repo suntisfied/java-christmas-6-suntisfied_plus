@@ -89,8 +89,14 @@ class OrderInputTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"토마토파스타-1", "'티본스테이크-2,양송이수프-10,아이스크림-7,레드와인-2'", "레드와인-2"})
-    public void checkInvalidMenu(String mockInput) {
+    @CsvSource({
+            "토마토파스타-1",
+            "'티본스테이크-2,양송이수프-10,아이스크림-7,레드와인-2'",
+            "레드와인-2",
+            "'티본스테이크-2,티본스테이크-2,아이스크림-1,레드와인-2'",
+            "'티본스테이크-2,티본스테이크-1,아이스크림-1,레드와인-2'",
+    })
+    public void checkInvalidOrder(String mockInput) {
         System.setIn(new ByteArrayInputStream(mockInput.getBytes()));
 
         OrderInput orderInput = new OrderInput();
