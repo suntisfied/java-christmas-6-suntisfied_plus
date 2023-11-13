@@ -1,5 +1,9 @@
 package christmas.promotion.bydate;
 
+import static christmas.promotion.Defaults.D_DAY;
+import static christmas.promotion.Defaults.D_DAY_DISCOUNT_UNIT;
+import static christmas.promotion.Defaults.INITIAL_D_DAY_DISCOUNT;
+
 import christmas.order.TotalOrder;
 import christmas.order.menu.Price;
 import christmas.promotion.Defaults;
@@ -27,13 +31,13 @@ public class Dday implements DateDiscount {
         int totalDiscount = 0;
 
         if (check(date, order)) {
-            int initialDiscount = Defaults.INITIAL_D_DAY_DISCOUNT.getNumber();
+            int initialDiscount = INITIAL_D_DAY_DISCOUNT.getNumber();
             int dDayDiscounts = date.date() - 1;
-            totalDiscount = initialDiscount + (dDayDiscounts * 100);
+            totalDiscount = initialDiscount + (dDayDiscounts * D_DAY_DISCOUNT_UNIT.getNumber());
         }
 
         return new Discount(totalDiscount);
     }
 
-    private final Predicate<Date> isWithinDday = date -> date.date() <= 25;
+    private final Predicate<Date> isWithinDday = date -> date.date() <= D_DAY.getNumber();
 }

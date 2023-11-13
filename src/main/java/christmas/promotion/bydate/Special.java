@@ -1,7 +1,10 @@
 package christmas.promotion.bydate;
 
+import static christmas.promotion.Defaults.SPECIAL_DISCOUNT;
+
 import christmas.order.TotalOrder;
 import christmas.order.menu.Price;
+import christmas.promotion.Defaults;
 import christmas.promotion.Discount;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
@@ -26,7 +29,7 @@ public class Special implements DateDiscount {
     public Discount calculateDiscount(Date date, Order order) {
         int totalDiscount = 0;
         if (check(date, order)) {
-            totalDiscount = 1000;
+            totalDiscount = SPECIAL_DISCOUNT.getNumber();
         }
         return new Discount(totalDiscount);
     }

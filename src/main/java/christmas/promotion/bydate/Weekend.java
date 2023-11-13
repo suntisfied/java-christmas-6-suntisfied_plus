@@ -1,10 +1,14 @@
 package christmas.promotion.bydate;
 
+import static christmas.promotion.Defaults.WEEKEND_DISCOUNT_UNIT;
+import static christmas.promotion.bydate.Days.WEEKENDS;
+
 import christmas.order.VolumeCalculator;
 import christmas.order.Volume;
 import christmas.order.TotalOrder;
 import christmas.order.menu.Category;
 import christmas.order.menu.Price;
+import christmas.promotion.Defaults;
 import christmas.promotion.Discount;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
@@ -37,13 +41,13 @@ public class Weekend implements DateDiscount {
     public Discount calculateDiscount(Date date, Order order) {
         int totalDiscount = 0;
         if (check(date, order)) {
-            totalDiscount = 2023 * mainDishVolume.volume();
+            totalDiscount = WEEKEND_DISCOUNT_UNIT.getNumber() * mainDishVolume.volume();
         }
         return new Discount(totalDiscount);
     }
 
     private final Predicate<Date> isWeekend = date -> {
-        List<Integer> weekends = Days.WEEKENDS.getDays();
+        List<Integer> weekends = WEEKENDS.getDays();
         return weekends.contains(date.date());
     };
 
