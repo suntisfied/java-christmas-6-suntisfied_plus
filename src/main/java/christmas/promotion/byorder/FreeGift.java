@@ -5,6 +5,7 @@ import static christmas.promotion.Defaults.NUMBER_OF_FREE_GIFT;
 
 import christmas.order.TotalOrder;
 import christmas.order.Volume;
+import christmas.order.converter.Converter;
 import christmas.order.menu.Menu;
 import christmas.view.input.Order;
 import java.util.HashMap;
@@ -28,10 +29,10 @@ public class FreeGift implements OrderGift {
     }
 
     private int determineFreeGiftAmount(Order order) {
-        TotalOrder totalOrder = new TotalOrder(order);
+        TotalOrder totalOrder = new Converter().createTotalOrder(order);
 
         int freeGiftAmount = 0;
-        if (totalOrder.calculateTotalOrderCost().price() >= MINIMUM_ORDER_FOR_FREE_GIFT.getNumber()) {
+        if (totalOrder.calculateTotalCost().price() >= MINIMUM_ORDER_FOR_FREE_GIFT.getNumber()) {
             freeGiftAmount = NUMBER_OF_FREE_GIFT.getNumber();
         }
         return freeGiftAmount;
@@ -42,7 +43,7 @@ public class FreeGift implements OrderGift {
     }
 
     private final Predicate<Order> isEnough = order -> {
-        TotalOrder totalOrder = new TotalOrder(order);
-        return totalOrder.calculateTotalOrderCost().price() >= MINIMUM_ORDER_FOR_FREE_GIFT.getNumber();
+        TotalOrder totalOrder = new Converter().createTotalOrder(order);
+        return totalOrder.calculateTotalCost().price() >= MINIMUM_ORDER_FOR_FREE_GIFT.getNumber();
     };
 }

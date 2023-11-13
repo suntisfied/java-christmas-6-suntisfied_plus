@@ -1,6 +1,7 @@
 package christmas.view.integration.orderformat;
 
 import christmas.order.TotalOrder;
+import christmas.order.converter.Converter;
 import christmas.view.Messages;
 import christmas.view.input.Order;
 import java.text.NumberFormat;
@@ -15,8 +16,8 @@ public class InitialTotalCost implements OrderFormat {
 
     @Override
     public String format(Order order) {
-        TotalOrder totalOrder = new TotalOrder(order);
-        int totalOrderCost = totalOrder.calculateTotalOrderCost().price();
+        TotalOrder totalOrder = new Converter().createTotalOrder(order);
+        int totalOrderCost = totalOrder.calculateTotalCost().price();
 
         return numberFormatter.format(totalOrderCost)
                 + Messages.UNIT_CURRENCY.getMessage();

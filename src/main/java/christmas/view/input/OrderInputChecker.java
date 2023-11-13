@@ -2,8 +2,8 @@ package christmas.view.input;
 
 import static christmas.promotion.Defaults.ORDER_VOLUME_LIMIT;
 
+import christmas.order.TotalOrder;
 import christmas.order.Volume;
-import christmas.order.VolumeCalculator;
 import christmas.order.converter.Converter;
 import christmas.order.converter.Separator;
 import christmas.order.menu.Category;
@@ -37,8 +37,8 @@ public class OrderInputChecker {
     }
 
     private final Predicate<Order> isNotInMenu = order -> {
-        Converter converter = new Converter();
-        List<Menu> orderedMenuNames = converter.createOrderedMenuNameList(order);
+        TotalOrder totalOrder = new Converter().createTotalOrder(order);
+        List<Menu> orderedMenuNames = totalOrder.produceOrderedMenus();
         return orderedMenuNames.contains(null);
     };
 
@@ -66,15 +66,15 @@ public class OrderInputChecker {
     }
 
     private final Predicate<Order> isOnlyDrinkOrder = order -> {
-        VolumeCalculator volumeCalculator = new VolumeCalculator();
-        Volume totalVolume = volumeCalculator.calculateTotalOrderVolume(order);
-        Volume drinkVolume = volumeCalculator.calculateOrderVolumeByCategory(order, Category.DRINK);
+        TotalOrder totalOrder = new Converter().createTotalOrder(order);
+        Volume totalVolume = totalOrder.calculateTotalVolume();
+        Volume drinkVolume = totalOrder.calculateVolumeByCategory(Category.DRINK);
         return totalVolume.equals(drinkVolume);
     };
 
     private final Predicate<Order> isOverOrderLimit = order -> {
-        VolumeCalculator volumeCalculator = new VolumeCalculator();
-        return volumeCalculator.calculateTotalOrderVolume(order).volume() > ORDER_VOLUME_LIMIT.getNumber();
+        TotalOrder totalOrder = new Converter().createTotalOrder(order);
+        return totalOrder.calculateTotalVolume().volume() > ORDER_VOLUME_LIMIT.getNumber();
     };
 
     private final Predicate<Order> isDuplicate = order -> {

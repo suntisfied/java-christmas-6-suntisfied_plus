@@ -1,7 +1,7 @@
 package christmas.order.converter;
 
+import christmas.order.TotalOrder;
 import christmas.order.Volume;
-import christmas.order.OrderWithVolume;
 import christmas.order.menu.Menu;
 import christmas.view.input.Order;
 import java.util.HashMap;
@@ -16,15 +16,11 @@ public class Converter {
         separator = new Separator();
     }
 
-    public OrderWithVolume createOrderedMenuTotal(Order order) {
+    public TotalOrder createTotalOrder(Order order) {
         List<String> menuNameAndAmounts = separator.createMenuNameAndAmounts(order);
         HashMap<Menu, Volume> orderedMenuTotal = extractor.createMenus(menuNameAndAmounts);
 
-        return new OrderWithVolume(orderedMenuTotal);
-    }
-
-    public List<Menu> createOrderedMenuNameList(Order order) {
-        return createOrderedMenuTotal(order).orderedMenuTotal().keySet().stream().toList();
+        return new TotalOrder(orderedMenuTotal);
     }
 
     public HashMap<String, Integer> createExtractedNameAndAmounts(Order order) {

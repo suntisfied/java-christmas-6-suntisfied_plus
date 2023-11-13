@@ -1,6 +1,7 @@
 package christmas.view.integration.promotionformat;
 
 import christmas.order.TotalOrder;
+import christmas.order.converter.Converter;
 import christmas.promotion.Discount;
 import christmas.promotion.Promotions;
 import christmas.promotion.TotalBenefit;
@@ -20,12 +21,12 @@ public class ExpectedTotalCost implements PromotionFormat {
 
     @Override
     public String format(Date date, Order order) {
-        TotalOrder totalOrder = new TotalOrder(order);
+        TotalOrder totalOrder = new Converter().createTotalOrder(order);
         TotalBenefit totalBenefit = new TotalBenefit();
 
         Map<Promotions, Discount> benefits = totalBenefit.createBenefits(date, order);
 
-        int totalOrderCost = totalOrder.calculateTotalOrderCost().price();
+        int totalOrderCost = totalOrder.calculateTotalCost().price();
         int totalBenefitAmount = totalBenefit.calculateTotalBenefit(date, order).amount();
         int freeGiftBenefit = benefits.get(Promotions.FREE_GIFT).amount();
 

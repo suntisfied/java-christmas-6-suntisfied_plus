@@ -1,35 +1,50 @@
 package christmas.order;
 
-import christmas.order.converter.Converter;
+import christmas.order.menu.Category;
 import christmas.order.menu.Menu;
 import christmas.order.menu.Price;
-import christmas.view.input.Order;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TotalOrder {
-    private final OrderWithVolume orderWithVolume;
+    private final Map<Menu, Volume> orderedMenuWithVolume;
 
-    public TotalOrder(Order order) {
-        this.orderWithVolume = new Converter().createOrderedMenuTotal(order);
+    public TotalOrder(Map<Menu, Volume> orderedMenuWithVolume) {
+        this.orderedMenuWithVolume = orderedMenuWithVolume;
     }
 
-    public OrderedMenus produceOrderedMenu() {
-        return new OrderedMenus(orderWithVolume.orderedMenuTotal().keySet().stream().toList());
-    }
-
-    public Price calculateTotalOrderCost() {
-        HashMap<Menu, Volume> rawOrderedMenuTotal = orderWithVolume.orderedMenuTotal();
-        List<Menu> rawOrderedMenus = produceOrderedMenu().orderedMenus();
-
+    public Price calculateTotalCost() {
         int totalSum = 0;
-        for (Menu currentOrderedMenu : rawOrderedMenus) {
-            int currentMenuPrice = currentOrderedMenu.getPrice().price();
-            int currentMenuAmount = rawOrderedMenuTotal.get(currentOrderedMenu).volume();
+        for (Menu currentMenu : orderedMenuWithVolume.keySet()) {
+            int currentMenuPrice = currentMenu.getPrice().price();
+            int currentMenuAmount = orderedMenuWithVolume.get(currentMenu).volume();
 
             totalSum += currentMenuPrice * currentMenuAmount;
         }
 
         return new Price(totalSum);
+    }
+
+    public Volume calculateTotalVolume() {
+        return new Volume(orderedMenuWithVolume.values().stream()
+                .mapToInt(Volume::volume).sum());
+    }
+
+    public Volume calculateVolumeByCategory(Category category) {
+        int volume = 0;
+        for (Menu currentMenu : orderedMenuWithVolume.keySet()) {
+            if (currentMenu.getCategory().equals(category)) {
+                volume += orderedMenuWithVolume.get(currentMenu).volume();
+            }
+        }
+        return new Volume(volume);
+    }
+
+    public List<Menu> produceOrderedMenus() {
+        return orderedMenuWithVolume.keySet().stream().toList();
+    }
+
+    public Volume getVolumeByMenu(Menu menu) {
+        return orderedMenuWithVolume.get(menu);
     }
 }

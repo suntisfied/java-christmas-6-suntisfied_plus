@@ -3,8 +3,9 @@ package christmas.promotion.bydate;
 import static christmas.promotion.Defaults.WEEKDAY_DISCOUNT_UNIT;
 import static christmas.promotion.bydate.Days.WEEKDAYS;
 
+import christmas.order.TotalOrder;
 import christmas.order.Volume;
-import christmas.order.VolumeCalculator;
+import christmas.order.converter.Converter;
 import christmas.order.menu.Category;
 import christmas.promotion.Discount;
 import christmas.view.input.Date;
@@ -16,9 +17,8 @@ public class Weekday implements DateDiscount {
     private Volume dessertVolume;
 
     public Weekday(Order order) {
-        VolumeCalculator volumeCalculator = new VolumeCalculator();
-        dessertVolume =
-                volumeCalculator.calculateOrderVolumeByCategory(order, Category.DESSERT);
+        TotalOrder totalOrder = new Converter().createTotalOrder(order);
+        dessertVolume = totalOrder.calculateVolumeByCategory(Category.DESSERT);
     }
 
     @Override

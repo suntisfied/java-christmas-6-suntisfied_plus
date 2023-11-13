@@ -1,25 +1,23 @@
 package christmas.view.integration.orderformat;
 
-import christmas.order.Volume;
+import christmas.order.TotalOrder;
 import christmas.order.converter.Converter;
 import christmas.order.menu.Menu;
 import christmas.view.Messages;
 import christmas.view.input.Order;
 import java.util.List;
-import java.util.Map;
 
 public class OrderedMenu implements OrderFormat {
     @Override
     public String format(Order order) {
-        Converter converter = new Converter();
-        Map<Menu, Volume> orderedMenu = converter.createOrderedMenuTotal(order).orderedMenuTotal();
-        List<Menu> orderedMenuNames = converter.createOrderedMenuNameList(order);
+        TotalOrder totalOrder = new Converter().createTotalOrder(order);
+        List<Menu> orderedMenuNames = totalOrder.produceOrderedMenus();
 
         StringBuilder stringBuilder = new StringBuilder();
         for (Menu menu : orderedMenuNames) {
             stringBuilder.append(menu.getName())
                     .append(" ")
-                    .append(orderedMenu.get(menu).volume())
+                    .append(totalOrder.getVolumeByMenu(menu))
                     .append(Messages.UNIT_COUNT.getMessage())
                     .append("\r\n");
         }
