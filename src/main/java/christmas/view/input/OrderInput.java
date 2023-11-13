@@ -1,6 +1,7 @@
 package christmas.view.input;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static christmas.promotion.Defaults.ORDER_VOLUME_LIMIT;
 
 import christmas.order.Volume;
 import christmas.order.VolumeCalculator;
@@ -93,7 +94,7 @@ public class OrderInput {
 
     private final Predicate<Order> isOverOrderLimit = order -> {
         VolumeCalculator volumeCalculator = new VolumeCalculator();
-        return volumeCalculator.calculateTotalOrderVolume(order).volume() > 20;
+        return volumeCalculator.calculateTotalOrderVolume(order).volume() > ORDER_VOLUME_LIMIT.getNumber();
     };
 
     private String removeWhiteSpaces(String input) {

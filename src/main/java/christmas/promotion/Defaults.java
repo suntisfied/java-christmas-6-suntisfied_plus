@@ -10,6 +10,9 @@ public enum Defaults {
     SPECIAL_DISCOUNT(1000),
     MINIMUM_ORDER_FOR_FREE_GIFT(12000),
     NUMBER_OF_FREE_GIFT(1),
+    INITIAL_DAY_OF_MONTH(1),
+    LAST_DAY_OF_MONTH(31),
+    ORDER_VOLUME_LIMIT(20),
     ;
 
     private final int number;

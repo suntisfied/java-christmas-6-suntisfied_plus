@@ -1,6 +1,8 @@
 package christmas.view.input;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static christmas.promotion.Defaults.INITIAL_DAY_OF_MONTH;
+import static christmas.promotion.Defaults.LAST_DAY_OF_MONTH;
 
 import christmas.view.Messages;
 import java.util.function.Predicate;
@@ -38,7 +40,7 @@ public class DateInput {
 
     private final Predicate<String> isInvalidDate = input -> {
       int date = Integer.parseInt(input);
-        return date < 1 || date > 31;
+        return date < INITIAL_DAY_OF_MONTH.getNumber() || date > LAST_DAY_OF_MONTH.getNumber();
     };
 
     private final Predicate<String> isNonPositiveInteger = input -> {
