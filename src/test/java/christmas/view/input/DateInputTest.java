@@ -33,11 +33,13 @@ class DateInputTest {
     public void askInputUntilCorrect() {
         DateInput dateInput = new DateInput();
 
+        Date date = null;
         try {
-            dateInput.askDate();
+            date = dateInput.askDate();
         } catch (NoSuchElementException ignored) {
         }
 
-        assertThat(outputStream.toString()).contains("[ERROR]", "3");
+        assertThat(outputStream.toString()).contains("[ERROR]");
+        assertThat(date).isEqualTo(new Date(3));
     }
 }
