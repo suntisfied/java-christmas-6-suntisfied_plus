@@ -37,7 +37,7 @@ public class FreeGift implements OrderGift {
         return freeGiftAmount;
     }
 
-    Predicate<Order> isEnough = order -> {
+    private final Predicate<Order> isEnough = order -> {
         TotalOrder totalOrder = new TotalOrder(order);
         return totalOrder.calculateTotalOrderCost().price() >= MINIMUM_ORDER_FOR_FREE_GIFT.getNumber();
     };

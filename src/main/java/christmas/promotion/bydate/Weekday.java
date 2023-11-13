@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class Weekday implements DateDiscount {
-    Volume dessertVolume;
+    private Volume dessertVolume;
 
     public Weekday(Order order) {
         VolumeCalculator volumeCalculator = new VolumeCalculator();
@@ -43,10 +43,10 @@ public class Weekday implements DateDiscount {
         return new Discount(totalDiscount);
     }
 
-    Predicate<Date> isWeekday = date -> {
+    private final Predicate<Date> isWeekday = date -> {
         List<Integer> weekdays = Days.WEEKDAYS.getDays();
         return weekdays.contains(date.date());
     };
 
-    Predicate<Order> isDessertOrdered = order -> dessertVolume.volume() > 0;
+    private final Predicate<Order> isDessertOrdered = order -> dessertVolume.volume() > 0;
 }

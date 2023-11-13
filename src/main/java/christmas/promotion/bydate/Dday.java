@@ -35,5 +35,5 @@ public class Dday implements DateDiscount {
         return new Discount(totalDiscount);
     }
 
-    Predicate<Date> isWithinDday = date -> date.date() <= 25;
+    private final Predicate<Date> isWithinDday = date -> date.date() <= 25;
 }

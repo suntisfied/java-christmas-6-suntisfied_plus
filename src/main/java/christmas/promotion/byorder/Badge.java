@@ -31,5 +31,5 @@ public class Badge implements OrderBadge {
         return badge;
     }
 
-    Predicate<Discount> isEnough = discount -> discount.amount() >= STAR.getRequiredOrder();
+    private final Predicate<Discount> isEnough = discount -> discount.amount() >= STAR.getRequiredOrder();
 }
