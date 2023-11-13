@@ -6,7 +6,6 @@ import static christmas.promotion.Defaults.INITIAL_D_DAY_DISCOUNT;
 
 import christmas.order.TotalOrder;
 import christmas.order.menu.Price;
-import christmas.promotion.Defaults;
 import christmas.promotion.Discount;
 import christmas.view.input.Date;
 import christmas.view.input.Order;

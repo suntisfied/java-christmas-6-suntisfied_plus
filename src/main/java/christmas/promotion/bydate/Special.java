@@ -4,7 +4,6 @@ import static christmas.promotion.Defaults.SPECIAL_DISCOUNT;
 
 import christmas.order.TotalOrder;
 import christmas.order.menu.Price;
-import christmas.promotion.Defaults;
 import christmas.promotion.Discount;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
