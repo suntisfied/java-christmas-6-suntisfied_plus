@@ -4,8 +4,8 @@ import christmas.order.TotalOrder;
 import christmas.order.Volume;
 import christmas.order.menu.Menu;
 import christmas.view.input.Order;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Converter {
     private final Extractor extractor;
@@ -16,25 +16,10 @@ public class Converter {
         separator = new Separator();
     }
 
-    public TotalOrder createTotalOrder(Order order) {
-        List<String> menuNameAndAmounts = separator.createMenuNameAndAmounts(order);
-        HashMap<Menu, Volume> orderedMenuTotal = extractor.createMenus(menuNameAndAmounts);
+    public TotalOrder convertToTotalOrder(Order order) {
+        List<String> menuNameAndVolumes = separator.createMenuNameAndVolumes(order);
+        Map<Menu, Volume> orderedMenuTotal = extractor.createMenus(menuNameAndVolumes);
 
         return new TotalOrder(orderedMenuTotal);
-    }
-
-    public HashMap<String, Integer> createExtractedNameAndAmounts(Order order) {
-        HashMap<String, Integer> extractedNameAndAmounts = new HashMap<>();
-
-        List<String> menuNameAndNumbers = separator.createMenuNameAndAmounts(order);
-
-        List<String> extractNames = extractor.extractNames(menuNameAndNumbers);
-        List<Integer> extractAmounts = extractor.extractAmounts(menuNameAndNumbers);
-
-        for (int i = 0; i < extractNames.size(); i++) {
-            extractedNameAndAmounts.put(extractNames.get(i), extractAmounts.get(i));
-        }
-
-        return extractedNameAndAmounts;
     }
 }

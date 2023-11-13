@@ -29,7 +29,7 @@ public class FreeGift implements OrderGift {
     }
 
     private int determineFreeGiftAmount(Order order) {
-        TotalOrder totalOrder = new Converter().createTotalOrder(order);
+        TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
 
         int freeGiftAmount = 0;
         if (totalOrder.calculateTotalCost().price() >= MINIMUM_ORDER_FOR_FREE_GIFT.getNumber()) {
@@ -43,7 +43,7 @@ public class FreeGift implements OrderGift {
     }
 
     private final Predicate<Order> isEnough = order -> {
-        TotalOrder totalOrder = new Converter().createTotalOrder(order);
+        TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
         return totalOrder.calculateTotalCost().price() >= MINIMUM_ORDER_FOR_FREE_GIFT.getNumber();
     };
 }

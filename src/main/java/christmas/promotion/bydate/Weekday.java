@@ -17,7 +17,7 @@ public class Weekday implements DateDiscount {
     private Volume dessertVolume;
 
     public Weekday(Order order) {
-        TotalOrder totalOrder = new Converter().createTotalOrder(order);
+        TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
         dessertVolume = totalOrder.calculateVolumeByCategory(Category.DESSERT);
     }
 

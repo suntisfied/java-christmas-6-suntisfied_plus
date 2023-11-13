@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 
 public interface Benefit {
     Predicate<Order> isEnoughTotalOrder = order -> {
-        TotalOrder totalOrder = new Converter().createTotalOrder(order);
+        TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
         int totalOrderAmount = totalOrder.calculateTotalCost().price();
         return totalOrderAmount >= MINIMUM_ORDER_FOR_PROMOTION.getNumber();
     };

@@ -37,14 +37,14 @@ public class OrderInputChecker {
     }
 
     private final Predicate<Order> isNotInMenu = order -> {
-        TotalOrder totalOrder = new Converter().createTotalOrder(order);
+        TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
         List<Menu> orderedMenuNames = totalOrder.produceOrderedMenus();
         return orderedMenuNames.contains(null);
     };
 
     private final Predicate<Order> isInvalidFormat = order -> {
         Separator separator = new Separator();
-        List<String> MenuAndAmounts = separator.createMenuNameAndAmounts(order);
+        List<String> MenuAndAmounts = separator.createMenuNameAndVolumes(order);
 
         List<String> convertibleMembers = MenuAndAmounts.stream()
                 .filter(OrderInputChecker::isConvertibleToInt)
@@ -66,20 +66,20 @@ public class OrderInputChecker {
     }
 
     private final Predicate<Order> isOnlyDrinkOrder = order -> {
-        TotalOrder totalOrder = new Converter().createTotalOrder(order);
+        TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
         Volume totalVolume = totalOrder.calculateTotalVolume();
         Volume drinkVolume = totalOrder.calculateVolumeByCategory(Category.DRINK);
         return totalVolume.equals(drinkVolume);
     };
 
     private final Predicate<Order> isOverOrderLimit = order -> {
-        TotalOrder totalOrder = new Converter().createTotalOrder(order);
+        TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
         return totalOrder.calculateTotalVolume().volume() > ORDER_VOLUME_LIMIT.getNumber();
     };
 
     private final Predicate<Order> isDuplicate = order -> {
         Separator separator = new Separator();
-        List<String> menuNameAndAmounts = separator.createMenuNameAndAmounts(order);
+        List<String> menuNameAndAmounts = separator.createMenuNameAndVolumes(order);
         List<String> menuNames = menuNameAndAmounts.stream()
                 .filter(element -> !element.matches("\\d+"))
                 .toList();
@@ -89,7 +89,7 @@ public class OrderInputChecker {
 
     private final Predicate<Order> isMenuAmountZero = order -> {
         Separator separator = new Separator();
-        List<String> menuNameAndAmounts = separator.createMenuNameAndAmounts(order);
+        List<String> menuNameAndAmounts = separator.createMenuNameAndVolumes(order);
         return menuNameAndAmounts.contains("0");
     };
 }

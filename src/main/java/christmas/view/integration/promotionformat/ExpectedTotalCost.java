@@ -21,7 +21,7 @@ public class ExpectedTotalCost implements PromotionFormat {
 
     @Override
     public String format(Date date, Order order) {
-        TotalOrder totalOrder = new Converter().createTotalOrder(order);
+        TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
         TotalBenefit totalBenefit = new TotalBenefit();
 
         Map<Promotions, Discount> benefits = totalBenefit.createBenefits(date, order);

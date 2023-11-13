@@ -16,7 +16,7 @@ public class InitialTotalCost implements OrderFormat {
 
     @Override
     public String format(Order order) {
-        TotalOrder totalOrder = new Converter().createTotalOrder(order);
+        TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
         int totalOrderCost = totalOrder.calculateTotalCost().price();
 
         return numberFormatter.format(totalOrderCost)

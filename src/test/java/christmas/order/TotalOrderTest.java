@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 class TotalOrderTest {
     Order order = new Order("티본스테이크-2,양송이수프-1,아이스크림-1,레드와인-2");
-    TotalOrder totalOrder = new Converter().createTotalOrder(order);
+    TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
 
     @Test
     public void produceOrderedItemList() {

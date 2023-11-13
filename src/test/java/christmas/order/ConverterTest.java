@@ -5,25 +5,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 import christmas.order.converter.Converter;
 import christmas.order.menu.Menu;
 import christmas.view.input.Order;
-import java.util.HashMap;
 import org.junit.jupiter.api.Test;
 
 class ConverterTest {
     Order order = new Order("해산물파스타-2,레드와인-1,초코케이크-1");
-    Converter converter = new Converter();
 
     @Test
     public void convertInputToMenuList() {
-        HashMap<String, Integer>extractedNameAndAmounts = converter.createExtractedNameAndAmounts(order);
+        TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
 
-        assertThat(extractedNameAndAmounts.get("해산물파스타")).isEqualTo(2);
-        assertThat(extractedNameAndAmounts.get("레드와인")).isEqualTo(1);
-        assertThat(extractedNameAndAmounts.get("초코케이크")).isEqualTo(1);
+        assertThat(totalOrder.getVolumeByMenu(Menu.convertNameToMenu("해산물파스타"))).isEqualTo(new Volume(2));
+        assertThat(totalOrder.getVolumeByMenu(Menu.convertNameToMenu("레드와인"))).isEqualTo(new Volume(1));
+        assertThat(totalOrder.getVolumeByMenu(Menu.convertNameToMenu("초코케이크"))).isEqualTo(new Volume(1));
     }
 
     @Test
     public void convertInputToMenus() {
-        TotalOrder totalOrder = new Converter().createTotalOrder(order);
+        TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
 
         assertThat(totalOrder.getVolumeByMenu(Menu.SEAFOOD_PASTA)).isEqualTo(new Volume(2));
         assertThat(totalOrder.getVolumeByMenu(Menu.RED_WINE)).isEqualTo(new Volume(1));

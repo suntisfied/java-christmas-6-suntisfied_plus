@@ -10,7 +10,7 @@ import java.util.List;
 public class OrderedMenu implements OrderFormat {
     @Override
     public String format(Order order) {
-        TotalOrder totalOrder = new Converter().createTotalOrder(order);
+        TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
         List<Menu> orderedMenuNames = totalOrder.produceOrderedMenus();
 
         StringBuilder stringBuilder = new StringBuilder();

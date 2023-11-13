@@ -17,7 +17,7 @@ public class Weekend implements DateDiscount {
     private Volume mainDishVolume;
 
     public Weekend(Order order) {
-        TotalOrder totalOrder = new Converter().createTotalOrder(order);
+        TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
         mainDishVolume = totalOrder.calculateVolumeByCategory(Category.MAIN_DISH);
     }
 
