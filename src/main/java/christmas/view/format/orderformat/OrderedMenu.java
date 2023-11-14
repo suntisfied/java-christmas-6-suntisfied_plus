@@ -1,4 +1,4 @@
-package christmas.view.integration.orderformat;
+package christmas.view.format.orderformat;
 
 import christmas.order.TotalOrder;
 import christmas.converter.Converter;

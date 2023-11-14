@@ -1,4 +1,4 @@
-package christmas.view.integration.orderformat;
+package christmas.view.format.orderformat;
 
 import christmas.view.input.Order;
 

@@ -1,4 +1,4 @@
-package christmas.view.integration.promotionformat;
+package christmas.view.format.promotionformat;
 
 import static christmas.promotion.Promotions.D_DAY;
 import static christmas.promotion.Promotions.FREE_GIFT;

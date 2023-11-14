@@ -1,4 +1,4 @@
-package christmas.view.integration.promotionformat;
+package christmas.view.format.promotionformat;
 
 import christmas.view.input.Date;
 import christmas.view.input.Order;

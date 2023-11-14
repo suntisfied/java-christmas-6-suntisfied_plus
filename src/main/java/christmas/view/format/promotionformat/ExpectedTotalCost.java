@@ -1,4 +1,4 @@
-package christmas.view.integration.promotionformat;
+package christmas.view.format.promotionformat;
 
 import christmas.order.TotalOrder;
 import christmas.converter.Converter;

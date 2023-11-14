@@ -1,4 +1,4 @@
-package christmas.view.integration.orderformat;
+package christmas.view.format.orderformat;
 
 import christmas.order.Volume;
 import christmas.promotion.FreeGift;

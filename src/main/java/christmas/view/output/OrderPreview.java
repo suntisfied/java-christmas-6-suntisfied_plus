@@ -6,11 +6,11 @@ import static christmas.view.Messages.HEAD_ORDER_LIST;
 
 import christmas.view.Messages;
 import christmas.view.input.Order;
-import christmas.view.integration.orderformat.FreeGiftBenefit;
-import christmas.view.integration.orderformat.InitialTotalCost;
-import christmas.view.integration.orderformat.OrderFormat;
-import christmas.view.integration.orderformat.OrderFormatter;
-import christmas.view.integration.orderformat.OrderedMenu;
+import christmas.view.format.orderformat.FreeGiftBenefit;
+import christmas.view.format.orderformat.InitialTotalCost;
+import christmas.view.format.orderformat.OrderFormat;
+import christmas.view.format.orderformat.OrderFormatter;
+import christmas.view.format.orderformat.OrderedMenu;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
