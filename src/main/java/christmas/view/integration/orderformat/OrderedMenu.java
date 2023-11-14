@@ -17,7 +17,7 @@ public class OrderedMenu implements OrderFormat {
         for (Menu menu : orderedMenuNames) {
             stringBuilder.append(menu.getName())
                     .append(" ")
-                    .append(totalOrder.getVolumeByMenu(menu))
+                    .append(totalOrder.getVolumeByMenu(menu).volume())
                     .append(Messages.UNIT_COUNT.getMessage())
                     .append("\r\n");
         }

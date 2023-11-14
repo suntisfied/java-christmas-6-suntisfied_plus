@@ -12,7 +12,7 @@ import christmas.view.integration.promotionformat.BadgePromotion;
 import christmas.view.integration.promotionformat.ExpectedTotalCost;
 import christmas.view.integration.promotionformat.PromotionFormat;
 import christmas.view.integration.promotionformat.PromotionFormatter;
-import christmas.view.integration.promotionformat.PromotionList;
+import christmas.view.integration.promotionformat.BenefitDetails;
 import christmas.view.integration.promotionformat.TotalBenefitAmount;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -26,7 +26,7 @@ public class PromotionPreview {
         List<Messages> promotionHeadTexts =
                 Arrays.asList(HEAD_PROMOTION_LIST, HEAD_PROMOTION_AMOUNT, HEAD_EXPECTED_TOTAL_COST, HEAD_BADGE);
         List<PromotionFormat> promotions =
-                Arrays.asList(new PromotionList(),
+                Arrays.asList(new BenefitDetails(),
                         new TotalBenefitAmount(),
                         new ExpectedTotalCost(),
                         new BadgePromotion());

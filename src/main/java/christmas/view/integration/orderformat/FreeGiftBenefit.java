@@ -20,7 +20,7 @@ public class FreeGiftBenefit implements OrderFormat {
             for (FreeGifts currentFreeGift : freeGiftWithVolume.keySet()) {
                 stringBuilder.append(currentFreeGift.getName())
                         .append(" ")
-                        .append(freeGiftWithVolume.get(currentFreeGift))
+                        .append(freeGiftWithVolume.get(currentFreeGift).volume())
                         .append(Messages.UNIT_COUNT.getMessage());
             }
             freeGiftText = stringBuilder.toString();

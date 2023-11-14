@@ -17,10 +17,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-public class PromotionList implements PromotionFormat {
+public class BenefitDetails implements PromotionFormat {
     private final NumberFormat numberFormatter;
 
-    public PromotionList() {
+    public BenefitDetails() {
         numberFormatter = NumberFormat.getInstance(Locale.US);
     }
 
