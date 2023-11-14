@@ -15,13 +15,13 @@ class FreeGiftTest {
     })
     public void determineFreeGiftByOrder(String orderList, String freeGiftName) {
         Order order = new Order(orderList);
-        OrderBenefit orderBenefit = new OrderBenefit(new FreeGift(), new Badge());
+        FreeGift freeGift = new FreeGift();
 
-        FreeGifts freeGift = FreeGifts.NONE;
+        FreeGifts freeGifts = FreeGifts.NONE;
         if (freeGiftName.equals("샴페인")) {
-            freeGift = FreeGifts.FREE_GIFT;
+            freeGifts = FreeGifts.FREE_GIFT;
         }
 
-        assertThat(orderBenefit.determineGift(order).keySet()).containsExactly(freeGift);
+        assertThat(freeGift.determineGift(order).keySet()).containsExactly(freeGifts);
     }
 }

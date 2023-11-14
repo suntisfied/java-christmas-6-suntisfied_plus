@@ -1,8 +1,8 @@
 package christmas.view.integration.orderformat;
 
 import christmas.order.Volume;
+import christmas.promotion.byorder.FreeGift;
 import christmas.promotion.byorder.FreeGifts;
-import christmas.promotion.byorder.OrderBenefit;
 import christmas.view.Messages;
 import christmas.view.input.Order;
 import java.util.Map;
@@ -10,11 +10,11 @@ import java.util.Map;
 public class FreeGiftBenefit implements OrderFormat {
     @Override
     public String format(Order order) {
-        OrderBenefit orderBenefit = new OrderBenefit();
+        FreeGift freeGift = new FreeGift();
+        Map<FreeGifts, Volume> freeGiftWithVolume = freeGift.determineGift(order);
 
-        Map<FreeGifts, Volume> freeGiftWithVolume = orderBenefit.determineGift(order);
-        FreeGifts freeGift = FreeGifts.NONE;
-        String freeGiftText = freeGift.getName();
+        FreeGifts freeGifts = FreeGifts.NONE;
+        String freeGiftText = freeGifts.getName();
         if (!freeGiftWithVolume.containsKey(FreeGifts.NONE)) {
             StringBuilder stringBuilder = new StringBuilder();
             for (FreeGifts currentFreeGift : freeGiftWithVolume.keySet()) {

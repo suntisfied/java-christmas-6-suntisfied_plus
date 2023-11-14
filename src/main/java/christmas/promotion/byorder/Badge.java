@@ -5,11 +5,11 @@ import static christmas.promotion.byorder.Badges.SANTA;
 import static christmas.promotion.byorder.Badges.STAR;
 import static christmas.promotion.byorder.Badges.TREE;
 
+import christmas.promotion.Benefit;
 import christmas.promotion.Discount;
 import java.util.function.Predicate;
 
-public class Badge extends OrderBadge {
-    @Override
+public class Badge extends Benefit {
     public Badges determineBadge(Discount discount) {
         Badges badge = NONE;
         if (check(discount)) {
@@ -26,7 +26,6 @@ public class Badge extends OrderBadge {
         return badge;
     }
 
-    @Override
     protected boolean check(Discount discount) {
         return isEnough.test(discount);
     }

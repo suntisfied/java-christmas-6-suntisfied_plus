@@ -7,10 +7,8 @@ import christmas.promotion.bydate.Dday;
 import christmas.promotion.bydate.Special;
 import christmas.promotion.bydate.Weekday;
 import christmas.promotion.bydate.Weekend;
-import christmas.promotion.byorder.Badge;
 import christmas.promotion.byorder.FreeGift;
 import christmas.promotion.byorder.FreeGifts;
-import christmas.promotion.byorder.OrderBenefit;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
 import java.util.Arrays;
@@ -41,11 +39,11 @@ public class TotalBenefit {
     }
 
     private Map<Promotions, Discount> createOrderBenefits(Order order) {
-        OrderBenefit orderBenefit = new OrderBenefit(new FreeGift(), new Badge());
-        Map<FreeGifts, Volume> freeGiftWithVolume = orderBenefit.determineGift(order);
+        FreeGift freeGift = new FreeGift();
+        Map<FreeGifts, Volume> freeGiftWithVolume = freeGift.determineGift(order);
         Map<Promotions, Discount> orderBenefits = new HashMap<>();
-        for (FreeGifts freeGift : freeGiftWithVolume.keySet()) {
-            orderBenefits.put(Promotions.FREE_GIFT, new Discount(freeGift.getPrice().price()));
+        for (FreeGifts currentFreeGift : freeGiftWithVolume.keySet()) {
+            orderBenefits.put(Promotions.FREE_GIFT, new Discount(currentFreeGift.getPrice().price()));
         }
         orderBenefits.put(Promotions.BADGE, new Discount(0));
         return orderBenefits;
