@@ -6,39 +6,25 @@ import static christmas.promotion.Defaults.NUMBER_OF_FREE_GIFT;
 import christmas.order.TotalOrder;
 import christmas.order.Volume;
 import christmas.order.converter.Converter;
-import christmas.order.menu.Menu;
 import christmas.view.input.Order;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Predicate;
 
-public class FreeGift implements OrderGift {
-
+public class FreeGift extends OrderGift {
     @Override
-    public boolean check(Order order) {
-        return isValid(order);
-    }
-
-    @Override
-    public FreeGifts determineGift(Order order) {
-        HashMap<Menu, Volume> freeGifts = new HashMap<>();
+    public Map<FreeGifts, Volume> determineGift(Order order) {
+        Map<FreeGifts, Volume> freeGiftWithVolume = new HashMap<>();
+        freeGiftWithVolume.put(FreeGifts.NONE, new Volume(0));
         if (check(order)) {
-            int freeGiftAmount = determineFreeGiftAmount(order);
-            freeGifts.put(Menu.CHAMPAGNE, new Volume(freeGiftAmount));
+            freeGiftWithVolume = new HashMap<>();
+            freeGiftWithVolume.put(FreeGifts.FREE_GIFT, new Volume(NUMBER_OF_FREE_GIFT.getNumber()));
         }
-        return new FreeGifts(freeGifts);
+        return freeGiftWithVolume;
     }
 
-    private int determineFreeGiftAmount(Order order) {
-        TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
-
-        int freeGiftAmount = 0;
-        if (totalOrder.calculateTotalCost().price() >= MINIMUM_ORDER_FOR_FREE_GIFT.getNumber()) {
-            freeGiftAmount = NUMBER_OF_FREE_GIFT.getNumber();
-        }
-        return freeGiftAmount;
-    }
-
-    private boolean isValid(Order order) {
+    @Override
+    protected boolean check(Order order) {
         return isEnough.test(order) && isEnoughTotalOrder.test(order);
     }
 

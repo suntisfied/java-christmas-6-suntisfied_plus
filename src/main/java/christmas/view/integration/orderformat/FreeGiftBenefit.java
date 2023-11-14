@@ -1,33 +1,32 @@
 package christmas.view.integration.orderformat;
 
 import christmas.order.Volume;
-import christmas.order.menu.Menu;
-import christmas.promotion.Promotions;
+import christmas.promotion.byorder.FreeGifts;
 import christmas.promotion.byorder.OrderBenefit;
 import christmas.view.Messages;
 import christmas.view.input.Order;
 import java.util.Map;
-import java.util.Set;
 
 public class FreeGiftBenefit implements OrderFormat {
     @Override
     public String format(Order order) {
         OrderBenefit orderBenefit = new OrderBenefit();
 
-        String freeGiftText = Promotions.NONE.getText();
-        if (!orderBenefit.determineGift(order).freeGifts().isEmpty()) {
-            Map<Menu, Volume> rawFreeGifts = orderBenefit.determineGift(order).freeGifts();
-            Set<Menu> freeGiftNames = rawFreeGifts.keySet();
-
+        Map<FreeGifts, Volume> freeGiftWithVolume = orderBenefit.determineGift(order);
+        FreeGifts freeGift = FreeGifts.NONE;
+        String freeGiftText = freeGift.getName();
+        if (!freeGiftWithVolume.containsKey(FreeGifts.NONE)) {
             StringBuilder stringBuilder = new StringBuilder();
-            for (Menu menu : freeGiftNames) {
-                stringBuilder.append(menu.getName())
+            for (FreeGifts currentFreeGift : freeGiftWithVolume.keySet()) {
+                stringBuilder.append(currentFreeGift.getName())
                         .append(" ")
-                        .append(rawFreeGifts.get(menu).volume())
+                        .append(freeGiftWithVolume.get(currentFreeGift))
                         .append(Messages.UNIT_COUNT.getMessage());
             }
             freeGiftText = stringBuilder.toString();
         }
+
+
         return freeGiftText;
     }
 }
