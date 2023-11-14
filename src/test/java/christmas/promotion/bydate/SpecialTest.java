@@ -2,28 +2,24 @@ package christmas.promotion.bydate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.promotion.Discount;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class SpecialTest {
-    Order order = new Order("티본스테이크-2,양송이수프-1,아이스크림-1,레드와인-2");
-    DateBenefit dateBenefit = new DateBenefit(new Special());
+    @ParameterizedTest
+    @CsvSource({
+            "'티본스테이크-1,레드와인-1', 3, 1000",
+            "'티본스테이크-1,레드와인-1', 4, 0",
+            "'타파스-1,제로콜라-1', 4, 0",
+    })
+    public void calculateSpecialDiscount(String orderList, int date, int discount) {
+        Order order = new Order(orderList);
+        DateBenefit dateBenefit = new DateBenefit(new Special());
 
-    @Test
-    public void checkSpecialDay() {
-        assertThat(dateBenefit.check(new Date(17), order)).isTrue();
-    }
-
-    @Test
-    public void checkEnoughTotalOrderAmount() {
-        order = new Order("타파스-1,제로콜라-1");
-
-        assertThat(dateBenefit.check(new Date(17), order)).isFalse();
-    }
-
-    @Test
-    public void checkNonSpecialDay() {
-        assertThat(dateBenefit.check(new Date(18), order)).isFalse();
+        assertThat(dateBenefit.calculateDiscount(new Date(date), order)).isEqualTo(new Discount(discount));
     }
 }

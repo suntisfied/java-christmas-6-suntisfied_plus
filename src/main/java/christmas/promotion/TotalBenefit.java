@@ -1,7 +1,6 @@
 package christmas.promotion;
 
 import christmas.order.Volume;
-import christmas.order.menu.Menu;
 import christmas.promotion.bydate.DateBenefit;
 import christmas.promotion.bydate.DateDiscount;
 import christmas.promotion.bydate.Dday;
@@ -10,6 +9,7 @@ import christmas.promotion.bydate.Weekday;
 import christmas.promotion.bydate.Weekend;
 import christmas.promotion.byorder.Badge;
 import christmas.promotion.byorder.FreeGift;
+import christmas.promotion.byorder.FreeGifts;
 import christmas.promotion.byorder.OrderBenefit;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
@@ -42,15 +42,11 @@ public class TotalBenefit {
 
     private Map<Promotions, Discount> createOrderBenefits(Order order) {
         OrderBenefit orderBenefit = new OrderBenefit(new FreeGift(), new Badge());
-        int freeGiftPrice = 0;
-        if (!orderBenefit.determineGift(order).freeGifts().isEmpty()) {
-            Map<Menu, Volume> rawFreeGift = orderBenefit.determineGift(order).freeGifts();
-            for (Menu menu : rawFreeGift.keySet()) {
-                freeGiftPrice += menu.getPrice().price();
-            }
-        }
+        Map<FreeGifts, Volume> freeGiftWithVolume = orderBenefit.determineGift(order);
         Map<Promotions, Discount> orderBenefits = new HashMap<>();
-        orderBenefits.put(Promotions.FREE_GIFT, new Discount(freeGiftPrice));
+        for (FreeGifts freeGift : freeGiftWithVolume.keySet()) {
+            orderBenefits.put(Promotions.FREE_GIFT, new Discount(freeGift.getPrice().price()));
+        }
         orderBenefits.put(Promotions.BADGE, new Discount(0));
         return orderBenefits;
     }

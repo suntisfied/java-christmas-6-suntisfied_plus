@@ -6,34 +6,21 @@ import christmas.promotion.Discount;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class WeekendTest {
-    Order order = new Order("티본스테이크-2,양송이수프-1,아이스크림-1,레드와인-2");
-    DateBenefit dateBenefit = new DateBenefit(new Weekend(order));
-
-    @Test
-    public void checkWeekend() {
-        assertThat(dateBenefit.check(new Date(8), order)).isTrue();
-    }
-
-    @Test
-    public void checkEnoughTotalOrderAmount() {
-        order = new Order("타파스-1,제로콜라-1");
+    @ParameterizedTest
+    @CsvSource({
+            "'티본스테이크-1,레드와인-1', 8, 2023",
+            "'티본스테이크-2,레드와인-1', 8, 4046",
+            "'타파스-2,레드와인-1', 8, 0",
+            "'티본스테이크-2,레드와인-1', 7, 0",
+    })
+    public void calculateWeekendDiscount(String orderList, int date, int discount) {
+        Order order = new Order(orderList);
         DateBenefit dateBenefit = new DateBenefit(new Weekend(order));
 
-        assertThat(dateBenefit.check(new Date(8), order)).isFalse();
-    }
-
-    @Test
-    public void checkNonWeekend() {
-        assertThat(dateBenefit.check(new Date(7), order)).isFalse();
-    }
-
-    @Test
-    public void calculateDiscountBasedOnMainDishOrder() {
-        Order order = new Order("티본스테이크-2,양송이수프-1,아이스크림-3,레드와인-2");
-        DateBenefit dateBenefit = new DateBenefit(new Weekend(order));
-
-        assertThat(dateBenefit.calculateDiscount(new Date(8), order)).isEqualTo(new Discount(4046));
+        assertThat(dateBenefit.calculateDiscount(new Date(date), order)).isEqualTo(new Discount(discount));
     }
 }

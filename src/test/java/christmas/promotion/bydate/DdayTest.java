@@ -6,30 +6,21 @@ import christmas.promotion.Discount;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class DdayTest {
-    Order order = new Order("티본스테이크-2,양송이수프-1,아이스크림-1,레드와인-2");
-    DateBenefit dateBenefit = new DateBenefit(new Dday());
+    @ParameterizedTest
+    @CsvSource({
+            "'티본스테이크-1,레드와인-1', 1, 1000",
+            "'티본스테이크-1,레드와인-1', 25, 3400",
+            "'티본스테이크-1,레드와인-1', 26, 0",
+            "'타파스-1,제로콜라-1', 25, 0"
+    })
+    public void calculateDdayDiscount(String orderList, int date, int discount) {
+        Order order = new Order(orderList);
+        DateBenefit dateBenefit = new DateBenefit(new Dday());
 
-    @Test
-    public void checkWithinDday() {
-        assertThat(dateBenefit.check(new Date(7), order)).isTrue();
-    }
-
-    @Test
-    public void checkEnoughTotalOrderAmount() {
-        order = new Order("타파스-1,제로콜라-1");
-
-        assertThat(dateBenefit.check(new Date(7), order)).isFalse();
-    }
-
-    @Test
-    public void checkBeyondDday() {
-        assertThat(dateBenefit.check(new Date(26), order)).isFalse();
-    }
-
-    @Test
-    public void calculateDdayDiscount() {
-        assertThat(dateBenefit.calculateDiscount(new Date(25), order)).isEqualTo(new Discount(3400));
+        assertThat(dateBenefit.calculateDiscount(new Date(date), order)).isEqualTo(new Discount(discount));
     }
 }
