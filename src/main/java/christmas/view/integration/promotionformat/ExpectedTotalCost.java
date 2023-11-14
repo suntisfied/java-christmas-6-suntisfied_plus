@@ -1,7 +1,7 @@
 package christmas.view.integration.promotionformat;
 
 import christmas.order.TotalOrder;
-import christmas.order.converter.Converter;
+import christmas.converter.Converter;
 import christmas.promotion.Promotions;
 import christmas.promotion.TotalBenefit;
 import christmas.view.Messages;

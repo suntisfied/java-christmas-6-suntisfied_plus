@@ -3,7 +3,7 @@ package christmas.promotion;
 import static christmas.promotion.Defaults.MINIMUM_ORDER_FOR_PROMOTION;
 
 import christmas.order.TotalOrder;
-import christmas.order.converter.Converter;
+import christmas.converter.Converter;
 import christmas.view.input.Order;
 import java.util.function.Predicate;
 

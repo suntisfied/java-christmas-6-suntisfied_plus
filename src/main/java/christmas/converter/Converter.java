@@ -1,4 +1,4 @@
-package christmas.order.converter;
+package christmas.converter;
 
 import christmas.order.TotalOrder;
 import christmas.order.Volume;

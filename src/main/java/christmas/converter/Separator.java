@@ -1,4 +1,4 @@
-package christmas.order.converter;
+package christmas.converter;
 
 import christmas.view.input.Order;
 import java.util.ArrayList;

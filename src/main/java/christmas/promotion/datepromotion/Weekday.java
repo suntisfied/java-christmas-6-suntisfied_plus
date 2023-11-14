@@ -5,7 +5,7 @@ import static christmas.promotion.datepromotion.Days.WEEKDAYS;
 
 import christmas.order.TotalOrder;
 import christmas.order.Volume;
-import christmas.order.converter.Converter;
+import christmas.converter.Converter;
 import christmas.order.menu.Category;
 import christmas.promotion.Discount;
 import christmas.view.input.Date;

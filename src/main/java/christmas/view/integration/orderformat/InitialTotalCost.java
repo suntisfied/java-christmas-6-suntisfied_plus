@@ -1,7 +1,7 @@
 package christmas.view.integration.orderformat;
 
 import christmas.order.TotalOrder;
-import christmas.order.converter.Converter;
+import christmas.converter.Converter;
 import christmas.view.Messages;
 import christmas.view.input.Order;
 import java.text.NumberFormat;

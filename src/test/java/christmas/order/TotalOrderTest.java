@@ -2,7 +2,7 @@ package christmas.order;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.order.converter.Converter;
+import christmas.converter.Converter;
 import christmas.order.menu.Menu;
 import christmas.order.menu.Price;
 import christmas.view.input.Order;

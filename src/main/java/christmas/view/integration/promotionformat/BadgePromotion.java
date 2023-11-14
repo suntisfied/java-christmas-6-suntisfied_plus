@@ -1,6 +1,6 @@
 package christmas.view.integration.promotionformat;
 
-import christmas.order.converter.Converter;
+import christmas.converter.Converter;
 import christmas.promotion.Discount;
 import christmas.promotion.TotalBenefit;
 import christmas.promotion.orderpromotion.Badge;

@@ -4,8 +4,8 @@ import static christmas.promotion.Defaults.ORDER_VOLUME_LIMIT;
 
 import christmas.order.TotalOrder;
 import christmas.order.Volume;
-import christmas.order.converter.Converter;
-import christmas.order.converter.Separator;
+import christmas.converter.Converter;
+import christmas.converter.Separator;
 import christmas.order.menu.Category;
 import christmas.order.menu.Menu;
 import christmas.view.Messages;

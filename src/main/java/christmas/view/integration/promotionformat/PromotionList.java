@@ -6,7 +6,7 @@ import static christmas.promotion.Promotions.SPECIAL;
 import static christmas.promotion.Promotions.WEEKDAY;
 import static christmas.promotion.Promotions.WEEKEND;
 
-import christmas.order.converter.Converter;
+import christmas.converter.Converter;
 import christmas.promotion.Promotions;
 import christmas.promotion.TotalBenefit;
 import christmas.view.Messages;

@@ -1,4 +1,4 @@
-package christmas.order.converter;
+package christmas.converter;
 
 import christmas.order.Volume;
 import christmas.order.menu.Menu;

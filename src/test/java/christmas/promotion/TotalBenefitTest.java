@@ -2,7 +2,7 @@ package christmas.promotion;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.order.converter.Converter;
+import christmas.converter.Converter;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
 import org.junit.jupiter.api.Test;

@@ -5,7 +5,7 @@ import static christmas.promotion.Defaults.NUMBER_OF_FREE_GIFT;
 
 import christmas.order.TotalOrder;
 import christmas.order.Volume;
-import christmas.order.converter.Converter;
+import christmas.converter.Converter;
 import christmas.promotion.Benefit;
 import christmas.view.input.Order;
 import java.util.HashMap;
