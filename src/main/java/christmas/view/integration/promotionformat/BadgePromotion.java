@@ -2,7 +2,7 @@ package christmas.view.integration.promotionformat;
 
 import christmas.promotion.Discount;
 import christmas.promotion.TotalBenefit;
-import christmas.promotion.byorder.Badge;
+import christmas.promotion.orderpromotion.Badge;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
 

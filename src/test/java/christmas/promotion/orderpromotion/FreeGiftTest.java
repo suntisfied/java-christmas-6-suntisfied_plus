@@ -1,4 +1,4 @@
-package christmas.promotion.byorder;
+package christmas.promotion.orderpromotion;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

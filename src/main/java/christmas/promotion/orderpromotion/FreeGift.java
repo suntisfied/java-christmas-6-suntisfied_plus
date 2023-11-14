@@ -1,4 +1,4 @@
-package christmas.promotion.byorder;
+package christmas.promotion.orderpromotion;
 
 import static christmas.promotion.Defaults.MINIMUM_ORDER_FOR_FREE_GIFT;
 import static christmas.promotion.Defaults.NUMBER_OF_FREE_GIFT;

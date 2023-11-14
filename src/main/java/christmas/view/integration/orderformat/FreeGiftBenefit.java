@@ -1,8 +1,8 @@
 package christmas.view.integration.orderformat;
 
 import christmas.order.Volume;
-import christmas.promotion.byorder.FreeGift;
-import christmas.promotion.byorder.FreeGifts;
+import christmas.promotion.orderpromotion.FreeGift;
+import christmas.promotion.orderpromotion.FreeGifts;
 import christmas.view.Messages;
 import christmas.view.input.Order;
 import java.util.Map;

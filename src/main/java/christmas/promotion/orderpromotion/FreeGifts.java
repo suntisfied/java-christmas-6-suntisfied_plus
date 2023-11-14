@@ -1,4 +1,4 @@
-package christmas.promotion.byorder;
+package christmas.promotion.orderpromotion;
 
 import christmas.order.menu.Menu;
 import christmas.order.menu.Price;

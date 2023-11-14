@@ -1,9 +1,9 @@
-package christmas.promotion.byorder;
+package christmas.promotion.orderpromotion;
 
-import static christmas.promotion.byorder.Badges.NONE;
-import static christmas.promotion.byorder.Badges.SANTA;
-import static christmas.promotion.byorder.Badges.STAR;
-import static christmas.promotion.byorder.Badges.TREE;
+import static christmas.promotion.orderpromotion.Badges.NONE;
+import static christmas.promotion.orderpromotion.Badges.SANTA;
+import static christmas.promotion.orderpromotion.Badges.STAR;
+import static christmas.promotion.orderpromotion.Badges.TREE;
 
 import christmas.promotion.Benefit;
 import christmas.promotion.Discount;
