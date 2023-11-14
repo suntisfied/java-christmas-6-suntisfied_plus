@@ -44,18 +44,18 @@ public class BenefitDetails implements PromotionFormat {
     }
 
     private String formatPromotions(TotalBenefit totalBenefit, List<Promotions> promotions) {
-        StringBuilder promotionTexts = new StringBuilder();
+        StringBuilder promotionTextBuilder = new StringBuilder();
         for (Promotions currentPromotion : promotions) {
             if (totalBenefit.getDiscountByPromotion(currentPromotion).amount() > 0) {
-                promotionTexts.append(currentPromotion.getText());
-                promotionTexts.append(Messages.MINUS.getMessage());
-                promotionTexts.append(numberFormatter.format(
+                promotionTextBuilder.append(currentPromotion.getText());
+                promotionTextBuilder.append(Messages.MINUS.getMessage());
+                promotionTextBuilder.append(numberFormatter.format(
                         totalBenefit.getDiscountByPromotion(currentPromotion).amount()));
-                promotionTexts.append(Messages.UNIT_CURRENCY.getMessage());
-                promotionTexts.append(System.lineSeparator());
+                promotionTextBuilder.append(Messages.UNIT_CURRENCY.getMessage());
+                promotionTextBuilder.append(System.lineSeparator());
             }
         }
-        promotionTexts = new BlankLineRemover().remove(promotionTexts, 1);
-        return promotionTexts.toString();
+        promotionTextBuilder = new BlankLineRemover().remove(promotionTextBuilder, 1);
+        return promotionTextBuilder.toString();
     }
 }

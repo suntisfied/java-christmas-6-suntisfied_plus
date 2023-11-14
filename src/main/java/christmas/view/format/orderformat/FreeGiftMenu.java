@@ -13,20 +13,17 @@ public class FreeGiftMenu implements OrderFormat {
         FreeGift freeGift = new FreeGift();
         Map<FreeGifts, Volume> freeGiftWithVolume = freeGift.determineGift(order);
 
-        FreeGifts freeGifts = FreeGifts.NONE;
-        String freeGiftText = freeGifts.getName();
+        String freeGiftText = FreeGifts.NONE.getName();
         if (!freeGiftWithVolume.containsKey(FreeGifts.NONE)) {
-            StringBuilder stringBuilder = new StringBuilder();
+            StringBuilder freeGiftTextBuilder = new StringBuilder();
             for (FreeGifts currentFreeGift : freeGiftWithVolume.keySet()) {
-                stringBuilder.append(currentFreeGift.getName())
+                freeGiftTextBuilder.append(currentFreeGift.getName())
                         .append(" ")
                         .append(freeGiftWithVolume.get(currentFreeGift).volume())
                         .append(Messages.UNIT_COUNT.getMessage());
             }
-            freeGiftText = stringBuilder.toString();
+            freeGiftText = freeGiftTextBuilder.toString();
         }
-
-
         return freeGiftText;
     }
 }

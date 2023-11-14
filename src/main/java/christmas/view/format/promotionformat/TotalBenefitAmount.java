@@ -20,13 +20,13 @@ public class TotalBenefitAmount implements PromotionFormat {
         TotalBenefit totalBenefit = new Converter().convertToTotalBenefit(date, order);
         int totalBenefitAmount = totalBenefit.calculateTotalBenefit().amount();
 
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder totalBenefitTextBuilder = new StringBuilder();
         if (totalBenefitAmount > 0) {
-            stringBuilder.append(Messages.MINUS.getMessage());
+            totalBenefitTextBuilder.append(Messages.MINUS.getMessage());
         }
-        stringBuilder.append(numberFormatter.format(totalBenefitAmount));
-        stringBuilder.append(Messages.UNIT_CURRENCY.getMessage());
+        totalBenefitTextBuilder.append(numberFormatter.format(totalBenefitAmount));
+        totalBenefitTextBuilder.append(Messages.UNIT_CURRENCY.getMessage());
 
-        return stringBuilder.toString();
+        return totalBenefitTextBuilder.toString();
     }
 }

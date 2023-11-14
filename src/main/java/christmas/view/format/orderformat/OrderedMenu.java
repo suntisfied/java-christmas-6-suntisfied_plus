@@ -14,15 +14,15 @@ public class OrderedMenu implements OrderFormat {
         TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
         List<Menu> orderedMenuNames = totalOrder.produceOrderedMenus();
 
-        StringBuilder orderedMenuTexts = new StringBuilder();
+        StringBuilder orderedMenuTextBuilder = new StringBuilder();
         for (Menu menu : orderedMenuNames) {
-            orderedMenuTexts.append(menu.getName())
+            orderedMenuTextBuilder.append(menu.getName())
                     .append(" ")
                     .append(totalOrder.getVolumeByMenu(menu).volume())
                     .append(Messages.UNIT_COUNT.getMessage())
                     .append(System.lineSeparator());
         }
-        orderedMenuTexts = new BlankLineRemover().remove(orderedMenuTexts, 1);
-        return orderedMenuTexts.toString();
+        orderedMenuTextBuilder = new BlankLineRemover().remove(orderedMenuTextBuilder, 1);
+        return orderedMenuTextBuilder.toString();
     }
 }
