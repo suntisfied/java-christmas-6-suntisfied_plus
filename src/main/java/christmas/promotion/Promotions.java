@@ -6,7 +6,6 @@ public enum Promotions {
     WEEKEND("주말 할인: "),
     SPECIAL("특별 할인: "),
     FREE_GIFT("증정 이벤트: "),
-    BADGE(""),
     NONE("없음");
 
     private final String headText;
