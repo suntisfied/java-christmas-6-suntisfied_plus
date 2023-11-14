@@ -7,8 +7,8 @@ import christmas.order.converter.Converter;
 import christmas.view.input.Order;
 import java.util.function.Predicate;
 
-public interface Benefit {
-    Predicate<Order> isEnoughTotalOrder = order -> {
+public abstract class Benefit {
+    protected Predicate<Order> isEnoughTotalOrder = order -> {
         TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
         int totalOrderAmount = totalOrder.calculateTotalCost().price();
         return totalOrderAmount >= MINIMUM_ORDER_FOR_PROMOTION.getNumber();

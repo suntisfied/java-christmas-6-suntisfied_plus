@@ -8,12 +8,7 @@ import static christmas.promotion.byorder.Badges.TREE;
 import christmas.promotion.Discount;
 import java.util.function.Predicate;
 
-public class Badge implements OrderBadge {
-    @Override
-    public boolean check(Discount discount) {
-        return isEnough.test(discount);
-    }
-
+public class Badge extends OrderBadge {
     @Override
     public Badges determineBadge(Discount discount) {
         Badges badge = NONE;
@@ -29,6 +24,11 @@ public class Badge implements OrderBadge {
             }
         }
         return badge;
+    }
+
+    @Override
+    protected boolean check(Discount discount) {
+        return isEnough.test(discount);
     }
 
     private final Predicate<Discount> isEnough = discount -> discount.amount() >= STAR.getRequiredOrder();

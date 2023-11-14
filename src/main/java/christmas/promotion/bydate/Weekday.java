@@ -13,17 +13,12 @@ import christmas.view.input.Order;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class Weekday implements DateDiscount {
+public class Weekday extends DateDiscount {
     private Volume dessertVolume;
 
     public Weekday(Order order) {
         TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
         dessertVolume = totalOrder.calculateVolumeByCategory(Category.DESSERT);
-    }
-
-    @Override
-    public boolean check(Date date, Order order) {
-        return isValid(date, order);
     }
 
     @Override
@@ -35,7 +30,8 @@ public class Weekday implements DateDiscount {
         return new Discount(totalDiscount);
     }
 
-    private boolean isValid(Date date, Order order) {
+    @Override
+    protected boolean check(Date date, Order order) {
         return isWeekday.test(date) && isDessertOrdered.test(order) && isEnoughTotalOrder.test(order);
     }
 

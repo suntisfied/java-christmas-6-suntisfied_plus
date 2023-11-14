@@ -9,12 +9,7 @@ import christmas.view.input.Date;
 import christmas.view.input.Order;
 import java.util.function.Predicate;
 
-public class Dday implements DateDiscount {
-    @Override
-    public boolean check(Date date, Order order) {
-        return isValid(date, order);
-    }
-
+public class Dday extends DateDiscount {
     @Override
     public Discount calculateDiscount(Date date, Order order) {
         int totalDiscount = 0;
@@ -28,7 +23,8 @@ public class Dday implements DateDiscount {
         return new Discount(totalDiscount);
     }
 
-    private boolean isValid(Date date, Order order) {
+    @Override
+    protected boolean check(Date date, Order order) {
         return isWithinDday.test(date) && isEnoughTotalOrder.test(order);
     }
 

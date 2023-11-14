@@ -1,9 +1,11 @@
 package christmas.promotion.byorder;
 
+import christmas.order.Volume;
 import christmas.promotion.Discount;
 import christmas.view.input.Order;
+import java.util.Map;
 
-public class OrderBenefit implements OrderGift, OrderBadge {
+public class OrderBenefit {
     private final OrderGift orderGift;
     private final OrderBadge orderBadge;
 
@@ -17,22 +19,10 @@ public class OrderBenefit implements OrderGift, OrderBadge {
         this.orderBadge = orderBadge;
     }
 
-    @Override
-    public boolean check(Order order) {
-        return orderGift.check(order);
-    }
-
-    @Override
-    public FreeGifts determineGift(Order order) {
+    public Map<FreeGifts, Volume> determineGift(Order order) {
         return orderGift.determineGift(order);
     }
 
-    @Override
-    public boolean check(Discount discount) {
-        return orderBadge.check(discount);
-    }
-
-    @Override
     public Badges determineBadge(Discount discount) {
         return orderBadge.determineBadge(discount);
     }

@@ -8,12 +8,7 @@ import christmas.view.input.Order;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class Special implements DateDiscount {
-    @Override
-    public boolean check(Date date, Order order) {
-        return isValid(date, order);
-    }
-
+public class Special extends DateDiscount {
     @Override
     public Discount calculateDiscount(Date date, Order order) {
         int totalDiscount = 0;
@@ -23,7 +18,8 @@ public class Special implements DateDiscount {
         return new Discount(totalDiscount);
     }
 
-    private boolean isValid(Date date, Order order) {
+    @Override
+    protected boolean check(Date date, Order order) {
         return isSpecialDay.test(date) && isEnoughTotalOrder.test(order);
     }
 
