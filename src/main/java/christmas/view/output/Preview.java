@@ -19,12 +19,13 @@ public class Preview {
         previews.putAll(new PromotionPreview().build(date, order));
 
         String previewText = previews.entrySet().stream()
-                .flatMap(entry -> Stream.of(entry.getKey() + "\r\n", entry.getValue() + "\r\n\r\n"))
+                .flatMap(entry -> Stream.of(entry.getKey() + System.lineSeparator(),
+                        entry.getValue() + System.lineSeparator() + System.lineSeparator()))
                 .collect(Collectors.joining());
 
         return HEAD_PREVIEW.getMessage()
-                + "\r\n"
-                + "\r\n"
+                + System.lineSeparator()
+                + System.lineSeparator()
                 + previewText;
     }
 }

@@ -51,7 +51,7 @@ public class BenefitDetails implements PromotionFormat {
                 promotionTexts.append(numberFormatter.format(
                         totalBenefit.getDiscountByPromotion(currentPromotion).amount()));
                 promotionTexts.append(Messages.UNIT_CURRENCY.getMessage());
-                promotionTexts.append("\r\n");
+                promotionTexts.append(System.lineSeparator());
             }
         }
         if (!promotionTexts.isEmpty()) {

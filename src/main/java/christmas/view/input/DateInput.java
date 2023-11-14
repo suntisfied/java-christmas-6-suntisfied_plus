@@ -6,7 +6,7 @@ import static christmas.view.Messages.INTRODUCTION;
 
 public class DateInput extends DateInputChecker {
     public Date askDate() {
-        String initialTexts = INTRODUCTION.getMessage() + "\r\n" +  DATE_INPUT_INSTRUCTION.getMessage();
+        String initialTexts = INTRODUCTION.getMessage() + System.lineSeparator() +  DATE_INPUT_INSTRUCTION.getMessage();
         System.out.println(initialTexts);
 
         String input;
