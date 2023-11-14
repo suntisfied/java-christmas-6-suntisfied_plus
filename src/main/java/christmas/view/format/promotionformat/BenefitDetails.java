@@ -10,6 +10,7 @@ import christmas.converter.Converter;
 import christmas.promotion.Promotions;
 import christmas.promotion.TotalBenefit;
 import christmas.view.Messages;
+import christmas.view.format.BlankLineRemover;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
 import java.text.NumberFormat;
@@ -54,9 +55,7 @@ public class BenefitDetails implements PromotionFormat {
                 promotionTexts.append(System.lineSeparator());
             }
         }
-        if (!promotionTexts.isEmpty()) {
-            promotionTexts.delete(promotionTexts.length() - 2, promotionTexts.length());
-        }
+        promotionTexts = new BlankLineRemover().remove(promotionTexts, 1);
         return promotionTexts.toString();
     }
 }
