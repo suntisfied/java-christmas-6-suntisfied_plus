@@ -1,5 +1,6 @@
 package christmas.view.integration.promotionformat;
 
+import christmas.order.converter.Converter;
 import christmas.promotion.Discount;
 import christmas.promotion.TotalBenefit;
 import christmas.promotion.orderpromotion.Badge;
@@ -10,9 +11,9 @@ public class BadgePromotion implements PromotionFormat {
     @Override
     public String format(Date date, Order order) {
         Badge badge = new Badge();
-        TotalBenefit totalBenefit = new TotalBenefit();
+        TotalBenefit totalBenefit = new Converter().convertToTotalBenefit(date, order);
 
-        Discount totalBenefitAmount = totalBenefit.calculateTotalBenefit(date, order);
+        Discount totalBenefitAmount = totalBenefit.calculateTotalBenefit();
 
         return badge.determineBadge(totalBenefitAmount).getName();
     }

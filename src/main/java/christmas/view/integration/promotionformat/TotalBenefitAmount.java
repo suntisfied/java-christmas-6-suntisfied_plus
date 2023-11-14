@@ -1,5 +1,6 @@
 package christmas.view.integration.promotionformat;
 
+import christmas.order.converter.Converter;
 import christmas.promotion.TotalBenefit;
 import christmas.view.Messages;
 import christmas.view.input.Date;
@@ -16,8 +17,8 @@ public class TotalBenefitAmount implements PromotionFormat {
 
     @Override
     public String format(Date date, Order order) {
-        TotalBenefit totalBenefit = new TotalBenefit();
-        int totalBenefitAmount = totalBenefit.calculateTotalBenefit(date, order).amount();
+        TotalBenefit totalBenefit = new Converter().convertToTotalBenefit(date, order);
+        int totalBenefitAmount = totalBenefit.calculateTotalBenefit().amount();
 
         StringBuilder stringBuilder = new StringBuilder();
         if (totalBenefitAmount > 0) {

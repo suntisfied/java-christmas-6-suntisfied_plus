@@ -6,7 +6,7 @@ import static christmas.promotion.Promotions.SPECIAL;
 import static christmas.promotion.Promotions.WEEKDAY;
 import static christmas.promotion.Promotions.WEEKEND;
 
-import christmas.promotion.Discount;
+import christmas.order.converter.Converter;
 import christmas.promotion.Promotions;
 import christmas.promotion.TotalBenefit;
 import christmas.view.Messages;
@@ -16,7 +16,6 @@ import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 public class PromotionList implements PromotionFormat {
     private final NumberFormat numberFormatter;
@@ -37,20 +36,20 @@ public class PromotionList implements PromotionFormat {
     }
 
     private String buildPromotions(Date date, Order order) {
-        TotalBenefit totalBenefit = new TotalBenefit();
-        Map<Promotions, Discount> benefits = totalBenefit.createBenefits(date, order);
+        TotalBenefit totalBenefit = new Converter().convertToTotalBenefit(date, order);
         List<Promotions> promotions = Arrays.asList(D_DAY, WEEKDAY, WEEKEND, SPECIAL, FREE_GIFT);
 
-        return formatPromotions(benefits, promotions);
+        return formatPromotions(totalBenefit, promotions);
     }
 
-    private String formatPromotions(Map<Promotions, Discount> benefits, List<Promotions> promotions) {
+    private String formatPromotions(TotalBenefit totalBenefit, List<Promotions> promotions) {
         StringBuilder promotionTexts = new StringBuilder();
-        for (Promotions promotion : promotions) {
-            if (benefits.get(promotion).amount() > 0) {
-                promotionTexts.append(promotion.getText());
+        for (Promotions currentPromotion : promotions) {
+            if (totalBenefit.getDiscountByPromotion(currentPromotion).amount() > 0) {
+                promotionTexts.append(currentPromotion.getText());
                 promotionTexts.append(Messages.MINUS.getMessage());
-                promotionTexts.append(numberFormatter.format(benefits.get(promotion).amount()));
+                promotionTexts.append(numberFormatter.format(
+                        totalBenefit.getDiscountByPromotion(currentPromotion).amount()));
                 promotionTexts.append(Messages.UNIT_CURRENCY.getMessage());
                 promotionTexts.append("\r\n");
             }

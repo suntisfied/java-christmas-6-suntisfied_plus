@@ -2,6 +2,7 @@ package christmas.promotion;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.order.converter.Converter;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
 import org.junit.jupiter.api.Test;
@@ -11,9 +12,9 @@ class TotalBenefitTest {
 
     @Test
     public void calculateTotalBenefit() {
-        TotalBenefit totalBenefit = new TotalBenefit();
+        TotalBenefit totalBenefit = new Converter().convertToTotalBenefit(new Date(10), order);
 
-        assertThat(totalBenefit.calculateTotalBenefit(new Date(10), order))
+        assertThat(totalBenefit.calculateTotalBenefit())
                 .isEqualTo(new Discount(31946));
     }
 }
