@@ -16,8 +16,8 @@ public class Application {
         Date date = dateInput.askDate();
         Order order = orderInput.askOrder();
 
-        Console.close();
-
         preview.display(date, order);
+
+        Console.close();
     }
 }
