@@ -2,21 +2,22 @@ package christmas.promotion.orderpromotion;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.promotion.Discount;
+import christmas.view.input.Date;
+import christmas.view.input.Order;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class BadgeTest {
     @ParameterizedTest
     @CsvSource({
-            "0, 없음",
-            "5000, 스타",
-            "10000, 트리",
-            "20000, 산타"
+            "26, '아이스크림-1', 없음",
+            "26, '아이스크림-3', 스타",
+            "26, '아이스크림-5', 트리",
+            "26, '아이스크림-10', 산타",
     })
-    public void checkCorrectBadge(int discountAmount, String badgeName) {
+    public void checkCorrectBadge(int date, String order, String badgeName) {
         Badge badge = new Badge();
 
-        assertThat(badge.determineBadge(new Discount(discountAmount)).getName()).isEqualTo(badgeName);
+        assertThat(badge.determineBadge(new Date(date), new Order(order)).getName()).isEqualTo(badgeName);
     }
 }
