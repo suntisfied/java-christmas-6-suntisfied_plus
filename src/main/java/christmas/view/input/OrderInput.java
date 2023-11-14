@@ -1,13 +1,11 @@
 package christmas.view.input;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-
-import christmas.view.Messages;
+import static christmas.view.Messages.ORDER_INPUT_INSTRUCTION;
 
 public class OrderInput extends OrderInputChecker {
     public Order askOrder() {
-        System.out.println(Messages.INTRODUCTION.getMessage());
-        System.out.println(Messages.ORDER_INPUT_INSTRUCTION.getMessage());
+        System.out.println(ORDER_INPUT_INSTRUCTION.getMessage());
 
         String input;
         do {
