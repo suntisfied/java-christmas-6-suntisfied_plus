@@ -1,7 +1,7 @@
-package christmas.promotion.bydate;
+package christmas.promotion.datepromotion;
 
 import static christmas.promotion.Defaults.WEEKDAY_DISCOUNT_UNIT;
-import static christmas.promotion.bydate.Days.WEEKDAYS;
+import static christmas.promotion.datepromotion.Days.WEEKDAYS;
 
 import christmas.order.TotalOrder;
 import christmas.order.Volume;

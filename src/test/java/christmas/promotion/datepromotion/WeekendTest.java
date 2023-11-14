@@ -1,11 +1,10 @@
-package christmas.promotion.bydate;
+package christmas.promotion.datepromotion;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.promotion.Discount;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 

@@ -1,4 +1,4 @@
-package christmas.promotion.bydate;
+package christmas.promotion.datepromotion;
 
 import static christmas.promotion.Defaults.SPECIAL_DISCOUNT;
 

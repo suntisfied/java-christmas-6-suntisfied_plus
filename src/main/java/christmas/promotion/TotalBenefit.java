@@ -1,12 +1,12 @@
 package christmas.promotion;
 
 import christmas.order.Volume;
-import christmas.promotion.bydate.DateBenefit;
-import christmas.promotion.bydate.DateDiscount;
-import christmas.promotion.bydate.Dday;
-import christmas.promotion.bydate.Special;
-import christmas.promotion.bydate.Weekday;
-import christmas.promotion.bydate.Weekend;
+import christmas.promotion.datepromotion.DateBenefit;
+import christmas.promotion.datepromotion.DateDiscount;
+import christmas.promotion.datepromotion.Dday;
+import christmas.promotion.datepromotion.Special;
+import christmas.promotion.datepromotion.Weekday;
+import christmas.promotion.datepromotion.Weekend;
 import christmas.promotion.byorder.FreeGift;
 import christmas.promotion.byorder.FreeGifts;
 import christmas.view.input.Date;

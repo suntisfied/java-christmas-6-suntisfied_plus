@@ -1,4 +1,4 @@
-package christmas.promotion.bydate;
+package christmas.promotion.datepromotion;
 
 import christmas.promotion.Discount;
 import christmas.view.input.Date;

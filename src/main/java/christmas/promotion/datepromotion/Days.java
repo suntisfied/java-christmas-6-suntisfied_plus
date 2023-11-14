@@ -1,4 +1,4 @@
-package christmas.promotion.bydate;
+package christmas.promotion.datepromotion;
 
 import java.util.Arrays;
 import java.util.List;
