@@ -1,14 +1,11 @@
-package christmas.promotion.orderpromotion;
+package christmas.promotion;
 
-import static christmas.promotion.orderpromotion.Badges.NONE;
-import static christmas.promotion.orderpromotion.Badges.SANTA;
-import static christmas.promotion.orderpromotion.Badges.STAR;
-import static christmas.promotion.orderpromotion.Badges.TREE;
+import static christmas.promotion.Badges.NONE;
+import static christmas.promotion.Badges.SANTA;
+import static christmas.promotion.Badges.STAR;
+import static christmas.promotion.Badges.TREE;
 
 import christmas.converter.Converter;
-import christmas.promotion.Benefit;
-import christmas.promotion.Discount;
-import christmas.promotion.TotalBenefit;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
 import java.util.function.Predicate;

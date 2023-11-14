@@ -1,6 +1,6 @@
 package christmas.view.integration.promotionformat;
 
-import christmas.promotion.orderpromotion.Badge;
+import christmas.promotion.Badge;
 import christmas.view.input.Date;
 import christmas.view.input.Order;
 

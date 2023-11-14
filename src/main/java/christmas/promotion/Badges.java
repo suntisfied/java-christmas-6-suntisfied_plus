@@ -1,4 +1,4 @@
-package christmas.promotion.orderpromotion;
+package christmas.promotion;
 
 public enum Badges {
     NONE(0, "없음"),
