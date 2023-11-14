@@ -7,7 +7,7 @@ import christmas.view.Messages;
 import christmas.view.input.Order;
 import java.util.Map;
 
-public class FreeGiftBenefit implements OrderFormat {
+public class FreeGiftMenu implements OrderFormat {
     @Override
     public String format(Order order) {
         FreeGift freeGift = new FreeGift();

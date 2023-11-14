@@ -6,7 +6,7 @@ import static christmas.view.Messages.HEAD_ORDER_LIST;
 
 import christmas.view.Messages;
 import christmas.view.input.Order;
-import christmas.view.format.orderformat.FreeGiftBenefit;
+import christmas.view.format.orderformat.FreeGiftMenu;
 import christmas.view.format.orderformat.InitialTotalCost;
 import christmas.view.format.orderformat.OrderFormat;
 import christmas.view.format.orderformat.OrderFormatter;
@@ -25,7 +25,7 @@ public class OrderPreview {
         List<OrderFormat> orders =
                 Arrays.asList(new OrderedMenu(),
                         new InitialTotalCost(),
-                        new FreeGiftBenefit());
+                        new FreeGiftMenu());
 
         for (int i = 0; i < orderHeadTexts.size(); i++) {
             OrderFormatter orderFormatter = new OrderFormatter(orders.get(i));
