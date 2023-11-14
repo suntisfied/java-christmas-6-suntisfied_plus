@@ -54,6 +54,9 @@ public class BenefitDetails implements PromotionFormat {
                 promotionTexts.append("\r\n");
             }
         }
+        if (!promotionTexts.isEmpty()) {
+            promotionTexts.delete(promotionTexts.length() - 2, promotionTexts.length());
+        }
         return promotionTexts.toString();
     }
 }
