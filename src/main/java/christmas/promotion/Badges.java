@@ -2,7 +2,7 @@ package christmas.promotion;
 
 public enum Badges {
     NONE(0, "없음"),
-    STAR(5000,"스타"),
+    STAR(5000, "스타"),
     TREE(10000, "트리"),
     SANTA(20000, "산타");
 
