@@ -22,7 +22,7 @@ public class ExpectedTotalCost implements PromotionFormat {
         TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
         TotalBenefit totalBenefit = new Converter().convertToTotalBenefit(date, order);
 
-        int totalOrderCost = totalOrder.calculateTotalCost().price();
+        int totalOrderCost = totalOrder.calculateTotalCost().amount();
         int totalBenefitAmount = totalBenefit.calculateTotalBenefit().amount();
         int freeGiftBenefit = totalBenefit.getDiscountByPromotion(Promotions.FREE_GIFT).amount();
 

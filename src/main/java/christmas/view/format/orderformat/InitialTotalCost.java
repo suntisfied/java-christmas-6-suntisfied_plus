@@ -17,7 +17,7 @@ public class InitialTotalCost implements OrderFormat {
     @Override
     public String format(Order order) {
         TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
-        int totalOrderCost = totalOrder.calculateTotalCost().price();
+        int totalOrderCost = totalOrder.calculateTotalCost().amount();
 
         return numberFormatter.format(totalOrderCost)
                 + Messages.UNIT_CURRENCY.getMessage();

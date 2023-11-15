@@ -25,6 +25,6 @@ public class Special extends DateDiscount {
 
     private final Predicate<Date> isSpecialDay = date -> {
         List<Integer> weekdays = Days.SPECIAL.getDays();
-        return weekdays.contains(date.date());
+        return weekdays.contains(date.number());
     };
 }

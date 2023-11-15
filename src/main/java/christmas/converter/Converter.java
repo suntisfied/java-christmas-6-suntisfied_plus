@@ -55,7 +55,7 @@ public class Converter {
         Map<FreeGifts, Volume> freeGiftWithVolume = freeGift.determineGift(order);
         Map<Promotions, Discount> orderBenefits = new HashMap<>();
         for (FreeGifts currentFreeGift : freeGiftWithVolume.keySet()) {
-            orderBenefits.put(Promotions.FREE_GIFT, new Discount(currentFreeGift.getPrice().price()));
+            orderBenefits.put(Promotions.FREE_GIFT, new Discount(currentFreeGift.getPrice().amount()));
         }
         return orderBenefits;
     }

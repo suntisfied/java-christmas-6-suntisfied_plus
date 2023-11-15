@@ -1,4 +1,4 @@
 package christmas.order;
 
-public record Volume(int volume) {
+public record Volume(int amount) {
 }

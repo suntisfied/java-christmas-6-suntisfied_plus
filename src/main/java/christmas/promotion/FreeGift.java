@@ -28,6 +28,6 @@ public class FreeGift extends Benefit {
 
     private final Predicate<Order> isEnough = order -> {
         TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
-        return totalOrder.calculateTotalCost().price() >= MINIMUM_ORDER_FOR_FREE_GIFT.getNumber();
+        return totalOrder.calculateTotalCost().amount() >= MINIMUM_ORDER_FOR_FREE_GIFT.getNumber();
     };
 }

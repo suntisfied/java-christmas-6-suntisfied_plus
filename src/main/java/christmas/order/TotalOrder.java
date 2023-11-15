@@ -16,8 +16,8 @@ public class TotalOrder {
     public Price calculateTotalCost() {
         int totalSum = 0;
         for (Menu currentMenu : orderedMenuWithVolume.keySet()) {
-            int currentMenuPrice = currentMenu.getPrice().price();
-            int currentMenuAmount = orderedMenuWithVolume.get(currentMenu).volume();
+            int currentMenuPrice = currentMenu.getPrice().amount();
+            int currentMenuAmount = orderedMenuWithVolume.get(currentMenu).amount();
 
             totalSum += currentMenuPrice * currentMenuAmount;
         }
@@ -27,14 +27,14 @@ public class TotalOrder {
 
     public Volume calculateTotalVolume() {
         return new Volume(orderedMenuWithVolume.values().stream()
-                .mapToInt(Volume::volume).sum());
+                .mapToInt(Volume::amount).sum());
     }
 
     public Volume calculateVolumeByCategory(Category category) {
         int volume = 0;
         for (Menu currentMenu : orderedMenuWithVolume.keySet()) {
             if (currentMenu.getCategory().equals(category)) {
-                volume += orderedMenuWithVolume.get(currentMenu).volume();
+                volume += orderedMenuWithVolume.get(currentMenu).amount();
             }
         }
         return new Volume(volume);

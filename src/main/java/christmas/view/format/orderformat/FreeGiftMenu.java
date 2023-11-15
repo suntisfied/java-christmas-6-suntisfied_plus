@@ -19,7 +19,7 @@ public class FreeGiftMenu implements OrderFormat {
             for (FreeGifts currentFreeGift : freeGiftWithVolume.keySet()) {
                 freeGiftTextBuilder.append(currentFreeGift.getName())
                         .append(" ")
-                        .append(freeGiftWithVolume.get(currentFreeGift).volume())
+                        .append(freeGiftWithVolume.get(currentFreeGift).amount())
                         .append(Messages.UNIT_COUNT.getMessage());
             }
             freeGiftText = freeGiftTextBuilder.toString();

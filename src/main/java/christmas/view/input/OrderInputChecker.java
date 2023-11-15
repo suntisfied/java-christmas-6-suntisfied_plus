@@ -74,7 +74,7 @@ public class OrderInputChecker {
 
     private final Predicate<Order> isOverOrderLimit = order -> {
         TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
-        return totalOrder.calculateTotalVolume().volume() > ORDER_VOLUME_LIMIT.getNumber();
+        return totalOrder.calculateTotalVolume().amount() > ORDER_VOLUME_LIMIT.getNumber();
     };
 
     private final Predicate<Order> isDuplicate = order -> {

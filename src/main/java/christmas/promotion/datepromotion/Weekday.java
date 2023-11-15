@@ -25,7 +25,7 @@ public class Weekday extends DateDiscount {
     public Discount calculateDiscount(Date date, Order order) {
         int totalDiscount = 0;
         if (check(date, order)) {
-            totalDiscount = WEEKDAY_DISCOUNT_UNIT.getNumber() * dessertVolume.volume();
+            totalDiscount = WEEKDAY_DISCOUNT_UNIT.getNumber() * dessertVolume.amount();
         }
         return new Discount(totalDiscount);
     }
@@ -37,8 +37,8 @@ public class Weekday extends DateDiscount {
 
     private final Predicate<Date> isWeekday = date -> {
         List<Integer> weekdays = WEEKDAYS.getDays();
-        return weekdays.contains(date.date());
+        return weekdays.contains(date.number());
     };
 
-    private final Predicate<Order> isDessertOrdered = order -> dessertVolume.volume() > 0;
+    private final Predicate<Order> isDessertOrdered = order -> dessertVolume.amount() > 0;
 }

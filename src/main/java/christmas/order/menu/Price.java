@@ -1,4 +1,4 @@
 package christmas.order.menu;
 
-public record Price(int price) {
+public record Price(int amount) {
 }

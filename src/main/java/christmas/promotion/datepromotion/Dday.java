@@ -16,7 +16,7 @@ public class Dday extends DateDiscount {
 
         if (check(date, order)) {
             int initialDiscount = INITIAL_D_DAY_DISCOUNT.getNumber();
-            int dDayDiscounts = date.date() - 1;
+            int dDayDiscounts = date.number() - 1;
             totalDiscount = initialDiscount + (dDayDiscounts * D_DAY_DISCOUNT_UNIT.getNumber());
         }
 
@@ -28,7 +28,7 @@ public class Dday extends DateDiscount {
         return isWithinDday.test(date) && isEnoughTotalOrder.test(order);
     }
 
-    private final Predicate<Date> isWithinDday = date -> date.date() <= D_DAY.getNumber();
+    private final Predicate<Date> isWithinDday = date -> date.number() <= D_DAY.getNumber();
 
 
 }
