@@ -1,8 +1,8 @@
 package christmas.converter;
 
 public enum Delimiters {
-    DELIMITER_ORDER(","),
-    DELIMITER_NAME_WITH_VOLUME("-"),
+    DELIMITER_EACH_ORDER(","),
+    DELIMITER_NAME_AND_VOLUME("-"),
     ;
 
     private final String delimiter;
