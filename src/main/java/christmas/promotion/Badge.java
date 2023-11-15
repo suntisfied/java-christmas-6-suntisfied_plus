@@ -14,19 +14,18 @@ public class Badge extends Benefit {
     public Badges determineBadge(Date date, Order order) {
         Discount discount = calculateTotalDiscount(date, order);
 
-        Badges badge = NONE;
         if (check(date, order)) {
-            if (discount.amount() < TREE.getRequiredOrder()) {
-                badge = STAR;
-            }
-            if (discount.amount() >= TREE.getRequiredOrder() && discount.amount() < SANTA.getRequiredOrder()) {
-                badge = TREE;
-            }
             if (discount.amount() >= SANTA.getRequiredOrder()) {
-                badge = SANTA;
+                return SANTA;
+            }
+            if (discount.amount() >= TREE.getRequiredOrder()) {
+                return TREE;
+            }
+            if (discount.amount() >= STAR.getRequiredOrder()) {
+                return STAR;
             }
         }
-        return badge;
+        return NONE;
     }
 
     protected boolean check(Date date, Order order) {
