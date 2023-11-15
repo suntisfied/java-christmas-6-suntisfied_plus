@@ -7,29 +7,28 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class Extractor {
-    HashMap<Menu, Volume> createMenus(List<String> menuNameAndAmounts) {
+    HashMap<Menu, Volume> createMenus(List<String> menuNameAndVolumes) {
         HashMap<Menu, Volume> menus = new HashMap<>();
 
-        List<String> orderedMenuNames = extractNames(menuNameAndAmounts);
-        List<Integer> orderedMenuAmounts = extractAmounts(menuNameAndAmounts);
+        List<String> orderedMenuNameTexts = extractNames(menuNameAndVolumes);
+        List<Integer> orderedMenuVolumeTexts = extractVolumes(menuNameAndVolumes);
 
-        for (int i = 0; i < orderedMenuNames.size(); i++) {
-            Menu convertedMenuName = Menu.convertNameToMenu(orderedMenuNames.get(i));
-            Volume convertedVolume = new Volume(orderedMenuAmounts.get(i));
-            menus.put(convertedMenuName, convertedVolume);
+        for (int current = 0; current < orderedMenuNameTexts.size(); current++) {
+            Menu menuName = Menu.convertNameToMenu(orderedMenuNameTexts.get(current));
+            Volume volume = new Volume(orderedMenuVolumeTexts.get(current));
+            menus.put(menuName, volume);
         }
-
         return menus;
     }
 
-    List<String> extractNames(List<String> menuNameAndNumbers) {
-        return menuNameAndNumbers.stream()
-                .filter(i -> !isNumeric.test(i))
+    List<String> extractNames(List<String> menuNameAndVolumes) {
+        return menuNameAndVolumes.stream()
+                .filter(element -> !isNumeric.test(element))
                 .toList();
     }
 
-    List<Integer> extractAmounts(List<String> menuNameAndNumbers) {
-        return menuNameAndNumbers.stream()
+    List<Integer> extractVolumes(List<String> menuNameAndVolumes) {
+        return menuNameAndVolumes.stream()
                 .filter(isNumeric)
                 .map(Integer::parseInt)
                 .toList();

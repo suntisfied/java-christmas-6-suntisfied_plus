@@ -10,22 +10,22 @@ import java.util.List;
 
 public class Separator {
     public List<String> createMenuNameAndVolumes(Order order) {
-        List<String> menuNameAndAmountsWithDash = splitInputsByComma(order.orderText());
-        List<String> menuNameAndAmounts = new ArrayList<>();
+        List<String> menuNameWithVolumes = splitToNameWithVolume(order.orderText());
 
-        for (String menuNameAndAmountWithDash : menuNameAndAmountsWithDash) {
-            List<String> currentMenuNameAndAmounts = splitInputsByDash(menuNameAndAmountWithDash);
-            menuNameAndAmounts.addAll(currentMenuNameAndAmounts);
+        List<String> menuNameAndVolumes = new ArrayList<>();
+        for (String currentMenuNameWithVolume : menuNameWithVolumes) {
+            List<String> currentMenuNameAndVolume = splitToNameAndVolume(currentMenuNameWithVolume);
+            menuNameAndVolumes.addAll(currentMenuNameAndVolume);
         }
 
-        return menuNameAndAmounts;
+        return menuNameAndVolumes;
     }
 
-    private List<String> splitInputsByDash(String rawOrder) {
-        return Arrays.asList(rawOrder.split(DELIMITER_NAME_WITH_VOLUME.getDelimiter()));
+    private List<String> splitToNameAndVolume(String menuNameWithVolume) {
+        return Arrays.asList(menuNameWithVolume.split(DELIMITER_NAME_WITH_VOLUME.getDelimiter()));
     }
 
-    private List<String> splitInputsByComma(String rawOrder) {
-        return Arrays.asList(rawOrder.split(DELIMITER_ORDER.getDelimiter()));
+    private List<String> splitToNameWithVolume(String orderText) {
+        return Arrays.asList(orderText.split(DELIMITER_ORDER.getDelimiter()));
     }
 }

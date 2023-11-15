@@ -1,5 +1,11 @@
 package christmas.converter;
 
+import static christmas.promotion.Promotions.D_DAY;
+import static christmas.promotion.Promotions.FREE_GIFT;
+import static christmas.promotion.Promotions.SPECIAL;
+import static christmas.promotion.Promotions.WEEKDAY;
+import static christmas.promotion.Promotions.WEEKEND;
+
 import christmas.order.TotalOrder;
 import christmas.order.Volume;
 import christmas.order.menu.Menu;
@@ -31,32 +37,32 @@ public class Converter {
 
     public TotalBenefit convertToTotalBenefit(Date date, Order order) {
         Map<Promotions, Discount> benefits = createPromotionBenefits(date, order);
-        benefits.putAll(createOrderBenefits(order));
+        benefits.putAll(createFreeGiftBenefits(order));
 
         return new TotalBenefit(benefits);
     }
 
     private Map<Promotions, Discount> createPromotionBenefits(Date date, Order order) {
-        List<Promotions> promotions =
-                Arrays.asList(Promotions.D_DAY, Promotions.WEEKDAY, Promotions.WEEKEND, Promotions.SPECIAL);
+        List<Promotions> promotions = Arrays.asList(D_DAY, WEEKDAY, WEEKEND, SPECIAL);
 
         List<DateDiscount> dateDiscounts =
                 Arrays.asList(new Dday(), new Weekday(order), new Weekend(order), new Special());
+
         Map<Promotions, Discount> promotionBenefits = new HashMap<>();
-        for (int i = 0; i < promotions.size(); i++) {
-            DateBenefit dateBenefit = new DateBenefit(dateDiscounts.get(i));
-            promotionBenefits.put(promotions.get(i), dateBenefit.calculateDiscount(date, order));
+        for (int current = 0; current < promotions.size(); current++) {
+            DateBenefit dateBenefit = new DateBenefit(dateDiscounts.get(current));
+            promotionBenefits.put(promotions.get(current), dateBenefit.calculateDiscount(date, order));
         }
         return promotionBenefits;
     }
 
-    private Map<Promotions, Discount> createOrderBenefits(Order order) {
+    private Map<Promotions, Discount> createFreeGiftBenefits(Order order) {
         FreeGift freeGift = new FreeGift();
         Map<FreeGifts, Volume> freeGiftWithVolume = freeGift.determineGift(order);
-        Map<Promotions, Discount> orderBenefits = new HashMap<>();
+        Map<Promotions, Discount> freeGiftBenefits = new HashMap<>();
         for (FreeGifts currentFreeGift : freeGiftWithVolume.keySet()) {
-            orderBenefits.put(Promotions.FREE_GIFT, new Discount(currentFreeGift.getPrice().amount()));
+            freeGiftBenefits.put(FREE_GIFT, new Discount(currentFreeGift.getPrice().amount()));
         }
-        return orderBenefits;
+        return freeGiftBenefits;
     }
 }
