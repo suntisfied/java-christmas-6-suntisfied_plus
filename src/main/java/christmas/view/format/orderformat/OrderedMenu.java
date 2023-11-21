@@ -5,13 +5,13 @@ import christmas.order.TotalOrder;
 import christmas.order.menu.Menu;
 import christmas.view.Messages;
 import christmas.view.format.BlankLineRemover;
-import christmas.view.input.Order;
+import christmas.view.input.MenuOrder;
 import java.util.List;
 
 public class OrderedMenu implements OrderFormat {
     @Override
-    public String format(Order order) {
-        TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
+    public String format(MenuOrder menuOrder) {
+        TotalOrder totalOrder = new Converter().convertToTotalOrder(menuOrder);
         List<Menu> orderedMenuNames = totalOrder.produceOrderedMenus();
 
         StringBuilder orderedMenuTextBuilder = new StringBuilder();

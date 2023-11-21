@@ -1,8 +1,8 @@
 package christmas.promotion.datepromotion;
 
 import christmas.promotion.Discount;
-import christmas.view.input.Date;
-import christmas.view.input.Order;
+import christmas.view.input.VisitDate;
+import christmas.view.input.MenuOrder;
 
 public class DateBenefit {
     private final DateDiscount dateDiscount;
@@ -11,7 +11,7 @@ public class DateBenefit {
         this.dateDiscount = dateDiscount;
     }
     
-    public Discount calculateDiscount(Date date, Order order) {
-        return dateDiscount.calculateDiscount(date, order);
+    public Discount calculateDiscount(VisitDate visitDate, MenuOrder menuOrder) {
+        return dateDiscount.calculateDiscount(visitDate, menuOrder);
     }
 }

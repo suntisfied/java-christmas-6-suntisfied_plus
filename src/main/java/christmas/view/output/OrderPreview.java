@@ -5,7 +5,7 @@ import static christmas.view.Messages.HEAD_ORDER_AMOUNT;
 import static christmas.view.Messages.HEAD_ORDER_LIST;
 
 import christmas.view.Messages;
-import christmas.view.input.Order;
+import christmas.view.input.MenuOrder;
 import christmas.view.format.orderformat.FreeGiftMenu;
 import christmas.view.format.orderformat.InitialTotalCost;
 import christmas.view.format.orderformat.OrderFormat;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 public class OrderPreview {
-    Map<String, String> build(Order order) {
+    Map<String, String> build(MenuOrder menuOrder) {
         Map<String, String> orderPreviews = new LinkedHashMap<>();
 
         List<Messages> orderHeadTexts =
@@ -29,7 +29,7 @@ public class OrderPreview {
 
         for (int i = 0; i < orderHeadTexts.size(); i++) {
             OrderFormatter orderFormatter = new OrderFormatter(orders.get(i));
-            orderPreviews.put(orderHeadTexts.get(i).getMessage(), orderFormatter.format(order));
+            orderPreviews.put(orderHeadTexts.get(i).getMessage(), orderFormatter.format(menuOrder));
         }
         return orderPreviews;
     }

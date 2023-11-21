@@ -11,8 +11,8 @@ import christmas.promotion.Promotions;
 import christmas.promotion.TotalBenefit;
 import christmas.view.Messages;
 import christmas.view.format.BlankLineRemover;
-import christmas.view.input.Date;
-import christmas.view.input.Order;
+import christmas.view.input.VisitDate;
+import christmas.view.input.MenuOrder;
 import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.List;
@@ -26,8 +26,8 @@ public class BenefitDetails implements PromotionFormat {
     }
 
     @Override
-    public String format(Date date, Order order) {
-        String promotionTexts = buildPromotions(date, order);
+    public String format(VisitDate visitDate, MenuOrder menuOrder) {
+        String promotionTexts = buildPromotions(visitDate, menuOrder);
 
         if (promotionTexts.isEmpty()) {
             promotionTexts = Promotions.NONE.getText();
@@ -36,8 +36,8 @@ public class BenefitDetails implements PromotionFormat {
         return promotionTexts;
     }
 
-    private String buildPromotions(Date date, Order order) {
-        TotalBenefit totalBenefit = new Converter().convertToTotalBenefit(date, order);
+    private String buildPromotions(VisitDate visitDate, MenuOrder menuOrder) {
+        TotalBenefit totalBenefit = new Converter().convertToTotalBenefit(visitDate, menuOrder);
         List<Promotions> promotions = Arrays.asList(D_DAY, WEEKDAY, WEEKEND, SPECIAL, FREE_GIFT);
 
         return formatPromotions(totalBenefit, promotions);

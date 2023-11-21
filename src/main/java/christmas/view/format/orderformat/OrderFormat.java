@@ -1,7 +1,7 @@
 package christmas.view.format.orderformat;
 
-import christmas.view.input.Order;
+import christmas.view.input.MenuOrder;
 
 public interface OrderFormat {
-    String format(Order order);
+    String format(MenuOrder menuOrder);
 }

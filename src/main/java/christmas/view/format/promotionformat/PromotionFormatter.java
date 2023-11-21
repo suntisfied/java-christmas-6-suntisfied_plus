@@ -1,7 +1,7 @@
 package christmas.view.format.promotionformat;
 
-import christmas.view.input.Date;
-import christmas.view.input.Order;
+import christmas.view.input.VisitDate;
+import christmas.view.input.MenuOrder;
 
 public class PromotionFormatter implements PromotionFormat {
     private final PromotionFormat promotionFormat;
@@ -11,7 +11,7 @@ public class PromotionFormatter implements PromotionFormat {
     }
 
     @Override
-    public String format(Date date, Order order) {
-        return promotionFormat.format(date, order);
+    public String format(VisitDate visitDate, MenuOrder menuOrder) {
+        return promotionFormat.format(visitDate, menuOrder);
     }
 }

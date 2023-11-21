@@ -1,22 +1,22 @@
 package christmas;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.view.input.Date;
-import christmas.view.input.DateInput;
-import christmas.view.input.Order;
-import christmas.view.input.OrderInput;
+import christmas.view.input.VisitDate;
+import christmas.view.input.DateInputReader;
+import christmas.view.input.MenuOrder;
+import christmas.view.input.OrderInputReader;
 import christmas.view.output.Preview;
 
 public class Application {
     public static void main(String[] args) {
-        DateInput dateInput = new DateInput();
-        OrderInput orderInput = new OrderInput();
+        DateInputReader dateInputReader = new DateInputReader();
+        OrderInputReader orderInputReader = new OrderInputReader();
         Preview preview = new Preview();
 
-        Date date = dateInput.askDate();
-        Order order = orderInput.askOrder();
+        VisitDate visitDate = dateInputReader.askDate();
+        MenuOrder menuOrder = orderInputReader.askOrder();
 
-        preview.display(date, order);
+        preview.display(visitDate, menuOrder);
 
         Console.close();
     }

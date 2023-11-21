@@ -5,8 +5,8 @@ import christmas.converter.Converter;
 import christmas.promotion.Promotions;
 import christmas.promotion.TotalBenefit;
 import christmas.view.Messages;
-import christmas.view.input.Date;
-import christmas.view.input.Order;
+import christmas.view.input.VisitDate;
+import christmas.view.input.MenuOrder;
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -18,9 +18,9 @@ public class ExpectedTotalCost implements PromotionFormat {
     }
 
     @Override
-    public String format(Date date, Order order) {
-        TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
-        TotalBenefit totalBenefit = new Converter().convertToTotalBenefit(date, order);
+    public String format(VisitDate visitDate, MenuOrder menuOrder) {
+        TotalOrder totalOrder = new Converter().convertToTotalOrder(menuOrder);
+        TotalBenefit totalBenefit = new Converter().convertToTotalBenefit(visitDate, menuOrder);
 
         int totalOrderCost = totalOrder.calculateTotalCost().amount();
         int totalBenefitAmount = totalBenefit.calculateTotalBenefit().amount();

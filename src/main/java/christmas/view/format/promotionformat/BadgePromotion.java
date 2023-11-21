@@ -1,14 +1,14 @@
 package christmas.view.format.promotionformat;
 
 import christmas.promotion.Badge;
-import christmas.view.input.Date;
-import christmas.view.input.Order;
+import christmas.view.input.VisitDate;
+import christmas.view.input.MenuOrder;
 
 public class BadgePromotion implements PromotionFormat {
     @Override
-    public String format(Date date, Order order) {
+    public String format(VisitDate visitDate, MenuOrder menuOrder) {
         Badge badge = new Badge();
 
-        return badge.determineBadge(date, order).getName();
+        return badge.determineBadge(visitDate, menuOrder).getName();
     }
 }

@@ -3,8 +3,8 @@ package christmas.promotion.datepromotion;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.promotion.Discount;
-import christmas.view.input.Date;
-import christmas.view.input.Order;
+import christmas.view.input.VisitDate;
+import christmas.view.input.MenuOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -17,9 +17,9 @@ class WeekendTest {
             "'티본스테이크-2,레드와인-1', 7, 0",
     })
     public void calculateWeekendDiscount(String orderList, int date, int discount) {
-        Order order = new Order(orderList);
-        DateBenefit dateBenefit = new DateBenefit(new Weekend(order));
+        MenuOrder menuOrder = new MenuOrder(orderList);
+        DateBenefit dateBenefit = new DateBenefit(new Weekend(menuOrder));
 
-        assertThat(dateBenefit.calculateDiscount(new Date(date), order)).isEqualTo(new Discount(discount));
+        assertThat(dateBenefit.calculateDiscount(new VisitDate(date), menuOrder)).isEqualTo(new Discount(discount));
     }
 }

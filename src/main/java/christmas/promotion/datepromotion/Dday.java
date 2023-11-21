@@ -5,18 +5,18 @@ import static christmas.promotion.Defaults.D_DAY_DISCOUNT_UNIT;
 import static christmas.promotion.Defaults.INITIAL_D_DAY_DISCOUNT;
 
 import christmas.promotion.Discount;
-import christmas.view.input.Date;
-import christmas.view.input.Order;
+import christmas.view.input.VisitDate;
+import christmas.view.input.MenuOrder;
 import java.util.function.Predicate;
 
 public class Dday extends DateDiscount {
     @Override
-    public Discount calculateDiscount(Date date, Order order) {
+    public Discount calculateDiscount(VisitDate visitDate, MenuOrder menuOrder) {
         int totalDiscount = 0;
 
-        if (check(date, order)) {
+        if (check(visitDate, menuOrder)) {
             int initialDiscount = INITIAL_D_DAY_DISCOUNT.getNumber();
-            int dDayDiscounts = date.number() - 1;
+            int dDayDiscounts = visitDate.number() - 1;
             totalDiscount = initialDiscount + (dDayDiscounts * D_DAY_DISCOUNT_UNIT.getNumber());
         }
 
@@ -24,11 +24,11 @@ public class Dday extends DateDiscount {
     }
 
     @Override
-    protected boolean check(Date date, Order order) {
-        return isWithinDday.test(date) && isEnoughTotalOrder.test(order);
+    protected boolean check(VisitDate visitDate, MenuOrder menuOrder) {
+        return isWithinDday.test(visitDate) && isEnoughTotalOrder.test(menuOrder);
     }
 
-    private final Predicate<Date> isWithinDday = date -> date.number() <= D_DAY.getNumber();
+    private final Predicate<VisitDate> isWithinDday = date -> date.number() <= D_DAY.getNumber();
 
 
 }

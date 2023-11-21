@@ -6,12 +6,12 @@ import static christmas.promotion.Badges.STAR;
 import static christmas.promotion.Badges.TREE;
 
 import christmas.converter.Converter;
-import christmas.view.input.Date;
-import christmas.view.input.Order;
+import christmas.view.input.VisitDate;
+import christmas.view.input.MenuOrder;
 
 public class Badge extends Benefit {
-    public Badges determineBadge(Date date, Order order) {
-        Discount discount = calculateTotalDiscount(date, order);
+    public Badges determineBadge(VisitDate visitDate, MenuOrder menuOrder) {
+        Discount discount = calculateTotalDiscount(visitDate, menuOrder);
 
         if (discount.amount() >= SANTA.getRequiredOrder()) {
             return SANTA;
@@ -25,8 +25,8 @@ public class Badge extends Benefit {
         return NONE;
     }
 
-    private Discount calculateTotalDiscount(Date date, Order order) {
-        TotalBenefit totalBenefit = new Converter().convertToTotalBenefit(date, order);
+    private Discount calculateTotalDiscount(VisitDate visitDate, MenuOrder menuOrder) {
+        TotalBenefit totalBenefit = new Converter().convertToTotalBenefit(visitDate, menuOrder);
         return totalBenefit.calculateTotalBenefit();
     }
 }

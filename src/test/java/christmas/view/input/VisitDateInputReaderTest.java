@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class DateInputTest {
+class VisitDateInputReaderTest {
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
     @BeforeEach
@@ -35,16 +35,16 @@ class DateInputTest {
         String mockInput = "date\n3";
         System.setIn(new ByteArrayInputStream(mockInput.getBytes()));
 
-        DateInput dateInput = new DateInput();
+        DateInputReader dateInputReader = new DateInputReader();
 
-        Date date = null;
+        VisitDate visitDate = null;
         try {
-            date = dateInput.askDate();
+            visitDate = dateInputReader.askDate();
         } catch (NoSuchElementException ignored) {
         }
 
         assertThat(outputStream.toString()).contains(ERROR_INVALID_DATE.getMessage());
-        assertThat(date).isEqualTo(new Date(3));
+        assertThat(visitDate).isEqualTo(new VisitDate(3));
     }
 
     @ParameterizedTest
@@ -61,10 +61,10 @@ class DateInputTest {
     public void checkInvalidDate(String mockInput) {
         System.setIn(new ByteArrayInputStream(mockInput.getBytes()));
 
-        DateInput dateInput = new DateInput();
+        DateInputReader dateInputReader = new DateInputReader();
 
         try {
-            dateInput.askDate();
+            dateInputReader.askDate();
         } catch (NoSuchElementException ignored) {
         }
 

@@ -8,16 +8,16 @@ import christmas.order.menu.Menu;
 import christmas.promotion.Discount;
 import christmas.promotion.Promotions;
 import christmas.promotion.TotalBenefit;
-import christmas.view.input.Date;
-import christmas.view.input.Order;
+import christmas.view.input.VisitDate;
+import christmas.view.input.MenuOrder;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class ConverterTest {
-    Date date = new Date(3);
-    Order order = new Order("해산물파스타-2,레드와인-1,초코케이크-2");
+    VisitDate visitDate = new VisitDate(3);
+    MenuOrder menuOrder = new MenuOrder("해산물파스타-2,레드와인-1,초코케이크-2");
 
     @ParameterizedTest
     @CsvSource({
@@ -26,7 +26,7 @@ class ConverterTest {
             "초코케이크, 2",
     })
     public void convertToTotalOrder(String menuName, int orderAmount) {
-        TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
+        TotalOrder totalOrder = new Converter().convertToTotalOrder(menuOrder);
 
         assertThat(totalOrder.getVolumeByMenu(Menu.convertNameToMenu(menuName))).isEqualTo(new Volume(orderAmount));
     }
@@ -40,7 +40,7 @@ class ConverterTest {
             "증정, 25000",
     })
     public void convertToTotalBenefit(String promotionName, int DiscountAmount) {
-        TotalBenefit totalBenefit = new Converter().convertToTotalBenefit(date, order);
+        TotalBenefit totalBenefit = new Converter().convertToTotalBenefit(visitDate, menuOrder);
 
         Map<String, Promotions> promotionNames = new HashMap<>();
         promotionNames.put("디데이", Promotions.D_DAY);

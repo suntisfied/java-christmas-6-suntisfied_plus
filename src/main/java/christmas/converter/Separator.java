@@ -3,14 +3,14 @@ package christmas.converter;
 import static christmas.converter.Delimiters.DELIMITER_NAME_AND_VOLUME;
 import static christmas.converter.Delimiters.DELIMITER_EACH_ORDER;
 
-import christmas.view.input.Order;
+import christmas.view.input.MenuOrder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Separator {
-    public List<String> createMenuNameAndVolumes(Order order) {
-        List<String> eachOrders = splitToEachOrder(order.orderText());
+    public List<String> createMenuNameAndVolumes(MenuOrder menuOrder) {
+        List<String> eachOrders = splitToEachOrder(menuOrder.orderText());
 
         List<String> menuNameAndVolumes = new ArrayList<>();
         for (String currentEachOrder : eachOrders) {

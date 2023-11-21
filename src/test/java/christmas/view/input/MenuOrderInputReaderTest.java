@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class OrderInputTest {
+class MenuOrderInputReaderTest {
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
     @BeforeEach
@@ -40,10 +40,10 @@ class OrderInputTest {
 
         System.setIn(new ByteArrayInputStream(mockInput.getBytes()));
 
-        OrderInput orderInput = new OrderInput();
+        OrderInputReader orderInputReader = new OrderInputReader();
 
         try {
-            orderInput.askOrder();
+            orderInputReader.askOrder();
         } catch (NoSuchElementException ignored) {
         }
 
@@ -58,10 +58,10 @@ class OrderInputTest {
 
         System.setIn(new ByteArrayInputStream(mockInput.getBytes()));
 
-        OrderInput orderInput = new OrderInput();
+        OrderInputReader orderInputReader = new OrderInputReader();
 
         try {
-            orderInput.askOrder();
+            orderInputReader.askOrder();
         } catch (NoSuchElementException ignored) {
         }
 
@@ -85,10 +85,10 @@ class OrderInputTest {
     public void checkInvalidOrder(String mockInput) {
         System.setIn(new ByteArrayInputStream(mockInput.getBytes()));
 
-        OrderInput orderInput = new OrderInput();
+        OrderInputReader orderInputReader = new OrderInputReader();
 
         try {
-            orderInput.askOrder();
+            orderInputReader.askOrder();
         } catch (NoSuchElementException ignored) {
         }
 

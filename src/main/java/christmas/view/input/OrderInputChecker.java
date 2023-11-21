@@ -18,31 +18,31 @@ public class OrderInputChecker {
     protected void checkValidity(String input) {
         boolean validInput = false;
 
-        if (isInvalidFormat.test(new Order(input)) || isNotInMenu.test(new Order(input))) {
+        if (isInvalidFormat.test(new MenuOrder(input)) || isNotInMenu.test(new MenuOrder(input))) {
             throw new IllegalArgumentException(Messages.ERROR_INVALID_ORDER.getMessage());
         }
 
-        if (!isInvalidFormat.test(new Order(input)) && !isNotInMenu.test(new Order(input))) {
+        if (!isInvalidFormat.test(new MenuOrder(input)) && !isNotInMenu.test(new MenuOrder(input))) {
             validInput = true;
         }
 
         if (validInput) {
-            if (isOnlyDrinkOrder.test(new Order(input))
-                    || isOverOrderLimit.test(new Order(input))
-                    || isDuplicate.test(new Order(input))
-                    || isMenuAmountZero.test(new Order(input))) {
+            if (isOnlyDrinkOrder.test(new MenuOrder(input))
+                    || isOverOrderLimit.test(new MenuOrder(input))
+                    || isDuplicate.test(new MenuOrder(input))
+                    || isMenuAmountZero.test(new MenuOrder(input))) {
                 throw new IllegalArgumentException(Messages.ERROR_INVALID_ORDER.getMessage());
             }
         }
     }
 
-    private final Predicate<Order> isNotInMenu = order -> {
+    private final Predicate<MenuOrder> isNotInMenu = order -> {
         TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
         List<Menu> orderedMenuNames = totalOrder.produceOrderedMenus();
         return orderedMenuNames.contains(null);
     };
 
-    private final Predicate<Order> isInvalidFormat = order -> {
+    private final Predicate<MenuOrder> isInvalidFormat = order -> {
         Separator separator = new Separator();
         List<String> MenuAndAmounts = separator.createMenuNameAndVolumes(order);
 
@@ -65,19 +65,19 @@ public class OrderInputChecker {
         }
     }
 
-    private final Predicate<Order> isOnlyDrinkOrder = order -> {
+    private final Predicate<MenuOrder> isOnlyDrinkOrder = order -> {
         TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
         Volume totalVolume = totalOrder.calculateTotalVolume();
         Volume drinkVolume = totalOrder.calculateVolumeByCategory(Category.DRINK);
         return totalVolume.equals(drinkVolume);
     };
 
-    private final Predicate<Order> isOverOrderLimit = order -> {
+    private final Predicate<MenuOrder> isOverOrderLimit = order -> {
         TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
         return totalOrder.calculateTotalVolume().amount() > ORDER_VOLUME_LIMIT.getNumber();
     };
 
-    private final Predicate<Order> isDuplicate = order -> {
+    private final Predicate<MenuOrder> isDuplicate = order -> {
         Separator separator = new Separator();
         List<String> menuNameAndAmounts = separator.createMenuNameAndVolumes(order);
         List<String> menuNames = menuNameAndAmounts.stream()
@@ -87,7 +87,7 @@ public class OrderInputChecker {
         return menuNames.size() != uniqueNames.size();
     };
 
-    private final Predicate<Order> isMenuAmountZero = order -> {
+    private final Predicate<MenuOrder> isMenuAmountZero = order -> {
         Separator separator = new Separator();
         List<String> menuNameAndAmounts = separator.createMenuNameAndVolumes(order);
         return menuNameAndAmounts.contains("0");

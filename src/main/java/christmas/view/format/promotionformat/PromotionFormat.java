@@ -1,8 +1,8 @@
 package christmas.view.format.promotionformat;
 
-import christmas.view.input.Date;
-import christmas.view.input.Order;
+import christmas.view.input.VisitDate;
+import christmas.view.input.MenuOrder;
 
 public interface PromotionFormat {
-    String format(Date date, Order order);
+    String format(VisitDate visitDate, MenuOrder menuOrder);
 }

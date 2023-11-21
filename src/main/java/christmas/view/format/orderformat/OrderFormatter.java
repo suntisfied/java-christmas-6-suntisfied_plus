@@ -1,6 +1,6 @@
 package christmas.view.format.orderformat;
 
-import christmas.view.input.Order;
+import christmas.view.input.MenuOrder;
 
 public class OrderFormatter implements OrderFormat {
     private final OrderFormat orderFormat;
@@ -10,7 +10,7 @@ public class OrderFormatter implements OrderFormat {
     }
 
     @Override
-    public String format(Order order) {
-        return orderFormat.format(order);
+    public String format(MenuOrder menuOrder) {
+        return orderFormat.format(menuOrder);
     }
 }

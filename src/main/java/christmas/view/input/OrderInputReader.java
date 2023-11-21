@@ -1,22 +1,19 @@
 package christmas.view.input;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static christmas.view.Messages.DATE_INPUT_INSTRUCTION;
-import static christmas.view.Messages.INTRODUCTION;
+import static christmas.view.Messages.ORDER_INPUT_INSTRUCTION;
 
-public class DateInput extends DateInputChecker {
-    public Date askDate() {
-        String initialTexts = INTRODUCTION.getMessage() + System.lineSeparator() +  DATE_INPUT_INSTRUCTION.getMessage();
-        System.out.println(initialTexts);
+public class OrderInputReader extends OrderInputChecker {
+    public MenuOrder askOrder() {
+        System.out.println(ORDER_INPUT_INSTRUCTION.getMessage());
 
         String input;
         do {
             input = readLine();
+            input = removeWhiteSpaces(input);
         } while (validate(input));
 
-        int convertedInput = Integer.parseInt(input);
-
-        return new Date(convertedInput);
+        return new MenuOrder(input);
     }
 
     private boolean validate(String input) {
@@ -28,5 +25,9 @@ public class DateInput extends DateInputChecker {
             isInvalid = true;
         }
         return isInvalid;
+    }
+
+    private String removeWhiteSpaces(String input) {
+        return input.replaceAll("\\s+", "");
     }
 }

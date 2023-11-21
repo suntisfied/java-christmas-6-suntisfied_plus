@@ -20,45 +20,45 @@ import christmas.promotion.datepromotion.Weekday;
 import christmas.promotion.datepromotion.Weekend;
 import christmas.promotion.FreeGift;
 import christmas.promotion.FreeGifts;
-import christmas.view.input.Date;
-import christmas.view.input.Order;
+import christmas.view.input.VisitDate;
+import christmas.view.input.MenuOrder;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Converter {
-    public TotalOrder convertToTotalOrder(Order order) {
-        List<String> menuNameAndVolumes = new Separator().createMenuNameAndVolumes(order);
+    public TotalOrder convertToTotalOrder(MenuOrder menuOrder) {
+        List<String> menuNameAndVolumes = new Separator().createMenuNameAndVolumes(menuOrder);
         Map<Menu, Volume> orderedMenuTotal = new Extractor().createMenus(menuNameAndVolumes);
 
         return new TotalOrder(orderedMenuTotal);
     }
 
-    public TotalBenefit convertToTotalBenefit(Date date, Order order) {
-        Map<Promotions, Discount> benefits = createPromotionBenefits(date, order);
-        benefits.putAll(createFreeGiftBenefits(order));
+    public TotalBenefit convertToTotalBenefit(VisitDate visitDate, MenuOrder menuOrder) {
+        Map<Promotions, Discount> benefits = createPromotionBenefits(visitDate, menuOrder);
+        benefits.putAll(createFreeGiftBenefits(menuOrder));
 
         return new TotalBenefit(benefits);
     }
 
-    private Map<Promotions, Discount> createPromotionBenefits(Date date, Order order) {
+    private Map<Promotions, Discount> createPromotionBenefits(VisitDate visitDate, MenuOrder menuOrder) {
         List<Promotions> promotions = Arrays.asList(D_DAY, WEEKDAY, WEEKEND, SPECIAL);
 
         List<DateDiscount> dateDiscounts =
-                Arrays.asList(new Dday(), new Weekday(order), new Weekend(order), new Special());
+                Arrays.asList(new Dday(), new Weekday(menuOrder), new Weekend(menuOrder), new Special());
 
         Map<Promotions, Discount> promotionBenefits = new HashMap<>();
         for (int current = 0; current < promotions.size(); current++) {
             DateBenefit dateBenefit = new DateBenefit(dateDiscounts.get(current));
-            promotionBenefits.put(promotions.get(current), dateBenefit.calculateDiscount(date, order));
+            promotionBenefits.put(promotions.get(current), dateBenefit.calculateDiscount(visitDate, menuOrder));
         }
         return promotionBenefits;
     }
 
-    private Map<Promotions, Discount> createFreeGiftBenefits(Order order) {
+    private Map<Promotions, Discount> createFreeGiftBenefits(MenuOrder menuOrder) {
         FreeGift freeGift = new FreeGift();
-        Map<FreeGifts, Volume> freeGiftWithVolume = freeGift.determineGift(order);
+        Map<FreeGifts, Volume> freeGiftWithVolume = freeGift.determineGift(menuOrder);
         Map<Promotions, Discount> freeGiftBenefits = new HashMap<>();
         for (FreeGifts currentFreeGift : freeGiftWithVolume.keySet()) {
             freeGiftBenefits.put(FREE_GIFT, new Discount(currentFreeGift.getPrice().amount()));

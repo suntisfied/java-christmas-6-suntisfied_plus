@@ -3,7 +3,7 @@ package christmas.view.format.orderformat;
 import christmas.order.TotalOrder;
 import christmas.converter.Converter;
 import christmas.view.Messages;
-import christmas.view.input.Order;
+import christmas.view.input.MenuOrder;
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -15,8 +15,8 @@ public class InitialTotalCost implements OrderFormat {
     }
 
     @Override
-    public String format(Order order) {
-        TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
+    public String format(MenuOrder menuOrder) {
+        TotalOrder totalOrder = new Converter().convertToTotalOrder(menuOrder);
         int totalOrderCost = totalOrder.calculateTotalCost().amount();
 
         return numberFormatter.format(totalOrderCost)

@@ -6,7 +6,7 @@ import christmas.converter.Converter;
 import christmas.order.menu.Category;
 import christmas.order.menu.Menu;
 import christmas.order.menu.Price;
-import christmas.view.input.Order;
+import christmas.view.input.MenuOrder;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,9 +14,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-class TotalOrderTest {
-    Order order = new Order("티본스테이크-2,양송이수프-1,시저샐러드-1,아이스크림-1,레드와인-2");
-    TotalOrder totalOrder = new Converter().convertToTotalOrder(order);
+class TotalMenuOrderTest {
+    MenuOrder menuOrder = new MenuOrder("티본스테이크-2,양송이수프-1,시저샐러드-1,아이스크림-1,레드와인-2");
+    TotalOrder totalOrder = new Converter().convertToTotalOrder(menuOrder);
 
     @Test
     public void calculateInitialTotalCost() {
